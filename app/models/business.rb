@@ -4,8 +4,9 @@ class Business < ApplicationRecord
   belongs_to :user
   has_many :fields
 
-  mount_uploader :photo, PhotoUploader
 
   validates :name, :address, presence: true
   validates :rating, inclusion: { in: STARS }
+
+  mount_uploader :photo, PhotoUploader
 end
