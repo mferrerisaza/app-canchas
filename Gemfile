@@ -12,8 +12,8 @@ gem 'redis'
 gem 'money-rails'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem 'faker'
 gem "pundit"
-
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

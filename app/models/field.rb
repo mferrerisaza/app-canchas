@@ -1,5 +1,5 @@
 class Field < ApplicationRecord
-  CAPACITY_RANGE = 2..24
+  CAPACITY_RANGE = (2..24).to_a
   belongs_to :business
   has_many :bookings
 
