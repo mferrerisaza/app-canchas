@@ -1,0 +1,13 @@
+class Field < ApplicationRecord
+  CAPACITY_RANGE = 2..24
+  belongs_to :business
+  has_many :bookings
+
+  monetize :price_cents
+  mount_uploader :photo, PhotoUploader
+
+  validates :name, :business, :capacity, :price  presence: true
+  validates :capacity, inclusion: { in: CAPACITY_RANGE }
+  validates :price, numericality: { greater_than: 0 }
+
+end
