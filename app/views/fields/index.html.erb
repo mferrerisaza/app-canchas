@@ -1,1 +1,11 @@
-<h1>Hello from fields index</h1>
+<h1>FIELDS</h1>
+
+
+<% @fields.each do |field| %>
+  <%= cl_image_tag(field.photo,
+      width: 400, height: 300, crop: :fill) %>
+  <p> <%= field.business.name %></p>
+  <p> <%= field.name %></p>
+  <p> Capacidad: <%= field.capacity %></p>
+  <p> Precio: <%= field.price_cents %></p>
+<% end %>
