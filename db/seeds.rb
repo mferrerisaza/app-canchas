@@ -24,7 +24,7 @@ b1 = Business.new(
     address: "Calle 50, 67 73, Medellín, Antioquia",
     phone: "230 31 48",
     rating: 4,
-    nit: "8 #{Faker::Number.number(8)}",
+    nit: "8#{Faker::Number.number(8)}",
     bank_name: "Bancolombia",
     bank_account_type: "Ahorros",
     bank_account_number: "#{Faker::Number.number(11)}",
@@ -38,7 +38,7 @@ b2 = Business.new(
     address: "Centro Comercial El Tesoro Etapa 3 , Piso, Cl. 4, Medellín, Antioquia",
     phone: "444 02 67",
     rating: 4,
-    nit: "8 #{Faker::Number.number(8)}",
+    nit: "8#{Faker::Number.number(8)}",
     bank_name: "Bancolombia",
     bank_account_type: "Ahorros",
     bank_account_number: "#{Faker::Number.number(11)}",
@@ -52,7 +52,7 @@ b3 = Business.new(
     address: "Cra 48, 26sur 87, Envigado, Antioquia",
     phone: "444 40 24",
     rating: 3,
-    nit: "8 #{Faker::Number.number(8)}",
+    nit: "8#{Faker::Number.number(8)}",
     bank_name: "Bancolombia",
     bank_account_type: "Ahorros",
     bank_account_number: "#{Faker::Number.number(11)}",
@@ -66,7 +66,7 @@ b4 = Business.new(
     address: "Cra 27, 23sur 120, Envigado, Antioquia",
     phone: "321 8162860",
     rating: 5,
-    nit: "8 #{Faker::Number.number(8)}",
+    nit: "8#{Faker::Number.number(8)}",
     bank_name: "Bancolombia",
     bank_account_type: "Ahorros",
     bank_account_number: "#{Faker::Number.number(11)}",
@@ -79,16 +79,16 @@ p "Negocios creados"
 p "Creando Canchas"
 PRICES = (140000..200000).to_a
 f = Field.new(
-    name: "Cancha #{b1.fields.size + 1}",
+    name: "Cancha 1",
     business: b1,
     capacity: (Field::CAPACITY_RANGE).sample,
     price: PRICES.sample.round(-4)
   )
 f.remote_photo_url = "https://images.unsplash.com/photo-1520621547148-caeb79466a2b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6adf1ae9356d789b0fcebc6bd4b2175a&auto=format&fit=crop&w=500&q=60"
 f.save!
-p b1
+
 f = Field.new(
-    name: "Cancha #{b1.fields.size + 1}",
+    name: "Cancha 2",
     business: b1,
     capacity: (Field::CAPACITY_RANGE).sample,
     price: PRICES.sample.round(-4)
@@ -97,7 +97,7 @@ f.remote_photo_url = "https://images.unsplash.com/photo-1473075109809-7a17d327bd
 f.save!
 
 f = Field.new(
-    name: "Cancha #{b1.fields.size + 1}",
+    name: "Cancha 3",
     business: b1,
     capacity: (Field::CAPACITY_RANGE).sample,
     price: PRICES.sample.round(-4)
@@ -106,7 +106,7 @@ f.remote_photo_url = "https://images.unsplash.com/photo-1505748641491-f7ee2fd6fb
 f.save!
 
 f = Field.new(
-    name: "Cancha #{b1.fields.size + 1}",
+    name: "Cancha 4",
     business: b1,
     capacity: (Field::CAPACITY_RANGE).sample,
     price: PRICES.sample.round(-4)
@@ -114,7 +114,114 @@ f = Field.new(
 f.remote_photo_url = "https://images.unsplash.com/photo-1507226353400-5ec8e43add88?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6cd41ed8c576c3ece63891881e63085e&auto=format&fit=crop&w=500&q=60"
 f.save!
 
+f = Field.new(
+    name: "Cancha 1",
+    business: b2,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1503515091255-ab8063a1796d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e24d90f4830afc6ec8dc8870b5d7dee4&auto=format&fit=crop&w=500&q=60"
+f.save!
+
+f = Field.new(
+    name: "Cancha 2",
+    business: b2,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1516463439953-eb6a1c2867b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=124c8714d5ed802c34e310600978204a&auto=format&fit=crop&w=500&q=60"
+f.save!
+
+f = Field.new(
+    name: "Cancha 3",
+    business: b2,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1495143881214-47a7d7f2e7fa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d567157cc727d973da05ec205491c9e&auto=format&fit=crop&w=500&q=60"
+f.save!
+
+f = Field.new(
+    name: "Cancha 4",
+    business: b2,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1505843687871-669c89088b12?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b0f9181d7c599c98445be94ac9eef7a6&auto=format&fit=crop&w=500&q=60"
+f.save!
+
+f = Field.new(
+    name: "Cancha 1",
+    business: b3,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1504016798967-59a258e9386d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e57ccfa6c68c13751c23418ba60a80b&auto=format&fit=crop&w=500&q=60"
+f.save!
+
+f = Field.new(
+    name: "Cancha 2",
+    business: b3,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1465816676400-e0a480c3ae89?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b53f413711d5dc59bfe1758059b5227a&auto=format&fit=crop&w=500&q=60"
+f.save!
+
+f = Field.new(
+    name: "Cancha 3",
+    business: b3,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1509077613385-f89402467146?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=35339ad7ccb62bb2791556f0de25e81f&auto=format&fit=crop&w=282&q=80"
+f.save!
+
+f = Field.new(
+    name: "Cancha 4",
+    business: b3,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1487466365202-1afdb86c764e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=87c82fa7b9afee7515cc691d6704f902&auto=format&fit=crop&w=752&q=80"
+f.save!
+
+f = Field.new(
+    name: "Cancha 1",
+    business: b4,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1505305976870-c0be1cd39939?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8d14abf1edb104c4705958b4881a70f8&auto=format&fit=crop&w=750&q=80"
+f.save!
+
+f = Field.new(
+    name: "Cancha 2",
+    business: b4,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1497292348804-01ddc743bcb7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3c9968b01ca6706ec433b1982fc572de&auto=format&fit=crop&w=500&q=60"
+f.save!
+
+f = Field.new(
+    name: "Cancha 3",
+    business: b4,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1464983308776-3c7215084895?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=597b71b3ad0c807e2ed5f1cc50439931&auto=format&fit=crop&w=500&q=60"
+f.save!
+
+f = Field.new(
+    name: "Cancha 4",
+    business: b4,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.remote_photo_url = "https://images.unsplash.com/photo-1516283250450-174387a1af6b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=025b8c5d162f1d8e3f8d75a29e86cea0&auto=format&fit=crop&w=500&q=60"
+f.save!
+
 p "Canchas creadas"
 
-
-p "Done"
+p "Done (Daniel cabeza de mondá)"
