@@ -11,7 +11,6 @@ skip_before_action :authenticate_user!, only: [:index, :show]
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
-
   end
 
   def show
