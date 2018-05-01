@@ -1,10 +1,9 @@
 class FieldsController < ApplicationController
 skip_before_action :authenticate_user!, only: [:index, :show]
-require 'byebug'
 
   def index
     @businesses = policy_scope(Business.where.not(latitude: nil, longitude: nil))
-    @fields = Field.all.select { |field| field @business.include?(field.business) }
+    @fields = FieldDecorator.decorate_collection(Field.all.select { |field| @businesses.include?(field.business) })
     @markers = @businesses.map do |business|
       {
         lat: business.latitude,

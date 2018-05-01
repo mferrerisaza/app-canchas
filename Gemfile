@@ -15,6 +15,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'faker'
 gem "pundit"
 gem "geocoder"
+gem 'draper'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
