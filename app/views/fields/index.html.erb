@@ -9,6 +9,8 @@
     <p> <%= field.name %></p>
     <p> Capacidad: <%= field.capacity %></p>
     <p> Precio: <%= number_to_currency(field.price_cents/100, precision: 0)    %></p>
+    <p> <%= field.business.address %></p>
+
   <% end %>
 
   <div
