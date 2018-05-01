@@ -14,9 +14,6 @@
       <div class="card-field-name">
         <%= field.name %>
       </div>
-      <div class="card-field-capacity">
-        Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
-      </div>
       <div class="card-price">
         Precio: <%= number_to_currency(field.price_cents/100, precision: 0) %>
       </div>
@@ -27,10 +24,16 @@
         Disponibilidad:
         <%= field.field_available_hours %>
       </div>
-      <div class="card-toggle-button">
-        <%= render 'shared/toggle_switch'  %>
+      <div class="card-field-capacity">
+        Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
       </div>
-      <div class="card-cta-button">
+      <div id="toggle<%= field.id %>" class="disponibilidad">
+        <div>Desea dividir la tarifa entre todos los jugadores?</div>
+        <div class="card-toggle-btn">
+          <%= render 'shared/toggle_switch'  %>
+        </div>
+      </div>
+      <div id="cta<%= field.id %>" class="card-cta-btn">
         <%= link_to "CTA", "" , class: "btn btn-primary" %>
       </div>
     <% end %>
