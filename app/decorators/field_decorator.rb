@@ -9,6 +9,4 @@ class FieldDecorator < Draper::Decorator
     horas.each { |hora| available_hours << hora unless booked_hours.include?(hora) }
     return available_hours
   end
-
-
 end
