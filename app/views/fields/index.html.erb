@@ -1,3 +1,4 @@
+<% require "byebug" %>
 
 <div class="container">
 <% console %>
@@ -10,7 +11,21 @@
     <p> Capacidad: <%= field.capacity %></p>
     <p> Precio: <%= number_to_currency(field.price_cents/100, precision: 0)    %></p>
     <p> <%= field.business.address %></p>
+    <p>Disponibilidad: </p>
 
+    <!-- Disponibilidad... Pensar la forma en la que esto se puede hacer en el controller y no en el view -->
+    <% hours_booked = [] %>
+    <% Booking.where(field_id: field.id).each do |booking| %>
+      <% hours_booked << booking.date.hour %>
+    <% end  %>
+    <% horas = (17..24).to_a %>
+
+    <% horas.each do |hora| %>
+      <% unless hours_booked.include?(hora) %>
+        <p><%= hora %></p>
+      <% end  %>
+    <% end %>
+    <% hours_booked = [] %>
   <% end %>
 
   <div
