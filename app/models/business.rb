@@ -13,4 +13,7 @@ class Business < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  def opening_hours
+      (self.opening..self.closing)
+  end
 end
