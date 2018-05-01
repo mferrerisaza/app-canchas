@@ -1,7 +1,7 @@
 
 <div class="container center-div">
   <div class="row">
-    <%= form_tag fields_path, method: :get, class: "boat-search-form"  do %>
+    <%= form_tag schedule_path, method: :get, class: "field-search-form"  do %>
       <div class="col-xs-12">
         <%= text_field_tag :query,
           params[:query],
@@ -13,14 +13,23 @@
         <%= text_field_tag :dates,
           params[:dates],
           class: "datepicker datesize",
-          placeholder: "Buscar disponibilidad entre:"
+          placeholder: "Canchas disponibles entre"
         %>
       </div>
-      <div class="col-xs-12 col-sm-4">
-        <%= text_field_tag :time,
-          params[:time],
-          class: "timepicker datesize",
-          placeholder: "¿A qué hora te gusta jugar?"
+      <div class="col-xs-12 col-sm-2">
+        <%= text_field_tag :start_time,
+          params[:start_time],
+          class: "datesize",
+          id: "starttimepicker",
+          placeholder: "Entre 5PM"
+        %>
+      </div>
+      <div class="col-xs-12 col-sm-2">
+        <%= text_field_tag :end_time,
+          params[:end_time],
+          class: "datesize",
+          id: "endtimepicker",
+          placeholder: "Y 8PM"
         %>
       </div>
 
