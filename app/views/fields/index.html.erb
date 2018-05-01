@@ -1,23 +1,24 @@
 <div class="container">
-<% console %>
-<h1>FIELDS</h1>
-  
+  <% console %>
+  <h1>FIELDS</h1>
+
   <% @fields.each do |field| %>
-    <%= cl_image_tag(field.photo,
-        width: 400, height: 300, crop: :fill) %>
-    <p> <%= field.business.name %></p>
-    <p> <%= field.name %></p>
-    <p> Capacidad: <%= field.capacity %></p>
-    <p> Precio: <%= number_to_currency(field.price_cents/100, precision: 0)    %></p>
-    <p> <%= field.business.address %></p>
-    <p> Disponibilidad: </p>
-    <p> <%= field.field_available_hours %></p>
+  <%= cl_image_tag(field.photo,
+  width: 400, height: 300, crop: :fill) %>
+  <p> <%= field.business.name %></p>
+  <p> <%= field.name %></p>
+  <p> Capacidad: <%= field.capacity %></p>
+  <p> Precio: <%= number_to_currency(field.price_cents/100, precision: 0)    %></p>
+  <p> <%= field.business.address %></p>
+  <p> Disponibilidad: </p>
+  <p> <%= field.field_available_hours %></p>
+  <%= render 'shared/toggle_switch'  %>
   <% end %>
-  
+
   <div
-    id="map"
-    style="width: 100%;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
   ></div>
 </div>
