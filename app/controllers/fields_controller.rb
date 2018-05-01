@@ -20,11 +20,11 @@ after_action :verify_authorized, except: [:index, :test]
   end
 
   def new
-    authorized @field
+    authorize @field
   end
 
   def create
-    authorized @field
+    authorize @field
   end
 
   def schedule
