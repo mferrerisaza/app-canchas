@@ -3,7 +3,7 @@ skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @businesses = policy_scope(Business.where.not(latitude: nil, longitude: nil))
-    @fields = FieldDecorator.decorate_collection(Field.all.select { |field| @businesses.include?(field.business) })
+    @fields = Field.all.decorate #FieldDecorator.decorate_collection(Field.all.select { |field| @businesses.include?(field.business) })
     @markers = @businesses.map do |business|
       {
         lat: business.latitude,
