@@ -15,7 +15,7 @@
         <%= field.name %>
       </div>
       <div class="card-price">
-        Precio: <%= number_to_currency(field.price_cents/100, precision: 0) %>
+        Precio: <%= humanized_money_with_symbol(field.price) %>
       </div>
       <div class="card-addreess">
         <%= field.business.address %>
