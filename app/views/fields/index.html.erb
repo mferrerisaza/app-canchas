@@ -2,25 +2,45 @@
   <% console %>
   <h1>FIELDS</h1>
 
-  <% @fields.each do |field| %>
-  <%= cl_image_tag(field.photo,
-  width: 400, height: 300, crop: :fill) %>
-  <p> <%= field.business.name %></p>
-  <p> <%= field.name %></p>
-  <p> Capacidad: <%= field.capacity %></p>
-  <p> Precio: <%= number_to_currency(field.price_cents/100, precision: 0)    %></p>
-  <p> <%= field.business.address %></p>
-  <p> Disponibilidad: </p>
-  <p> <%= field.field_available_hours %></p>
-  <p> Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>) </p>
-  <%= render 'shared/toggle_switch'  %>
-  <%= link_to "CTA", "" , class: "btn btn-primary" %>
-  <% end %>
-
-  <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  ></div>
+  <div class="card">
+    <% @fields.each do |field| %>
+      <div class="card-image">
+        <%= cl_image_tag(field.photo,
+        width: 400, height: 300, crop: :fill) %>
+      </div>
+      <div class="card-business-name">
+        <%= field.business.name %>
+      </div>
+      <div class="card-field-name">
+        <%= field.name %>
+      </div>
+      <div class="card-field-capacity">
+        Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
+      </div>
+      <div class="card-price">
+        Precio: <%= number_to_currency(field.price_cents/100, precision: 0) %>
+      </div>
+      <div class="card-addreess">
+        <%= field.business.address %>
+      </div>
+      <div class="card-available-hours">
+        Disponibilidad:
+        <%= field.field_available_hours %>
+      </div>
+      <div class="card-toggle-button">
+        <%= render 'shared/toggle_switch'  %>
+      </div>
+      <div class="card-cta-button">
+        <%= link_to "CTA", "" , class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="map-container">
+    <div
+      id="map"
+      style="width: 100%;
+      height: 600px;"
+      data-markers="<%= @markers.to_json %>">
+    </div>
+  </div>
 </div>
