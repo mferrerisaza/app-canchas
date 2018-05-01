@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   resources :businesses, only: [:new, :create, :index, :show]
   resources :fields, only: [:new, :create, :index]
-
+  get "/schedule", to: "fields#schedule", as: "schedule"
 
 end
