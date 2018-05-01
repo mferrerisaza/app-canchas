@@ -12,7 +12,9 @@
   <p> <%= field.business.address %></p>
   <p> Disponibilidad: </p>
   <p> <%= field.field_available_hours %></p>
+  <p> Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>) </p>
   <%= render 'shared/toggle_switch'  %>
+  <%= link_to "CTA", "" , class: "btn btn-primary" %>
   <% end %>
 
   <div
