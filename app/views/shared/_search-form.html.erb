@@ -1,0 +1,50 @@
+<div class="row">
+  <% if controller_name == "pages" %>
+    <% link_properties = {path: fields_path, remote:false} %>
+  <% else %>
+    <% link_properties = {path: schedule_path, remote: true} %>
+  <% end %>
+    <%= form_tag link_properties[:path], method: :get, class: "field-search-form", remote: link_properties[:remote]  do %>
+
+    <div class="col-xs-8">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "queryinput form-control",
+        placeholder: "¿Donde quieres jugar?"
+      %>
+    </div>
+    <div class="col-xs-4">
+      <%= select_tag :capacity_limit, options_for_select(Field::CAPACITY_RANGE.to_a),
+        class: "queryinput form-control",
+        placeholder: "# jugadores"
+      %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= text_field_tag :dates,
+        params[:dates],
+        class: "datepicker datesize",
+        placeholder: "Canchas disponibles entre"
+      %>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <%= text_field_tag :start_time,
+        params[:start_time],
+        class: "datesize",
+        id: "starttimepicker",
+        placeholder: "Entre 5PM"
+      %>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <%= text_field_tag :end_time,
+        params[:end_time],
+        class: "datesize",
+        id: "endtimepicker",
+        placeholder: "Y 8PM"
+      %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= submit_tag "Buscar", name: nil, class: "btn btn-primary full-width-padded" %>
+    </div>
+  <% end %>
+</div>
+
