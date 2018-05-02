@@ -1,11 +1,23 @@
 <div class="container">
    <%= render "shared/search-form" %>
   <h1>FIELDS</h1>
-  <ul class="date-tabs-list list-inline">
+  <ul class="date-tabs-list list-inline hidden-xs hidden-sm">
     <% @schedule.keys.each_with_index do |date, index| %>
       <li class="date-tab <%= "active-date" if index == 0 %>"><%= date_check(Date.parse(date))%></li>
     <% end %>
   </ul>
+  <div class="dropdown hidden-md hidden-lg">
+    <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+    <!-- <button  type="button" id="dropdownMenu1" data-toggle="dropdown" > -->
+      Dropdown
+      <span class="caret"></span>
+    </div>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <% @schedule.keys.each_with_index do |date, index| %>
+        <li class="date-tab <%= "active-date" if index == 0 %>"><%= date_check(Date.parse(date))%></li>
+      <% end %>
+    </ul>
+  </div>
   <div class="card">
     <% @fields.each do |field| %>
       <div class="card-image">
