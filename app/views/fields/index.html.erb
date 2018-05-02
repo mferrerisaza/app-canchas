@@ -1,55 +1,22 @@
 <div class="container">
-   <%= render "shared/search-form" %>
-  <% console %>
   <h1>FIELDS</h1>
-  <ul class="list-inline">
-    <% @schedule.keys.each_with_index do |date, index| %>
-      <li class=<%= "active-date" if index == 0 %>><%= date_check(Date.parse(date))%></li>
-    <% end %>
-  </ul>
-  <div class="card">
-    <% @fields.each do |field| %>
-      <div class="card-image">
-        <%= cl_image_tag(field.photo,
-        width: 400, height: 300, crop: :fill) %>
-      </div>
-      <div class="card-business-name">
-        <%= field.business.name %>
-      </div>
-      <div class="card-field-name">
-        <%= field.name %>
-      </div>
-      <div class="card-price">
-        Precio: <%= humanized_money_with_symbol(field.price) %>
-      </div>
-      <div class="card-addreess">
-        <%= field.business.address %>
-      </div>
-      <div class="card-available-hours">
-        Disponibilidad:
-        <%= @schedule.first[1][field.id.to_s].keys.to_a %>
-      </div>
-      <div class="card-field-capacity">
-        Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
-      </div>
-      <div id="toggle<%= field.id %>" class="disponibilidad">
-        <div>Desea dividir la tarifa entre todos los jugadores?</div>
-        <div class="card-toggle-btn">
-          <%= render 'shared/toggle_switch'  %>
+   <%= render "shared/search-form" %>
+    <ul class="list-inline">
+      <% @schedule.keys.each_with_index do |date, index| %>
+        <li class=<%= "active-date" if index == 0 %>><%= date_check(Date.parse(date))%></li>
+      <% end %>
+    </ul>
+    <div class="main-container">
+      <div class="cards-container">
+        <div class="row">
+          <%= render 'shared/cards'  %>
         </div>
       </div>
-      <div id="cta<%= field.id %>" class="card-cta-btn">
-        <%= link_to "CTA", "" , class: "btn btn-primary" %>
+      <div class="map-container">
+        <div
+          id="map"
+          data-markers="<%= @markers.to_json %>">
+        </div>
       </div>
-    <% end %>
-  </div>
-
-  <div class="map-container">
-    <div
-      id="map"
-      style="width: 100%;
-      height: 600px;"
-      data-markers="<%= @markers.to_json %>">
     </div>
-  </div>
 </div>

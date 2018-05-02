@@ -1,0 +1,38 @@
+      <% @fields.each do |field| %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="card">
+          <div class="card-top">        <%= cl_image_tag(field.photo,:transformation=>[
+          {:aspect_ratio=>"3:1", :gravity=>"auto", :crop=>"fill"},
+          {:width=>285, :quality=>"auto", :fetch_format=>:auto, :crop=>"scale"}
+          ]) %>
+          </div>
+          <div class="bottom">
+            <div class="card-business-name">
+              <%= field.business.name %>
+            </div>
+            <div class="card-field-name">
+              <%= field.name %>
+            </div>
+            <div class="card-price">
+              Precio: <%= humanized_money_with_symbol(field.price) %>
+            </div>
+            <div class="card-addreess">
+              <%= field.business.address %>
+            </div>
+            <div class="card-available-hours">
+              Disponibilidad:
+              <%= @schedule.first[1][field.id.to_s].keys.to_a %>
+            </div>
+            <div class="card-field-capacity">
+              Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
+            </div>
+            <div id="toggle<%= field.id %>" class="disponibilidad">
+              <div>Desea dividir la tarifa entre todos los jugadores?</div>
+              <div class="card-toggle-btn">
+                <%= render 'shared/toggle_switch'  %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
