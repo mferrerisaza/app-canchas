@@ -16,10 +16,12 @@
       %>
     </div>
     <div class="col-xs-4">
-      <%= select_tag :capacity_limit, options_for_select(Field::CAPACITY_RANGE.to_a),
-        class: "queryinput form-control",
-        placeholder: "# jugadores"
-      %>
+      <select name="capacity_limit" id="capacity_limit" class="queryinput form-control">
+        <option value="" selected disabled hidden># jugadores</option>
+        <% Field::CAPACITY_RANGE.each do |value| %>
+          <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>"><%= value %></option>
+        <% end %>
+      </select>
     </div>
     <div class="col-xs-12 col-sm-4">
       <%= text_field_tag :dates,
@@ -29,20 +31,28 @@
       %>
     </div>
     <div class="col-xs-12 col-sm-2">
-      <%= text_field_tag :start_time,
-        params[:start_time],
-        class: "datesize",
-        id: "starttimepicker",
-        placeholder: "Entre 5PM"
-      %>
+      <select name="start_time" class="datesize">
+        <option value="" selected disabled hidden>Entre 5PM</option>
+        <% (1..24).each do |value| %>
+          <% if value > 12 %>
+            <option <%= "selected" if value.to_s == params[:start_time] %> value="<%= value %>"><%= value - 12 %> PM</option>
+          <% else %>
+            <option <%= "selected" if value.to_s == params[:start_time] %> value="<%= value %>"><%= value %> AM</option>
+          <% end %>
+        <% end %>
+      </select>
     </div>
     <div class="col-xs-12 col-sm-2">
-      <%= text_field_tag :end_time,
-        params[:end_time],
-        class: "datesize",
-        id: "endtimepicker",
-        placeholder: "Y 8PM"
-      %>
+      <select name="end_time" class="datesize">
+        <option value="" selected disabled hidden>Y 8PM</option>
+        <% (1..24).each do |value| %>
+          <% if value > 12 %>
+            <option <%= "selected" if value.to_s == params[:end_time] %> value="<%= value %>"><%= value - 12 %> PM</option>
+          <% else %>
+            <option <%= "selected" if value.to_s == params[:end_time] %> value="<%= value %>"><%= value %> AM</option>
+          <% end %>
+        <% end %>
+      </select>
     </div>
     <div class="col-xs-12 col-sm-4">
       <%= submit_tag "Buscar", name: nil, class: "btn btn-primary full-width-padded" %>
