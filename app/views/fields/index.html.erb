@@ -1,49 +1,13 @@
-<div class="container">
-  <% console %>
-  <h1>FIELDS</h1>
-
-  <div class="card">
-    <% @fields.each do |field| %>
-      <div class="card-image">
-        <%= cl_image_tag(field.photo,
-        width: 400, height: 300, crop: :fill) %>
-      </div>
-      <div class="card-business-name">
-        <%= field.business.name %>
-      </div>
-      <div class="card-field-name">
-        <%= field.name %>
-      </div>
-      <div class="card-price">
-        Precio: <%= humanized_money_with_symbol(field.price) %>
-      </div>
-      <div class="card-addreess">
-        <%= field.business.address %>
-      </div>
-      <div class="card-available-hours">
-        Disponibilidad:
-        <%= field.field_available_hours %>
-      </div>
-      <div class="card-field-capacity">
-        Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
-      </div>
-      <div id="toggle<%= field.id %>" class="disponibilidad">
-        <div>Desea dividir la tarifa entre todos los jugadores?</div>
-        <div class="card-toggle-btn">
-          <%= render 'shared/toggle_switch'  %>
-        </div>
-      </div>
-      <div id="cta<%= field.id %>" class="card-cta-btn">
-        <%= link_to "CTA", "" , class: "btn btn-primary" %>
-      </div>
-    <% end %>
+<h1>FIELDS</h1>
+<div class="main-container">
+  <div class="cards-container">
+    <div class="row">
+      <%= render 'shared/cards'  %>
+    </div>
   </div>
-
   <div class="map-container">
     <div
       id="map"
-      style="width: 100%;
-      height: 600px;"
       data-markers="<%= @markers.to_json %>">
     </div>
   </div>
