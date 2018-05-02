@@ -1,8 +1,10 @@
 <div class="row">
   <% if controller_name == "pages" %>
-    <% link_properties = {path: fields_path, remote:false} %>
+    <% link_properties = {path: fields_path, remote: false} %>
   <% else %>
-    <% link_properties = {path: schedule_path, remote: true} %>
+    <% link_properties = {path: fields_path, remote: false} %>
+    <!-- cambiar a true cuando se tenga el js -->
+    <!-- link_properties = {path: schedule_path, remote: true} -->
   <% end %>
     <%= form_tag link_properties[:path], method: :get, class: "field-search-form", remote: link_properties[:remote]  do %>
 
