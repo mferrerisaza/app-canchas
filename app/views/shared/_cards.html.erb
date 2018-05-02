@@ -32,6 +32,10 @@
                 <%= render 'shared/toggle_switch'  %>
               </div>
             </div>
+            <div class="card-cta">
+              <%= link_to "Reservar", "", class: "btn btn-cta", "data-toggle": "modal",  "data-target":  "#myModal" %>
+            </div>
+            <%= render 'shared/booking_modal'  %>
           </div>
         </div>
       </div>

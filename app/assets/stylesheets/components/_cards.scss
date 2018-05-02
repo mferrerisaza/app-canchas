@@ -28,3 +28,18 @@
   font-size: 40px;
 }
 
+.card-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-cta {
+    color: #fff;
+    background-color: $my-gray;
+    width: 100%;
+    &:hover {
+      background-color: green;
+      color: #fff;
+    };
+}
+
