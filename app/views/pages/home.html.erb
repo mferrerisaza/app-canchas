@@ -1,12 +1,18 @@
 
 <div class="container center-div">
   <div class="row">
-    <%= form_tag schedule_path, method: :get, class: "field-search-form"  do %>
-      <div class="col-xs-12">
+    <%= form_tag fields_path, method: :get, class: "field-search-form"  do %>
+      <div class="col-xs-8">
         <%= text_field_tag :query,
           params[:query],
           class: "queryinput form-control",
           placeholder: "¿Donde quieres jugar?"
+        %>
+      </div>
+      <div class="col-xs-4">
+        <%= select_tag :capacity, options_for_select(Field::CAPACITY_RANGE.to_a),
+          class: "queryinput form-control",
+          placeholder: "# jugadores"
         %>
       </div>
       <div class="col-xs-12 col-sm-4">
