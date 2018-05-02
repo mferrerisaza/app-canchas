@@ -1,12 +1,12 @@
       <% @fields.each do |field| %>
       <div class="col-xs-12 col-sm-6">
-        <div class="card">card
+        <div class="card">
           <div class="card-top">        <%= cl_image_tag(field.photo,:transformation=>[
           {:aspect_ratio=>"3:1", :gravity=>"auto", :crop=>"fill"},
-          {:width=>"auto", :quality=>"auto", :fetch_format=>:auto, :crop=>"scale"}
+          {:width=>285, :quality=>"auto", :fetch_format=>:auto, :crop=>"scale"}
           ]) %>
           </div>
-          <div class="bottom">info
+          <div class="bottom">
             <div class="card-business-name">
               <%= field.business.name %>
             </div>

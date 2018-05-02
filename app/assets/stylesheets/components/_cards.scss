@@ -1,18 +1,19 @@
 
 .main-container {
   display: flex;
-  justify-content: space-aroun;
-  width:100%;
 }
 .cards-container {
-
-  background-color: #E0E1E0;
   flex: 0 0 66%;
   margin: 1px;
 }
 
 .map-container {
   flex-grow: 1;
-  margin: 1px;
+  margin: 10px 0px 0px 10px;
 }
+
+.card {
+  margin: 5px 5px;
+}
+
 

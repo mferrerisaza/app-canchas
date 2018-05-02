@@ -1,14 +1,16 @@
-<h1>FIELDS</h1>
-<div class="main-container">
-  <div class="cards-container">
-    <div class="row">
-      <%= render 'shared/cards'  %>
+<div class="container">
+  <h1>FIELDS</h1>
+    <div class="main-container">
+      <div class="cards-container">
+        <div class="row">
+          <%= render 'shared/cards'  %>
+        </div>
+      </div>
+      <div class="map-container">
+        <div
+          id="map"
+          data-markers="<%= @markers.to_json %>">
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="map-container">
-    <div
-      id="map"
-      data-markers="<%= @markers.to_json %>">
-    </div>
-  </div>
 </div>
