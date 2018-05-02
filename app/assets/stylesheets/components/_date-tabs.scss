@@ -1,3 +1,20 @@
+.date-tabs-list{
+  border-bottom: 1px solid $brand-primary;
+}
 .active-date {
-  border-bottom: 3px solid $brand-primary;
+  color: white;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  background-color: $brand-primary;
+}
+
+.date-tab {
+  transition: .3s ease;
+  &:hover{
+    background-color: $my-gray;
+    color: white;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    transform: scale(1.1);
+  }
 }
