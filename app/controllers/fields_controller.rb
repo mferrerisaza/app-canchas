@@ -4,8 +4,8 @@ after_action :verify_authorized, except: [:index, :show, :schedule]
 
   def index
     @businesses = policy_scope(Business.where.not(latitude: nil, longitude: nil))
-    @fields = Field.all.decorate #FieldDecorator.decorate_collection(Field.all.select { |field| @businesses.include?(field.business) })
-    @schedule = Booking.build_schedule(retrived_params)
+    @schedule = Booking.build_schedule(filtering_params)
+    @fields = Field.retrive_filtered_fields(filtering_params) #.decorate #FieldDecorator.decorate_collection(Field.all.select { |field| @businesses.include?(field.business) })
 
     @markers = @businesses.map do |business|
       {
@@ -30,13 +30,13 @@ after_action :verify_authorized, except: [:index, :show, :schedule]
   end
 
   def schedule
-    @schedule = Booking.build_schedule(retrived_params)
+    @schedule = Booking.build_schedule(filtering_params)
     render json: @schedule
   end
 
   private
 
-  def retrived_params
-    params.slice(:dates, :start_time, :end_time)
+  def filtering_params
+    params.slice(:dates, :start_time, :end_time, :capacity_limit, :query)
   end
 end
