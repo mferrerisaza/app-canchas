@@ -14,7 +14,7 @@
     </div>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
       <% @schedule.keys.each_with_index do |date, index| %>
-        <li class="date-tab <%= "active-date" if index == 0 %>"><%= date_check(Date.parse(date))%></li>
+        <li class="mobile-tab date-tab <%= "active-date" if index == 0 %>"><%= date_check(Date.parse(date))%></li>
       <% end %>
     </ul>
   </div>
