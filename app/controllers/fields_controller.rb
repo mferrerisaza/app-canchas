@@ -1,11 +1,11 @@
 class FieldsController < ApplicationController
-skip_before_action :authenticate_user!, only: [:index, :show, :test]
-after_action :verify_authorized, except: [:index, :test]
+skip_before_action :authenticate_user!, only: [:index, :show, :schedule]
+after_action :verify_authorized, except: [:index, :show, :schedule]
 
   def index
     @businesses = policy_scope(Business.where.not(latitude: nil, longitude: nil))
     @fields = Field.all.decorate #FieldDecorator.decorate_collection(Field.all.select { |field| @businesses.include?(field.business) })
-    # @schedule = build_schedule_filtered
+    @schedule = Booking.build_schedule(retrived_params)
 
     @markers = @businesses.map do |business|
       {
@@ -17,6 +17,8 @@ after_action :verify_authorized, except: [:index, :test]
   end
 
   def show
+     @field = Field.find(params[:id])
+     render json: @field
   end
 
   def new
@@ -28,23 +30,13 @@ after_action :verify_authorized, except: [:index, :test]
   end
 
   def schedule
-    dates = params[:dates].split("to").map { |date| Date.parse(date) }
-    start_hour = params[:start_time].to_i
-    end_hour = params[:end_time].to_i
-    time_range = (start_hour..end_hour)
-    @schedule = Booking.build_schedule(dates)
-    @schedule.each_key do |date_key|
-      @schedule[date_key].each_key do |field_key|
-        @schedule[date_key][field_key].keep_if { |k,v| v == 0 && time_range.include?(k.to_i) }
-      end
-    end
+    @schedule = Booking.build_schedule(retrived_params)
     render json: @schedule
   end
 
-  def build_schedule_filtered
-    dates = params[:dates].split("to").map { |date| Date.parse(date) }
-    start_hour = params[:start_time].to_i
-    end_hour = params[:end_time].to_i
-    @schedule = Booking.build_schedule(dates)
+  private
+
+  def retrived_params
+    params.slice(:dates, :start_time, :end_time)
   end
 end

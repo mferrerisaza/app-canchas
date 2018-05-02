@@ -19,21 +19,43 @@ class Booking < ApplicationRecord
     end
   end
 
-  def self.build_schedule(dates)
+  def self.build_schedule(args = {})
+
+    if args[:dates].present?
+      dates = args[:dates].split("to").map { |date| Date.parse(date) }
+    else
+      dates = [Date.today, Date.today + 7]
+    end
+
     dates.size == 2 ? date_range = (dates[0]...dates[1] + 1) : date_range = (dates[0]...dates[0] + 1)
     booking_hash = {}
     date_range.each do |date|
       field_hash = {}
       Field.all.each do |field|
         hour_hash = {}
-        field.business.opening_hours.each do |hour|
-          p "la hora es #{hour} el rango inicia #{date + hour.hour - 1.hour} termina: #{date + hour.hour}"
-          hour_hash["#{hour}"]= self.where(date: date..date + 1).where(field: field).where(date: date + hour.hour..date + hour.hour + 1).size
+        if args[:start_time].present?
+          start_hour = args[:start_time].to_i
+        else
+          start_hour = field.business.opening
+        end
+
+        if args[:end_time].present?
+          end_hour = args[:end_time].to_i
+        else
+          end_hour = field.business.closing
+        end
+        time_range = (start_hour..end_hour)
+        time_range.each do |hour|
+          hour_hash[hour.to_s] = self.where(date: date..date + 1).where(field: field).where(date: date + hour.hour..date + hour.hour + 1).size
         end
         field_hash[field.id.to_s] = hour_hash
       end
       booking_hash[date.to_s] = field_hash
     end
-    return booking_hash
+     booking_hash.each_key do |date_key|
+      booking_hash[date_key].each_key do |field_key|
+        booking_hash[date_key][field_key].keep_if { |k,v| v == 0 }
+      end
+    end
   end
 end
