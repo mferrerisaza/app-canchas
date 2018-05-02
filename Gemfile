@@ -16,6 +16,7 @@ gem 'faker'
 gem "pundit"
 gem "geocoder"
 gem 'draper'
+gem 'pg_search'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
