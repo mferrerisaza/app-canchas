@@ -1,5 +1,6 @@
 class Field < ApplicationRecord
   include PgSearch
+  scope :capacity_limit, -> (capacity) { where("capacity >= ?", capacity) }
 
   CAPACITY_RANGE = (2..24).to_a
   belongs_to :business
@@ -13,12 +14,18 @@ class Field < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  pg_search_scope :search_by_attributes,
-    against: :capacity,
+  pg_search_scope :query,
     associated_against: {
       business: [ :name, :address ]
     },
     using: {
       tsearch: { prefix: true }
     }
+
+  def self.retrive_filtered_fields(args = {})
+    fields = self.where(nil)
+    fields = fields.capacity_limit(args[:capacity_limit]) if args[:capacity_limit].present?
+    fields = fields.query(args[:query]) if args[:query].present?
+    return fields
+  end
 end
