@@ -31,7 +31,7 @@ class Booking < ApplicationRecord
     booking_hash = {}
     date_range.each do |date|
       field_hash = {}
-      Field.all.each do |field|
+      Field.retrive_filtered_fields(args).each do |field|
         hour_hash = {}
         if args[:start_time].present?
           start_hour = args[:start_time].to_i
