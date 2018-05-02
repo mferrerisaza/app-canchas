@@ -20,4 +20,16 @@ module ApplicationHelper
         "data-toggle" => "dropdown"
     end
   end
+
+  def date_check(date)
+    if date == Date.today
+      return "Hoy"
+    elsif date == Date.today + 1
+      return "Mañana"
+    elsif date == Date.today + 2
+      return "Pasado mañana"
+    else
+      return date.strftime("%a %d, %b")
+    end
+  end
 end
