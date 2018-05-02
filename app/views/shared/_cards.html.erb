@@ -21,7 +21,7 @@
             </div>
             <div class="card-available-hours">
               Disponibilidad:
-              <%= field.field_available_hours %>
+              <%= @schedule.first[1][field.id.to_s].keys.to_a %>
             </div>
             <div class="card-field-capacity">
               Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)

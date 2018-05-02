@@ -1,5 +1,11 @@
 <div class="container">
   <h1>FIELDS</h1>
+   <%= render "shared/search-form" %>
+    <ul class="list-inline">
+      <% @schedule.keys.each_with_index do |date, index| %>
+        <li class=<%= "active-date" if index == 0 %>><%= date_check(Date.parse(date))%></li>
+      <% end %>
+    </ul>
     <div class="main-container">
       <div class="cards-container">
         <div class="row">

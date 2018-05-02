@@ -86,6 +86,26 @@ f = Field.new(
   )
 f.remote_photo_url = "https://images.unsplash.com/photo-1520621547148-caeb79466a2b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6adf1ae9356d789b0fcebc6bd4b2175a&auto=format&fit=crop&w=500&q=60"
 f.save!
+b = Booking.create!(
+  date: DateTime.parse("2018-05-01 17:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("2018-05-01 20:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("2018-05-02 15:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("2018-05-03 17:00:00"),
+  field: f,
+  balance: f.price
+  )
 
 f = Field.new(
     name: "Cancha 2",
