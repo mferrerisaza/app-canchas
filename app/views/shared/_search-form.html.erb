@@ -31,7 +31,7 @@
       %>
     </div>
     <div class="col-xs-12 col-sm-2">
-      <select name="start_time" class="datesize">
+      <select name="start_time" class="datesize" id="starttime">
         <option value="" selected disabled hidden>Entre 5PM</option>
         <% (1..24).each do |value| %>
           <% if value > 12 %>
@@ -43,7 +43,7 @@
       </select>
     </div>
     <div class="col-xs-12 col-sm-2">
-      <select name="end_time" class="datesize">
+      <select name="end_time" class="datesize" id="endtime">
         <option value="" selected disabled hidden>Y 8PM</option>
         <% (1..24).each do |value| %>
           <% if value > 12 %>
