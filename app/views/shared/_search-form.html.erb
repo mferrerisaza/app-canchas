@@ -32,25 +32,17 @@
     </div>
     <div class="col-xs-12 col-sm-2">
       <select name="start_time" class="datesize" id="starttime">
-        <option value="" selected disabled hidden>Entre 5PM</option>
-        <% (1..24).each do |value| %>
-          <% if value > 12 %>
-            <option <%= "selected" if value.to_s == params[:start_time] %> value="<%= value %>"><%= value - 12 %> PM</option>
-          <% else %>
-            <option <%= "selected" if value.to_s == params[:start_time] %> value="<%= value %>"><%= value %> AM</option>
-          <% end %>
+        <option value="" <%= "selected" unless params[:start_time].present? %> disabled hidden>Entre 5PM</option>
+        <% (1..23).each do |value| %>
+          <option <%= "selected" if value.to_s == params[:start_time] %> value="<%= value %>"><%=format_hour(value)%></option>
         <% end %>
       </select>
     </div>
     <div class="col-xs-12 col-sm-2">
       <select name="end_time" class="datesize" id="endtime">
-        <option value="" selected disabled hidden>Y 8PM</option>
-        <% (1..24).each do |value| %>
-          <% if value > 12 %>
-            <option <%= "selected" if value.to_s == params[:end_time] %> value="<%= value %>"><%= value - 12 %> PM</option>
-          <% else %>
-            <option <%= "selected" if value.to_s == params[:end_time] %> value="<%= value %>"><%= value %> AM</option>
-          <% end %>
+        <option value="" <%= "selected" unless params[:end_time].present? %> disabled hidden>Y 8PM</option>
+        <% (1..23).each do |value| %>
+          <option <%= "selected" if value.to_s == params[:end_time] %> value="<%= value %>"><%=format_hour(value)%></option>
         <% end %>
       </select>
     </div>

@@ -32,4 +32,16 @@ module ApplicationHelper
       return date.strftime("%a %d, %b")
     end
   end
+
+  def format_hour(value)
+    if value == 24
+      return "#{value - 12}  AM"
+    elsif value == 12
+      return "#{value}  PM"
+    elsif value > 12
+      return "#{value - 12}  PM"
+    else
+      return "#{value} AM"
+    end
+  end
 end
