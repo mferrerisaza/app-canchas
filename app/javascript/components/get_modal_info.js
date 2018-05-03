@@ -42,7 +42,7 @@ const addInnerTexts = (data, cardId) => {
   modalBusinessAddress.insertAdjacentHTML("beforeend", `<p> ${data.business.address} </p>`);
   modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle(getToggle(cardId)));
   modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);
-  modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${data.price_cents.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
+  modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
 
 }
 
