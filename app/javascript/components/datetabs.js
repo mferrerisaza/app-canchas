@@ -1,6 +1,6 @@
 const fetchSchedule = (event) => {
   const query = document.getElementById("query").value;
-  const capacityLimit = parseInt(document.getElementById("capacity_limit").value, 10);
+  const capacityLimit = document.getElementById("capacity_limit").value;
   const dates = event.currentTarget.dataset.date;
   const startTime = document.getElementById("starttime").value;
   const endTime = document.getElementById("endtime").value;
