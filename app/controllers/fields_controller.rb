@@ -18,7 +18,7 @@ after_action :verify_authorized, except: [:index, :show, :schedule]
 
   def show
      @field = Field.find(params[:id])
-     render json: @field
+     render json: @field, include: [business: { only: [:name, :address, :phone, :rating, :latitude, :longitude, :photo] }]
   end
 
   def new
