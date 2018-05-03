@@ -26,9 +26,9 @@
             <div class="card-field-capacity">
               Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
             </div>
-            <div id="toggle<%= field.id %>" class="disponibilidad">
+            <div class="disponibilidad">
               <div>Desea dividir la tarifa entre todos los jugadores?</div>
-              <div class="card-toggle-btn">
+              <div class="card-toggle-btn" id="toggle<%= field.id %>">
                 <%= render 'shared/toggle_switch'  %>
               </div>
             </div>
