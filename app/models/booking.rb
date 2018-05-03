@@ -20,31 +20,14 @@ class Booking < ApplicationRecord
   end
 
   def self.build_schedule(args = {})
-
-    if args[:dates].present?
-      dates = args[:dates].split("to").map { |date| Date.parse(date) }
-    else
-      dates = [Date.today, Date.today + 7]
-    end
-
-    dates.size == 2 ? date_range = (dates[0]...dates[1] + 1) : date_range = (dates[0]...dates[0] + 1)
+    dates = ApplicationController.helpers.extract_date(args)
+    date_range = (dates[0]...dates[0] + 1)
     booking_hash = {}
     date_range.each do |date|
       field_hash = {}
       Field.retrive_filtered_fields(args).each do |field|
         hour_hash = {}
-        if args[:start_time].present?
-          start_hour = args[:start_time].to_i
-        else
-          start_hour = field.business.opening
-        end
-
-        if args[:end_time].present?
-          end_hour = args[:end_time].to_i
-        else
-          end_hour = field.business.closing
-        end
-        time_range = (start_hour..end_hour)
+        time_range = ApplicationController.helpers.generate_hours_range(args, field)
         time_range.each do |hour|
           hour_hash[hour.to_s] = self.where(date: date..date + 1).where(field: field).where(date: date + hour.hour..date + hour.hour + 1).size
         end
@@ -56,6 +39,7 @@ class Booking < ApplicationRecord
       booking_hash[date_key].each_key do |field_key|
         booking_hash[date_key][field_key].keep_if { |k,v| v == 0 }
       end
+        booking_hash[date_key].keep_if { |k,v| !v.blank?}
     end
   end
 end

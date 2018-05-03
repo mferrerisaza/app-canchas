@@ -17,7 +17,7 @@
     </div>
     <div class="col-xs-4">
       <select name="capacity_limit" id="capacity_limit" class="queryinput form-control">
-        <option value="" selected disabled hidden># jugadores</option>
+        <option value="" <%= "selected" unless params[:capacity_limit].present? %> disabled hidden># jugadores</option>
         <% Field::CAPACITY_RANGE.each do |value| %>
           <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>"><%= value %></option>
         <% end %>
