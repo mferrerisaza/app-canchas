@@ -44,4 +44,28 @@ module ApplicationHelper
       return "#{value} AM"
     end
   end
+
+  def extract_date(args = {})
+    if args[:dates].present?
+      dates = args[:dates].split("to").map { |date| Date.parse(date) }
+    else
+      dates = [Date.today, Date.today + 7]
+    end
+  end
+
+  def generate_hours_range(args = {}, field)
+    if args[:start_time].present? && args[:start_time].to_i >= field.business.opening
+      start_hour = args[:start_time].to_i
+    else
+      start_hour = field.business.opening
+    end
+
+    if args[:end_time].present? && args[:end_time].to_i <= field.business.closing
+      end_hour = args[:end_time].to_i
+    else
+      end_hour = field.business.closing
+    end
+
+    time_range = (start_hour..end_hour)
+  end
 end
