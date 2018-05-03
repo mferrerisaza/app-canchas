@@ -32,7 +32,7 @@ b1 = Business.new(
   )
 b1.remote_photo_url = "http://elgolazo.co/wp-content/uploads/2015/07/logo-el-golazo-260.png"
 b1.save!
-
+sleep(5)  # To avoid Google API Over Query Limit
 b2 = Business.new(
     name: "La Jaula Del Angel",
     address: "Centro Comercial El Tesoro Etapa 3 , Piso, Cl. 4, Medellín, Antioquia",
@@ -46,7 +46,7 @@ b2 = Business.new(
   )
 b2.remote_photo_url = "https://www.lajauladelangel.com.co/wp-content/uploads/2018/03/Pagina-angel-curvas-1-compressor.jpg"
 b2.save!
-
+sleep(5)  # To avoid Google API Over Query Limit
 b3 = Business.new(
     name: "El Templo Del Futbol",
     address: "Cra 48, 26sur 87, Envigado, Antioquia",
@@ -60,7 +60,7 @@ b3 = Business.new(
   )
 b3.remote_photo_url = "https://scontent.feoh3-1.fna.fbcdn.net/v/t1.0-9/10561777_775640069143792_8736606192136751541_n.jpg?_nc_cat=0&oh=dad78535484de1a3be16e5d8bc2c77a3&oe=5B4F59F5"
 b3.save!
-
+sleep(5)  # To avoid Google API Over Query Limit
 b4 = Business.new(
     name: "D'Green Zone",
     address: "Cra 27, 23sur 120, Envigado, Antioquia",
@@ -87,22 +87,22 @@ f = Field.new(
 f.remote_photo_url = "https://images.unsplash.com/photo-1520621547148-caeb79466a2b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6adf1ae9356d789b0fcebc6bd4b2175a&auto=format&fit=crop&w=500&q=60"
 f.save!
 b = Booking.create!(
-  date: DateTime.parse("2018-05-01 17:00:00"),
+  date: DateTime.parse("#{Date.today.to_s} 17:00:00"),
   field: f,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("2018-05-01 20:00:00"),
+  date: DateTime.parse("#{Date.today.to_s} 20:00:00"),
   field: f,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("2018-05-02 15:00:00"),
+  date: DateTime.parse("#{(Date.today + 1).to_s} 15:00:00"),
   field: f,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("2018-05-03 17:00:00"),
+  date: DateTime.parse("#{(Date.today + 2).to_s} 17:00:00"),
   field: f,
   balance: f.price
   )
@@ -115,6 +115,82 @@ f = Field.new(
   )
 f.remote_photo_url = "https://images.unsplash.com/photo-1473075109809-7a17d327bdf6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=81e0dd29d94f3aceec5ad4d40b48856a&auto=format&fit=crop&w=500&q=60"
 f.save!
+
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 8:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 9:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 10:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 11:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 12:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 13:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 14:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 15:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 16:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 17:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 18:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 19:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 20:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 21:00:00"),
+  field: f,
+  balance: f.price
+  )
+b = Booking.create!(
+  date: DateTime.parse("#{Date.today.to_s} 22:00:00"),
+  field: f,
+  balance: f.price
+  )
 
 f = Field.new(
     name: "Cancha 3",
