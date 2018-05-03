@@ -3,7 +3,7 @@
   <h1>FIELDS</h1>
   <ul class="date-tabs-list list-inline hidden-xs hidden-sm">
     <% @schedule.keys.each_with_index do |date, index| %>
-      <li class="date-tab <%= "active-date" if index == 0 %>"><%= date_check(Date.parse(date))%></li>
+      <li data-date = <%= date%> class="date-tab <%= "active-date" if index == 0 %>"><%= date_check(Date.parse(date))%></li>
     <% end %>
   </ul>
   <div class="dropdown hidden-md hidden-lg">
@@ -14,7 +14,7 @@
     </div>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
       <% @schedule.keys.each_with_index do |date, index| %>
-        <li class="mobile-tab date-tab <%= "active-date" if index == 0 %>"><%= date_check(Date.parse(date))%></li>
+        <li data-date = <%= date %> class="mobile-tab date-tab <%= "active-date" if index == 0 %>"><%= date_check(Date.parse(date))%></li>
       <% end %>
     </ul>
   </div>
