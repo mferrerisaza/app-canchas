@@ -5,8 +5,9 @@ after_action :verify_authorized, except: [:index, :show, :schedule]
   def index
     @businesses = policy_scope(Business.where.not(latitude: nil, longitude: nil))
     @schedule = Booking.build_schedule(filtering_params)
-    @fields = Field.retrive_filtered_fields(filtering_params) #.decorate #FieldDecorator.decorate_collection(Field.all.select { |field| @businesses.include?(field.business) })
-
+    @fields = @schedule.first[1].keys.map { |field_id| Field.find(field_id) }
+    date_array = ApplicationController.helpers.extract_date(filtering_params)
+    @date_range = date_array[0]..date_array[1]
     @markers = @businesses.map do |business|
       {
         lat: business.latitude,
