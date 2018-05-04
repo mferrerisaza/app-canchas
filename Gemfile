@@ -17,6 +17,7 @@ gem "pundit"
 gem "geocoder"
 gem 'draper'
 gem 'pg_search'
+gem 'omniauth-facebook'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
