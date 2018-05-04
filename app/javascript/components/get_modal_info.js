@@ -47,7 +47,7 @@ const addInnerTexts = (data, cardId) => {
 }
 
 const sendInfoToTheModal = (cardId) => {
-      url = ('http://localhost:3000/fields/' + cardId)
+      url = ('/fields/' + cardId)
       fetch(url)
         .then(response => response.json())
         .then((data) => {
