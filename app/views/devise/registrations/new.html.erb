@@ -4,9 +4,9 @@
       <h2>Crea una cuenta</h2>
 
        <!-- FB Login button to HTML template -->
-         <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Crea una cuenta con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary" %><br />
-  <% end -%>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to "Crea una cuenta con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary" %><br />
+        <% end -%>
       <!--  -->
 
       <p>o con tu correo electrónico:</p>

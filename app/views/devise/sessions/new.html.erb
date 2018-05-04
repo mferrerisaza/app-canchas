@@ -5,8 +5,8 @@
       <h2>Inicio de sesión</h2>
 
         <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Inicia sesión con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary" %><br />
-  <% end -%>
+          <%= link_to "Inicia sesión con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary" %><br />
+        <% end -%>
 
       <p>o con tu correo electrónico:</p>
 
