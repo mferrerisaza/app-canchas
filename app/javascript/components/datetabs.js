@@ -3,7 +3,7 @@ var cloudinary = require('cloudinary');
 function buildFieldCard (field, schedule) {
   const text = `<div class="col-xs-12 col-sm-6">
         <div class="card">
-          <div class="card-top"> ${cloudinary.image("${field.photo.url")}
+          <div class="card-top"> ${cloudinary.image(field.photo.url)}
           </div>
           <div class="card-bottom">
             <div class="card-business-name">
