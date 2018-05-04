@@ -13,11 +13,25 @@ const fieldsArray = [modalBusinessName, modalFieldName, modalselectedHour, modal
 
 const addEventToModal = (cardId) => {
     const modalToggleStatus = document.querySelector(".modal-splitable").querySelector(".splitable");
-    modalToggleStatus.addEventListener("click", (event) => {
+    modalToggleStatus.addEventListener("change", (event) => {
       const modalStatus = event.target.checked;
-      const cardToggleStatus = modalStatus ? document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = true : document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = false;
-    })
-};
+      const url = ('/fields/' + cardId)
+        fetch(url)
+          .then(response => response.json())
+          .then((data) => {
+            if (modalStatus) {
+              document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = true;
+              modalPrice.querySelector("p").innerHTML = "";
+              modalPrice.querySelector("p").innerHTML = `$ ${(data.price_cents/100/data.capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
+            } else {
+              document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = false;
+              modalPrice.querySelector("p").innerHTML = "";
+              modalPrice.querySelector("p").innerHTML = `$ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
+            }
+          }
+        );
+      })
+  }
 
 const renderToggle = (status, cardId) => {
   const value = status ? "checked" : "";
@@ -49,7 +63,11 @@ const addInnerTexts = (data, cardId) => {
   modalBusinessAddress.insertAdjacentHTML("beforeend", `<p> ${data.business.address} </p>`);
   modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle(getToggle(cardId),cardId), cardId);
   modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);
-  modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
+  if (getToggle === true) {
+    modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100/data.capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador</p>`);
+  } else {
+    modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
+  }
 };
 
 const sendInfoToTheModal = (cardId) => {
