@@ -1,9 +1,10 @@
 var cloudinary = require('cloudinary');
 
+
 function buildFieldCard (field, schedule) {
   const text = `<div class="col-xs-12 col-sm-6">
         <div class="card">
-          <div class="card-top"> ${cloudinary.image(field.photo.url)}
+          <div class="card-top"> ${cloudinary.image(field.photo.url, {aspect_ratio: "3:1", gravity: "auto", width: 285, crop: "fill", fetch_format: "auto"})}
           </div>
           <div class="card-bottom">
             <div class="card-business-name">
@@ -23,18 +24,54 @@ function buildFieldCard (field, schedule) {
               ${schedule}
             </div>
             <div class="card-field-capacity">
-              Capacidad de la cancha: ${field.capacity} jugadores (${field.capacity / 2} vs. ${field.capacity / 2})
+              Capacidad de la cancha: ${field.capacity} jugadores (${Math.floor(field.capacity / 2)} vs. ${Math.floor(field.capacity / 2)})
             </div>
             <div class="disponibilidad">
               <div>Desea dividir la tarifa entre todos los jugadores?</div>
               <div class="card-toggle-btn" id="toggle ${field.id} ">
-                render 'shared/toggle_switch'
+                <div class="card-toggle">
+                  <div>
+                    <label class="switch">
+                      <input class="splitable" type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="card-cta" data-id= ${field.id}>
               <a class="btn btn-cta" data-toggle="modal" data-target="#myModal" href="">Reservar</a>
             </div>
-            render 'shared/booking_modal'
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirmación de reserva</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="modal-business-name">
+                    </div>
+                    <div class="modal-field-name">
+                    </div>
+                    <div class="modal-selected-hour">
+                    </div>
+                    <div class="modal-business-address">
+                    </div>
+                    <div class="modal-splitable">
+                    </div>
+                    <div class="modal-capacity">
+                    </div>
+                    <div class="modal-price">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>`
