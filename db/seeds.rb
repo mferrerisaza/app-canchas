@@ -1,19 +1,19 @@
 p "Empezando..."
 p "Creando Usuarios"
 
-u1 = User.new( email: "dan@gmail.com", password:"123456", password_confirmation:"123456", name: "Daniel")
+u1 = User.new( email: "dan@gmail.com", password:"123456", password_confirmation:"123456", first_name: "Daniel")
 u1.remote_photo_url = "https://scontent.feoh3-1.fna.fbcdn.net/v/t1.0-9/24131196_10155026649428456_9102899353331898211_n.jpg?_nc_cat=0&oh=df2c886a5a654d3482c88b7b0e7eb00c&oe=5B9128E3"
 u1.save!
 
-u2 = User.new( email: "mike@gmail.com", password:"123456", password_confirmation:"123456", name: "Miguel")
+u2 = User.new( email: "mike@gmail.com", password:"123456", password_confirmation:"123456", first_name: "Miguel")
 u2.remote_photo_url = "https://scontent.feoh3-1.fna.fbcdn.net/v/t1.0-9/14955871_10155487411489126_2276472186962218464_n.jpg?_nc_cat=0&oh=853c228a30613060e5ea7c6f88634449&oe=5B632781"
 u2.save!
 
-u3 = User.new( email: "emilio@gmail.com", password:"123456", password_confirmation:"123456", name: "Emilio")
+u3 = User.new( email: "emilio@gmail.com", password:"123456", password_confirmation:"123456", first_name: "Emilio")
 u3.remote_photo_url = "https://scontent.feoh3-1.fna.fbcdn.net/v/t1.0-9/23755355_10213244769367989_8483942432704283904_n.jpg?_nc_cat=0&oh=59c86b2cec05d4a7787e4f9acfa8d445&oe=5B5256B4"
 u3.save!
 
-u4 = User.new( email: "test@gmail.com", password:"123456", password_confirmation:"123456", name: "Test")
+u4 = User.new( email: "test@gmail.com", password:"123456", password_confirmation:"123456", first_name: "Test")
 u4.save!
 p "Usuarios Creados"
 
