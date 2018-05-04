@@ -26,7 +26,7 @@ function buildFieldCard (field, schedule) {
               ${field.name}
             </div>
             <div class="card-price">
-              Precio: ${field.price_cents / 100}
+              Precio: $${(field.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}
             </div>
             <div class="card-addreess">
               ${field.business.address}
