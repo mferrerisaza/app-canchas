@@ -1,8 +1,8 @@
 class Field < ApplicationRecord
   include PgSearch
-  scope :capacity_limit, -> (capacity) { where("capacity >= ?", capacity) }
+  scope :capacity_limit, -> (capacity) { where("capacity = ?", capacity) }
 
-  CAPACITY_RANGE = (2..24).to_a
+  CAPACITY_RANGE = (8..24).step(2).to_a
   belongs_to :business
   has_many :bookings
 
