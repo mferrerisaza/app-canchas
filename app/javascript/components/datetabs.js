@@ -1,5 +1,16 @@
 var cloudinary = require('cloudinary');
 
+const buildScheduleBtns = (schedule) => {
+  let html = ""
+  Object.keys(schedule).forEach((key) => {
+    html = html +
+    `<label class="schedule-btn btn btn-primary btn-xs">
+      <input type="radio" name="options" autocomplete="off">
+      ${key} - ${(parseInt(key, 10) + 1).toString()}
+    </label>`
+  })
+  return html
+}
 
 function buildFieldCard (field, schedule) {
   const text = `<div class="col-xs-12 col-sm-6">
@@ -21,7 +32,11 @@ function buildFieldCard (field, schedule) {
             </div>
             <div class="card-available-hours">
               Disponibilidad:
-              ${schedule}
+              <div class="schedule-container">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  ${buildScheduleBtns(schedule)}
+                </div>
+              </div>
             </div>
             <div class="card-field-capacity">
               Capacidad de la cancha: ${field.capacity} jugadores (${Math.floor(field.capacity / 2)} vs. ${Math.floor(field.capacity / 2)})
