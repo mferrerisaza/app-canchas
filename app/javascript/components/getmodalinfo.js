@@ -7,9 +7,9 @@ const modalCapacity = document.querySelector(".modal-capacity")
 const modalPrice = document.querySelector(".modal-price")
 const modalSplitableDiv = document.querySelector(".modal-splitable");
 
-const ctaButtons = document.querySelectorAll(".card-cta")
+const ctaButtons = document.querySelectorAll(".card-cta");
 
-const fieldsArray = [modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalSplitableDiv, modalCapacity, modalPrice ]
+const fieldsArray = [modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalSplitableDiv, modalCapacity, modalPrice ];
 
 const addEventToModal = (cardId) => {
     const modalToggleStatus = document.querySelector(".modal-splitable").querySelector(".splitable");
@@ -50,7 +50,6 @@ const addInnerTexts = (data, cardId) => {
   modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle(getToggle(cardId),cardId), cardId);
   modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);
   modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
-  // modalSplitableDiv.setAttribute("id", `modal-card-${cardId}`)
 };
 
 const sendInfoToTheModal = (cardId) => {
