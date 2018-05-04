@@ -71,14 +71,14 @@ const addInnerTexts = (data, cardId) => {
 };
 
 const sendInfoToTheModal = (cardId) => {
-      const url = ('/fields/' + cardId)
-      fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-          cleanInnerTexts();
-          addInnerTexts(data, cardId);
-          makeChangesIfToggleChanges(cardId)
-        });
+  const url = ('/fields/' + cardId)
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      cleanInnerTexts();
+      addInnerTexts(data, cardId);
+      makeChangesIfToggleChanges(cardId)
+    });
 };
 const getCardId = (event) => {
       const cardId = event.currentTarget.dataset.id;

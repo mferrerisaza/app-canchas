@@ -21,7 +21,20 @@
             </div>
             <div class="card-available-hours">
               Disponibilidad:
-              <%= @schedule.first[1][field.id.to_s].keys.to_a %>
+              <div class="schedule-container">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <% @schedule.first[1][field.id.to_s].keys.each do |hour| %>
+                    <label class="schedule-btn btn btn-primary btn-xs">
+                      <input
+                        type="radio"
+                        name="options"
+                        autocomplete="off"
+                      >
+                      <%= "#{hour} - #{hour.to_i + 1} "%>
+                    </label>
+                  <% end %>
+                </div>
+              </div>
             </div>
             <div class="card-field-capacity">
               Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
