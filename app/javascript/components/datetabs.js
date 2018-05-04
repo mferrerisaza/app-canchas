@@ -1,3 +1,4 @@
+import selectCtaButtons from './getmodalinfo'
 var cloudinary = require('cloudinary');
 
 const buildScheduleBtns = (schedule) => {
@@ -43,7 +44,7 @@ function buildFieldCard (field, schedule) {
             </div>
             <div class="disponibilidad">
               <div>Desea dividir la tarifa entre todos los jugadores?</div>
-              <div class="card-toggle-btn" id="toggle ${field.id} ">
+              <div class="card-toggle-btn" id="toggle${field.id}">
                 <div class="card-toggle">
                   <div>
                     <label class="switch">
@@ -54,12 +55,11 @@ function buildFieldCard (field, schedule) {
                 </div>
               </div>
             </div>
-            <div class="card-cta" data-id= ${field.id}>
-              <a class="btn btn-cta" data-toggle="modal" data-target="#myModal" href="">Reservar</a>
-            </div>
+            <button name="button" type="submit" class="card-cta btn btn-cta" data-id="${field.id}" data-toggle="modal" data-target="#myModal">
+              Reservar
+            </button>
             <div id="myModal" class="modal fade" role="dialog">
               <div class="modal-dialog">
-                <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
@@ -101,11 +101,14 @@ function fetchFieldInfo (fieldId, callback) {
 }
 
 function retriveFieldCardInfo (fields) {
+  document.querySelector("body").style.cursor="progress";
   Object.keys(fields).forEach((key) => {
     fetchFieldInfo(key, (data) => {
       buildFieldCard(data, fields[key]);
     })
   });
+  setTimeout( () => { document.querySelector("body").style.cursor = "default"},500)
+  setTimeout(selectCtaButtons, 1000);
 }
 
 function fetchSchedule (event, callback) {
