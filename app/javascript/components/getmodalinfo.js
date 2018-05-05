@@ -1,3 +1,13 @@
+const formatHour = (hour)=> {
+  if (hour === 12) {
+    return `${hour}:00 PM`
+  } else if (hour > 12) {
+    return `${hour - 12}:00 PM`
+  } else {
+    return `${hour}:00 AM`
+  }
+ }
+
 const makeChangesIfToggleChanges = (cardId, modalPrice) => {
   const modalToggleStatus = document.querySelector(".modal-splitable").querySelector(".splitable");
   modalToggleStatus.addEventListener("change", (event) => {
@@ -43,10 +53,11 @@ const cleanInnerTexts = (fieldsArray) => {
 };
 
 const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv) => {
-
+  const bookingDate = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].value;
+  const bookingTime = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].dataset.time
   modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name} </h3>`);
   modalFieldName.insertAdjacentHTML("beforeend", `<h5> ${data.name} </h5>`);
-  modalselectedHour.insertAdjacentHTML("beforeend", `27/07/2018`);
+  modalselectedHour.insertAdjacentHTML("beforeend", `Tu partido el para ${bookingDate} a las ${formatHour(parseInt(bookingTime, 10))}`);
   modalBusinessAddress.insertAdjacentHTML("beforeend", `<p> ${data.business.address} </p>`);
   modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle(getToggle(cardId),cardId));
   modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);

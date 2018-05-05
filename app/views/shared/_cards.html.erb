@@ -29,7 +29,8 @@
                         type="radio"
                         name="options"
                         autocomplete="off"
-                        value= "<%= hour %>"
+                        data-time="<%=hour.to_i%>"
+                        value= "<%= Date.parse(@date_range.first.to_s)%>"
                       >
                       <%= "#{hour} - #{hour.to_i + 1} "%>
                     </label>
