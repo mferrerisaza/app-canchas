@@ -4,4 +4,16 @@
   position: sticky !important; /* !important to override Gmaps inline CSS */
   top: 0 !important;
   width: 100%;
+  border-radius: 3px;
+}
+@media (max-width: 991px) {
+  .map-container{
+    display: none;
+    width: 0px;
+    height: 0px;
+  }
+  .cards-container {
+    flex: 0 0 100% !important;
+  }
+
 }
