@@ -5,7 +5,7 @@ const buildScheduleBtns = (schedule, date) => {
   let html = ""
   Object.keys(schedule).forEach((key) => {
     html = html +
-    `<label class="schedule-btn btn btn-primary btn-xs">
+    `<label class="schedule-btn btn btn-xs">
       <input
         type="radio"
         name="options"
@@ -19,84 +19,116 @@ const buildScheduleBtns = (schedule, date) => {
   return html
 }
 
+function fieldPictureOrGeneric(field) {
+  let url = ""
+  if(field.photo.url !== null) {
+    url = cloudinary.url(field.photo.url, {height: 800, width: 800, crop: "fit"})
+  } else {
+    url = cloudinary.url("fieldplaceholder.jpg", {height: 800, width: 800, crop: "fit"})
+  }
+  return url
+}
+
+function businessLogoOrGeneric(business) {
+  let url = ""
+  if(business.photo.url) {
+    url = cloudinary.image(business.photo.url, { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo" })
+  } else {
+    url = cloudinary.image("defaul-logo.png", { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo" })
+  }
+  return url
+}
+
 function buildFieldCard (field, schedule, date) {
-  const text = `<div class="col-xs-12 col-sm-6">
-        <div class="card">
-          <div class="card-top"> ${cloudinary.image(field.photo.url, {aspect_ratio: "3:1", gravity: "auto", width: 285, crop: "fill", fetch_format: "auto"})}
-          </div>
-          <div class="card-bottom">
-            <div class="card-business-name">
-              ${field.business.name}
-            </div>
-            <div class="card-field-name">
-              ${field.name}
-            </div>
-            <div class="card-price">
-              Precio: $${(field.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}
-            </div>
-            <div class="card-addreess">
-              ${field.business.address}
-            </div>
-            <div class="card-available-hours">
-              Disponibilidad:
-              <div class="schedule-container">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  ${buildScheduleBtns(schedule, date)}
-                </div>
-              </div>
-            </div>
-            <div class="card-field-capacity">
-              Capacidad de la cancha: ${field.capacity} jugadores (${Math.floor(field.capacity / 2)} vs. ${Math.floor(field.capacity / 2)})
-            </div>
-            <div class="disponibilidad">
-              <div>Desea dividir la tarifa entre todos los jugadores?</div>
-              <div class="card-toggle-btn" id="toggle${field.id}">
-                <div class="card-toggle">
-                  <div>
-                    <label class="switch">
-                      <input class="splitable" type="checkbox">
-                      <span class="slider round"></span>
-                    </label>
+  const text =
+              `<div class="col-xs-12 col-sm-6">
+                <div class="card">
+                  <div
+                    class="card-top"
+                    style="background-image:
+                      linear-gradient(rgba(255,255,255, 0),
+                      rgba(0, 0, 0, 0.4)),
+                      url(${fieldPictureOrGeneric(field)});"
+                  >
+                     ${businessLogoOrGeneric(field.business)}
+                  </div>
+                  <div class="card-bottom">
+                    <div class="card-header">
+                      <h3 class="card-business-name">${field.business.name}</h3>
+                      <p class="card-addreess">${field.business.address}</p>
+                    </div>
+                    <div class="card-field-info">
+                      <div class="card-field-descripton">
+                        <p class="card-field-name">
+                          <i class="fas fa-futbol"></i>
+                          ${field.name}
+                        </p>
+                        <div class="card-field-capacity">
+                          <i class="fas fa-users"></i>
+                          <p>${field.capacity} jugadores (${field.capacity / 2} vs. ${field.capacity / 2})</p>
+                        </div>
+                      </div>
+                        <p class="card-price">
+                          <i class="fas fa-dollar-sign"></i>
+                           ${(field.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} / Hora
+                        </p>
+                    </div>
+                    <div class="card-available-hours">
+                      <hr class="card-line-divider">
+                      <i class="far fa-clock"></i>
+                      Selecciona uno de los horarios disponibles:
+                      <div class="schedule-container">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                          ${buildScheduleBtns(schedule, date)}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-bottom-footer">
+                    <button
+                      name="button"
+                      type="submit"
+                      class="card-cta btn btn-cta"
+                      data-id="${field.id}"
+                      data-toggle="modal"
+                      data-target="#myModal">
+                      RESERVAR
+                    </button>
+                    </div>
+                    <div id="myModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirmación de reserva</h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="modal-business-name">
+                            </div>
+                            <div class="modal-field-name">
+                            </div>
+                            <div class="modal-selected-hour">
+                            </div>
+                            <div class="modal-business-address">
+                            </div>
+                            <div class="modal-splitable">
+                            </div>
+                            <div class="modal-capacity">
+                            </div>
+                            <div class="modal-price">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar Reserva</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <button name="button" type="submit" class="card-cta btn btn-cta" data-id="${field.id}" data-toggle="modal" data-target="#myModal">
-              Reservar
-            </button>
-            <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Confirmación de reserva</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="modal-business-name">
-                    </div>
-                    <div class="modal-field-name">
-                    </div>
-                    <div class="modal-selected-hour">
-                    </div>
-                    <div class="modal-business-address">
-                    </div>
-                    <div class="modal-splitable">
-                    </div>
-                    <div class="modal-capacity">
-                    </div>
-                    <div class="modal-price">
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>`
-  document.querySelector(".cards-container").insertAdjacentHTML("beforeend", text);
+              </div>`
+
+  document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
 }
 function fetchFieldInfo (fieldId, callback) {
   fetch('/fields/' + fieldId)
@@ -132,7 +164,7 @@ function fetchSchedule (event, callback) {
 }
 
 const clearTheDOM = (event) => {
-  document.querySelector(".cards-container").innerHTML = "";
+  document.querySelector(".cards-container").querySelector(".row").innerHTML = "";
 }
 
 const removeTabUnderline = (element) => {
