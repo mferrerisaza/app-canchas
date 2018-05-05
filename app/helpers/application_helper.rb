@@ -68,4 +68,21 @@ module ApplicationHelper
 
     time_range = (start_hour..end_hour)
   end
+
+  def field_picture_or_generic(field)
+    if field.photo.blank?
+      cl_image_path("fieldplaceholder.jpg", height: 800, width: 800, crop: "fit")
+    else
+      cl_image_path(field.photo, height: 800, width: 800, crop: "fit")
+    end
+  end
+
+  def business_logo_or_generic(business)
+    if business.photo.blank?
+      cl_image_tag("defaul-logo.png", height: 300, width: 300, crop: :fill,gravity: :face, class: "card-top-business-logo")
+    else
+      cl_image_tag(business.photo, height: 300, width: 300, crop: :fill,gravity: :face, class: "card-top-business-logo")
+    end
+  end
+
 end
