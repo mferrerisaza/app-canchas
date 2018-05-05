@@ -1,19 +1,25 @@
 import selectCtaButtons from './getmodalinfo'
 var cloudinary = require('cloudinary');
 
-const buildScheduleBtns = (schedule) => {
+const buildScheduleBtns = (schedule, date) => {
   let html = ""
   Object.keys(schedule).forEach((key) => {
     html = html +
     `<label class="schedule-btn btn btn-primary btn-xs">
-      <input type="radio" name="options" autocomplete="off">
+      <input
+        type="radio"
+        name="options"
+        autocomplete="off"
+        data-time="${key}"
+        value= "${date}"
+      >
       ${key} - ${(parseInt(key, 10) + 1).toString()}
     </label>`
   })
   return html
 }
 
-function buildFieldCard (field, schedule) {
+function buildFieldCard (field, schedule, date) {
   const text = `<div class="col-xs-12 col-sm-6">
         <div class="card">
           <div class="card-top"> ${cloudinary.image(field.photo.url, {aspect_ratio: "3:1", gravity: "auto", width: 285, crop: "fill", fetch_format: "auto"})}
@@ -35,7 +41,7 @@ function buildFieldCard (field, schedule) {
               Disponibilidad:
               <div class="schedule-container">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  ${buildScheduleBtns(schedule)}
+                  ${buildScheduleBtns(schedule, date)}
                 </div>
               </div>
             </div>
@@ -100,11 +106,11 @@ function fetchFieldInfo (fieldId, callback) {
   });
 }
 
-function retriveFieldCardInfo (fields) {
+function retriveFieldCardInfo (fields, tabDate) {
   document.querySelector("body").style.cursor="progress";
   Object.keys(fields).forEach((key) => {
     fetchFieldInfo(key, (data) => {
-      buildFieldCard(data, fields[key]);
+      buildFieldCard(data, fields[key], tabDate);
     })
   });
   setTimeout( () => { document.querySelector("body").style.cursor = "default"},500)
@@ -121,7 +127,7 @@ function fetchSchedule (event, callback) {
   fetch(`/schedule?utf8=✓&query=${query}&capacity_limit=${capacityLimit}&dates=${dates}&start_time=${startTime}&end_time=${endTime}`)
   .then(response => response.json())
   .then((data) => {
-    callback(data[dates]);
+    callback(data[dates], dates);
   });
 }
 
