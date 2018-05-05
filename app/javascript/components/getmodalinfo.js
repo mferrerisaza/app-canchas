@@ -57,7 +57,7 @@ const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalsel
   const bookingTime = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].dataset.time
   modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name} </h3>`);
   modalFieldName.insertAdjacentHTML("beforeend", `<h5> ${data.name} </h5>`);
-  modalselectedHour.insertAdjacentHTML("beforeend", `Tu partido el para ${bookingDate} a las ${formatHour(parseInt(bookingTime, 10))}`);
+  modalselectedHour.insertAdjacentHTML("beforeend", `Reservar esta cancha el ${bookingDate} entre ${formatHour(parseInt(bookingTime, 10))} y ${formatHour(parseInt(bookingTime, 10) + 1)}`);
   modalBusinessAddress.insertAdjacentHTML("beforeend", `<p> ${data.business.address} </p>`);
   modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle(getToggle(cardId),cardId));
   modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);
