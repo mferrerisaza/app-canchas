@@ -1,54 +1,53 @@
-  <div class="col-xs-12 col-sm-6">
-    <div class="card">
-      <div class="card-top">        <%= cl_image_tag(field.photo,:transformation=>[
-      {:aspect_ratio=>"3:1", :gravity=>"auto", :crop=>"fill"},
-      {:width=>285, :quality=>"auto", :fetch_format=>:auto, :crop=>"scale"}
-      ]) %>
-      </div>
-      <div class="card-bottom">
-        <div class="card-business-name">
-          <%= field.business.name %>
+<div class="card">
+  <div class="card-top">        <%= cl_image_tag(field.photo,:transformation=>[
+  {:aspect_ratio=>"3:1", :gravity=>"auto", :crop=>"fill"},
+  {:width=>285, :quality=>"auto", :fetch_format=>:auto, :crop=>"scale"}
+  ]) %>
+  </div>
+  <div class="card-bottom">
+    <div class="card-business-name">
+      <%= field.business.name %>
+    </div>
+    <div class="card-field-name">
+      <%= field.name %>
+    </div>
+    <div class="card-price">
+      Precio: <%= humanized_money_with_symbol(field.price) %>
+    </div>
+    <div class="card-addreess">
+      <%= field.business.address %>
+    </div>
+    <div class="card-available-hours">
+      Disponibilidad:
+      <div class="schedule-container">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <% @schedule.first[1][field.id.to_s].keys.each do |hour| %>
+            <label class="schedule-btn btn btn-primary btn-xs">
+              <input
+                type="radio"
+                name="options"
+                autocomplete="off"
+                data-time="<%=hour.to_i%>"
+                value= "<%= Date.parse(@date_range.first.to_s)%>"
+              >
+              <%= "#{hour} - #{hour.to_i + 1} "%>
+            </label>
+          <% end %>
         </div>
-        <div class="card-field-name">
-          <%= field.name %>
-        </div>
-        <div class="card-price">
-          Precio: <%= humanized_money_with_symbol(field.price) %>
-        </div>
-        <div class="card-addreess">
-          <%= field.business.address %>
-        </div>
-        <div class="card-available-hours">
-          Disponibilidad:
-          <div class="schedule-container">
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <% @schedule.first[1][field.id.to_s].keys.each do |hour| %>
-                <label class="schedule-btn btn btn-primary btn-xs">
-                  <input
-                    type="radio"
-                    name="options"
-                    autocomplete="off"
-                    data-time="<%=hour.to_i%>"
-                    value= "<%= Date.parse(@date_range.first.to_s)%>"
-                  >
-                  <%= "#{hour} - #{hour.to_i + 1} "%>
-                </label>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="card-field-capacity">
-          Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
-        </div>
-        <div class="disponibilidad">
-          <div>Desea dividir la tarifa entre todos los jugadores?</div>
-          <div class="card-toggle-btn" id="toggle<%= field.id %>">
-            <%= render 'shared/toggle_switch'  %>
-          </div>
-        </div>
-
-        <%= button_tag "Reservar", class: "card-cta btn btn-cta", "data-id": field.id, "data-toggle": "modal",  "data-target":  "#myModal"%>
-        <%= render 'shared/booking_modal'  %>
       </div>
     </div>
+    <div class="card-field-capacity">
+      Capacidad de la cancha: <%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)
+    </div>
+    <div class="disponibilidad">
+      <div>Desea dividir la tarifa entre todos los jugadores?</div>
+      <div class="card-toggle-btn" id="toggle<%= field.id %>">
+        <%= render 'shared/toggle_switch'  %>
+      </div>
+    </div>
+
+    <%= button_tag "Reservar", class: "card-cta btn btn-cta", "data-id": field.id, "data-toggle": "modal",  "data-target":  "#myModal"%>
+    <%= render 'shared/booking_modal'  %>
   </div>
+</div>
+

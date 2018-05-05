@@ -26,7 +26,9 @@
       <div class="cards-container">
         <div class="row">
           <% @fields.each do |field| %>
-            <%= render 'shared/field-card', field: field %>
+            <div class="col-xs-12 col-sm-6">
+              <%= render 'shared/field-card', field: field %>
+            </div>
           <% end %>
         </div>
       </div>
