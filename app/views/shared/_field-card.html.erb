@@ -29,10 +29,10 @@
           <%= humanized_money(field.price) %> / Hora
         </p>
     </div>
-    <hr class="card-line-divider">
     <div class="card-available-hours">
+      <hr class="card-line-divider">
       <i class="far fa-clock"></i>
-      Horarios disponibles:
+      Selecciona uno de los horarios disponibles:
       <div class="schedule-container">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <% @schedule.first[1][field.id.to_s].keys.each do |hour| %>
@@ -57,7 +57,6 @@
           "data-toggle": "modal",
           "data-target":  "#myModal"
       %>
-
     </div>
     <%= render 'shared/booking_modal'  %>
   </div>
