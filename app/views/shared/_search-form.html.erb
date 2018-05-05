@@ -19,7 +19,7 @@
       <select name="capacity_limit" id="capacity_limit" class="queryinput form-control">
         <option value="" <%= "selected" unless params[:capacity_limit].present? %> disabled hidden># jugadores</option>
         <% Field::CAPACITY_RANGE.each do |value| %>
-          <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>"><%= value %></option>
+          <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>"><%= value / 2 %> Vs. <%= value / 2 %></option>
         <% end %>
       </select>
     </div>

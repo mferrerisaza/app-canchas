@@ -29,6 +29,8 @@
                         type="radio"
                         name="options"
                         autocomplete="off"
+                        data-time="<%=hour.to_i%>"
+                        value= "<%= Date.parse(@date_range.first.to_s)%>"
                       >
                       <%= "#{hour} - #{hour.to_i + 1} "%>
                     </label>
@@ -45,10 +47,8 @@
                 <%= render 'shared/toggle_switch'  %>
               </div>
             </div>
-            <div class="card-cta" data-id= <%= field.id %> >
-              <%= link_to "Reservar", "", class: "btn btn-cta", "data-toggle": "modal",  "data-target":  "#myModal"
- %>
-            </div>
+
+            <%= button_tag "Reservar", class: "card-cta btn btn-cta", "data-id": field.id, "data-toggle": "modal",  "data-target":  "#myModal"%>
             <%= render 'shared/booking_modal'  %>
           </div>
         </div>

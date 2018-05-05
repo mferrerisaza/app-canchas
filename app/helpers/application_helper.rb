@@ -29,7 +29,7 @@ module ApplicationHelper
     elsif date == Date.today + 2
       return "Pasado mañana"
     else
-      return date.strftime("%a %d, %b")
+      return l(date, format: "%a %d, %b")
     end
   end
 
