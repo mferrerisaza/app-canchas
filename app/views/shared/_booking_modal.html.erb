@@ -1,8 +1,8 @@
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <form action="/bookings" method="post">
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%=  form_tag({:controller => 'bookings', :action => 'create'}, :method => 'post', :remote => true) do %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -32,13 +32,14 @@
         <div class="modal-price">
 
         </div>
-        <input type="text" name="field_id" placeholder="Name">
+
+        <input id="prodId" name="field_id" type="hidden" value="test">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="submit-button-modal" type="submit" class="btn btn-primary">Confirmar Reserva</button>
       </div>
     </div>
-  </form>
+  <% end %>
   </div>
 </div>
