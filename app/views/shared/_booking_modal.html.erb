@@ -1,6 +1,9 @@
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
+    <form action="/bookings" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -29,11 +32,13 @@
         <div class="modal-price">
 
         </div>
+        <input type="text" name="field_id" placeholder="Name">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar Reserva</button>
+        <button id="submit-button-modal" type="submit" class="btn btn-primary">Confirmar Reserva</button>
       </div>
     </div>
+  </form>
   </div>
 </div>
