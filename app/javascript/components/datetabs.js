@@ -1,4 +1,5 @@
 import selectCtaButtons from './getmodalinfo'
+import retriveDropdowns from './field-card.js'
 var cloudinary = require('cloudinary');
 
 const buildScheduleBtns = (schedule, date) => {
@@ -73,7 +74,11 @@ function buildFieldCard (field, schedule, date) {
                            ${(field.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} / Hora
                         </p>
                     </div>
-                    <div class="card-available-hours">
+                    <div class="schedule-dropdown">
+                      <p>VER HORARIOS</p>
+                      <i class="fas fa-chevron-circle-down"></i>
+                    </div >
+                    <div class="card-available-hours card-collapsed">
                       <hr class="card-line-divider">
                       <i class="far fa-clock"></i>
                       Selecciona uno de los horarios disponibles:
@@ -82,17 +87,17 @@ function buildFieldCard (field, schedule, date) {
                           ${buildScheduleBtns(schedule, date)}
                         </div>
                       </div>
-                    </div>
-                    <div class="card-bottom-footer">
-                    <button
-                      name="button"
-                      type="submit"
-                      class="card-cta btn btn-cta"
-                      data-id="${field.id}"
-                      data-toggle="modal"
-                      data-target="#myModal">
-                      RESERVAR
-                    </button>
+                      <div class="card-bottom-footer">
+                        <button
+                          name="button"
+                          type="submit"
+                          class="card-cta btn btn-cta"
+                          data-id="${field.id}"
+                          data-toggle="modal"
+                          data-target="#myModal">
+                          RESERVAR
+                        </button>
+                      </div>
                     </div>
                     <div id="myModal" class="modal fade" role="dialog">
                       <div class="modal-dialog">
@@ -147,6 +152,7 @@ function retriveFieldCardInfo (fields, tabDate) {
   });
   setTimeout( () => { document.querySelector("body").style.cursor = "default"},500)
   setTimeout(selectCtaButtons, 1000);
+  setTimeout(retriveDropdowns, 1000);
 }
 
 function fetchSchedule (event, callback) {
