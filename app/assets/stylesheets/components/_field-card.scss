@@ -59,7 +59,7 @@
   justify-content: space-between;
   padding-bottom: 16px;
   .card-price{
-    color: $brand-primary;
+    color: rgba(0,0,0,0.6);
     font-weight: normal;
   }
   .card-field-descripton{
@@ -104,11 +104,16 @@
   border-radius: 2px;
   color: rgba(0,0,0,0.7);
   width: 60px;
+  &:hover {
+    background-color:rgba($brand-primary, 0.4);
+    color: rgba(0,0,0,0.8);
+  }
 }
 .active, .focus{
-  background-color:rgba($brand-primary, 0.6);
+  background-color:rgba($brand-primary, 1);
   border-radius: 2px !important;
-  color: rgba(0,0,0,0.8);
+  color: #FFFFFF !important;
+  font-weight: bold;
 }
 
 .btn.active {
@@ -139,4 +144,30 @@
 
 .card-available-hours{
   margin-bottom: 8px;
+  height: auto;
+  transition: max-height 0.5s ease-in;
+  max-height: 300px;
+  visibility: visible;
+}
+
+.card-collapsed{
+  visibility: hidden;
+  max-height: 0px;
+}
+.schedule-dropdown{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .fa-chevron-circle-down {
+    margin-left: 3px;
+    transition: 0.5s ease;
+    color: $brand-primary;
+    font-size: 24px;
+  }
+  p {
+    margin: 0px;
+  }
+}
+.rotate-caret {
+  transform: rotate(-180deg);
 }
