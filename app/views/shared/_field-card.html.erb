@@ -1,0 +1,64 @@
+<div class="card">
+  <div
+    class="card-top"
+    style="background-image:
+      linear-gradient(rgba(255,255,255, 0),
+      rgba(0, 0, 0, 0.4)),
+      url(<%= field_picture_or_generic(field)%>);"
+  >
+     <%= business_logo_or_generic(field.business)%>
+  </div>
+  <div class="card-bottom">
+    <div class="card-header">
+      <h3 class="card-business-name"><%= field.business.name%></h3>
+      <p class="card-addreess"><%= field.business.address %></p>
+    </div>
+    <div class="card-field-info">
+      <div class="card-field-descripton">
+        <p class="card-field-name">
+          <i class="fas fa-futbol"></i>
+          <%= field.name %>
+        </p>
+        <div class="card-field-capacity">
+          <i class="fas fa-users"></i>
+          <p><%= field.capacity %> jugadores (<%= field.capacity / 2 %> vs. <%= field.capacity / 2 %>)</p>
+        </div>
+      </div>
+        <p class="card-price">
+          <i class="fas fa-dollar-sign"></i>
+          <%= humanized_money(field.price) %> / Hora
+        </p>
+    </div>
+    <div class="card-available-hours">
+      <hr class="card-line-divider">
+      <i class="far fa-clock"></i>
+      Selecciona uno de los horarios disponibles:
+      <div class="schedule-container">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <% @schedule.first[1][field.id.to_s].keys.each do |hour| %>
+            <label class="schedule-btn btn btn-xs">
+              <input
+                type="radio"
+                name="options"
+                autocomplete="off"
+                data-time="<%=hour.to_i%>"
+                value= "<%= Date.parse(@date_range.first.to_s)%>"
+              >
+              <%= "#{hour} - #{hour.to_i + 1} "%>
+            </label>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card-bottom-footer">
+      <%= button_tag "RESERVAR",
+          class: "card-cta btn btn-cta",
+          "data-id": field.id,
+          "data-toggle": "modal",
+          "data-target":  "#myModal"
+      %>
+    </div>
+    <%= render 'shared/booking_modal'  %>
+  </div>
+</div>
+
