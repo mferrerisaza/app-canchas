@@ -2,11 +2,11 @@ class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
   skip_before_action :verify_authenticity_token
   after_action :verify_authorized, except: [:create]
+  before_action :set_booking, only: [ :show ]
 
   def create
     @booking = Booking.new(booking_params)
     authorize @booking
-    byebug
     if @booking.save
       render :show
     else
@@ -15,15 +15,19 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
     authorize @booking
   end
 
   private
 
-    def booking_params
+  def booking_params
      params.permit(:field_id, :date, :splitable)
-    end
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
 
 end
 
