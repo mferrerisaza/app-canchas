@@ -1,7 +1,7 @@
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <%=  form_tag({:controller => 'bookings', :action => 'create'}, :method => 'post', :remote => true) do %>
+    <%=  form_tag({:controller => 'bookings', :action => 'create'}, :method => 'post') do %>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
       <div class="modal-content">
