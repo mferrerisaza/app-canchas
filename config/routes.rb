@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root to: 'pages#home'
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   get "/schedule", to: "fields#schedule", as: "schedule"
 
 
-  resources :bookings, only: [ :create, :show]
+  resources :bookings, only: [ :create, :show ]
 
 
 end

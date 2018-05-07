@@ -7,14 +7,14 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     authorize @booking
     if @booking.save
-      byebug
-      redirect_to root_path
+      render :show
     else
       redirect_to fields_path
     end
   end
 
   def show
+    @booking = Booking.find(params[:field_id])
   end
 
   private
