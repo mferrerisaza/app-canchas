@@ -130,6 +130,7 @@ function buildFieldCard (field, schedule, date) {
                               <input type="hidden" name="field_id" id="field_id"/>
                               <input type="hidden" name="date" id="bookingDate"/>
                               <input type="hidden" name="splitable" id="splitable"/>
+                              <input type="hidden" name="number_players" id="number_players"/>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

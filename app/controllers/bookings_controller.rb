@@ -1,9 +1,8 @@
 class BookingsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [  ]
-  after_action :verify_authorized, except: [:create]
   before_action :set_booking, only: [ :show ]
 
   def create
+    byebug
     @booking = Booking.new(booking_params)
     authorize @booking
     if @booking.save
@@ -20,7 +19,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-     params.permit(:field_id, :date, :splitable)
+     params.permit(:field_id, :date, :splitable, :number_players)
   end
 
   def set_booking

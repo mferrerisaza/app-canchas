@@ -13,12 +13,10 @@ const makeChangesIfToggleChanges = (cardId, modalPrice, price, capacity) => {
   modalToggleStatus.addEventListener("change", (event) => {
     const modalStatus = event.currentTarget.checked;
     if (modalStatus) {
-      // document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = true;
       modalPrice.querySelector("p").innerHTML = "";
       modalPrice.querySelector("p").innerHTML = `$ ${(price/100/capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
       modalSplitableDiv.querySelector("input").value = true;
     } else {
-      // document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = false;
       modalPrice.querySelector("p").innerHTML = "";
       modalPrice.querySelector("p").innerHTML = `$ ${(price/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
       modalSplitableDiv.querySelector("input").value = false;
@@ -58,15 +56,11 @@ const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalsel
   modalBusinessAddress.insertAdjacentHTML("beforeend", `<p> ${data.business.address} </p>`);
   modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle());
   modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);
-  // if (getToggle(cardId)) {
-  //   modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100/data.capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador</p>`);
-  // } else {
-  //   modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
-  // };
   modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
   document.querySelector("#field_id").value = parseInt(cardId, 10);
   document.querySelector("#bookingDate").value = bookingDateTime;
   document.querySelector("#splitable").value = getToggle(cardId) ;
+  document.querySelector("#number_players").value = data.capacity ;
 };
 
 const sendInfoToTheModal = (cardId) => {
