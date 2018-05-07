@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
-  skip_before_action :verify_authenticity_token
   after_action :verify_authorized, except: [:create]
   before_action :set_booking, only: [ :show ]
 
