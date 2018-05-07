@@ -40,7 +40,7 @@ const renderToggle = (status, cardId) => {
   return `<div class="card-toggle">
             <div>
               <label class="switch">
-                <input name="splitable" class="splitable" type="checkbox" ${value}>
+                <input class="splitable" type="checkbox" ${value}>
                 <span class="slider round"></span>
               </label>
             </div>
