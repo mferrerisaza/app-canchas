@@ -1,5 +1,5 @@
 import selectCtaButtons from './getmodalinfo'
-import retriveDropdowns from './field-card.js'
+import { retriveDropdowns, retriveTimeBtns } from './field-card.js'
 var cloudinary = require('cloudinary');
 
 const buildScheduleBtns = (schedule, date) => {
@@ -94,8 +94,10 @@ function buildFieldCard (field, schedule, date) {
                           class="card-cta btn btn-cta"
                           data-id="${field.id}"
                           data-toggle="modal"
-                          data-target="#myModal">
-                          RESERVAR
+                          data-target="#myModal"
+                          disabled = "disabled"
+                        >
+                          NO HA SELECCIONADO NINGÚN HORARIO
                         </button>
                       </div>
                     </div>
@@ -150,9 +152,10 @@ function retriveFieldCardInfo (fields, tabDate) {
       buildFieldCard(data, fields[key], tabDate);
     })
   });
-  setTimeout( () => { document.querySelector("body").style.cursor = "default"},500)
+  setTimeout( () => { document.querySelector("body").style.cursor = "default"},500);
   setTimeout(selectCtaButtons, 1000);
   setTimeout(retriveDropdowns, 1000);
+  setTimeout(retriveTimeBtns, 1000);
 }
 
 function fetchSchedule (event, callback) {
