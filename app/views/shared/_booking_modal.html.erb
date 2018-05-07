@@ -4,42 +4,42 @@
     <%=  form_tag({:controller => 'bookings', :action => 'create'}, :method => 'post', :remote => true) do %>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirmación de reserva</h4>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirmación de reserva</h4>
+        </div>
+        <div class="modal-body">
+          <div class="modal-business-name">
+
+          </div>
+          <div class="modal-field-name">
+
+          </div>
+          <div class="modal-selected-hour">
+
+          </div>
+          <div class="modal-business-address">
+
+          </div>
+          <div class="modal-splitable">
+
+          </div>
+          <div class="modal-capacity">
+
+          </div>
+          <div class="modal-price">
+
+          </div>
+          <input type="hidden" name="field_id" id="field_id"/>
+          <input type="hidden" name="date" id="bookingDate"/>
+          <input type="hidden" name="splitable" id="splitable"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="submit-button-modal" type="submit" class="btn btn-primary">Confirmar Reserva</button>
+        </div>
       </div>
-      <div class="modal-body">
-        <div class="modal-business-name">
-
-        </div>
-        <div class="modal-field-name">
-
-        </div>
-        <div class="modal-selected-hour">
-
-        </div>
-        <div class="modal-business-address">
-
-        </div>
-        <div class="modal-splitable">
-
-        </div>
-        <div class="modal-capacity">
-
-        </div>
-        <div class="modal-price">
-
-        </div>
-
-        <input id="prodId" name="field_id" type="hidden" value="test">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="submit-button-modal" type="submit" class="btn btn-primary">Confirmar Reserva</button>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>

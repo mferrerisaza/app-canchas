@@ -1,10 +1,17 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
   skip_before_action :verify_authenticity_token
+  after_action :verify_authorized, except: [:create]
 
   def create
-    byebug
-    @booking = Booking.new (booking_params)
+    @booking = Booking.new(booking_params)
+    authorize @booking
+    if @booking.save
+      byebug
+      redirect_to root_path
+    else
+      redirect_to fields_path
+    end
   end
 
   def show
@@ -13,7 +20,7 @@ class BookingsController < ApplicationController
   private
 
     def booking_params
-     params.require(:booking).permit(:field_id, :date, :splitable)
+     params.permit(:field_id, :date, :splitable)
     end
 
 end

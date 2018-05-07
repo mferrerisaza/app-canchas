@@ -9,6 +9,7 @@ const formatHour = (hour)=> {
  }
 
 const makeChangesIfToggleChanges = (cardId, modalPrice) => {
+  const modalSplitableDiv = document.querySelector(".modal-splitable");
   const modalToggleStatus = document.querySelector(".modal-splitable").querySelector(".splitable");
   modalToggleStatus.addEventListener("change", (event) => {
     const modalStatus = event.target.checked;
@@ -20,10 +21,14 @@ const makeChangesIfToggleChanges = (cardId, modalPrice) => {
             document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = true;
             modalPrice.querySelector("p").innerHTML = "";
             modalPrice.querySelector("p").innerHTML = `$ ${(data.price_cents/100/data.capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
+            modalSplitableDiv.querySelector("input").value = true;
+
+
           } else {
             document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = false;
             modalPrice.querySelector("p").innerHTML = "";
             modalPrice.querySelector("p").innerHTML = `$ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
+            modalSplitableDiv.querySelector("input").value = false;
           }
         }
       );
@@ -53,9 +58,10 @@ const cleanInnerTexts = (fieldsArray) => {
 };
 
 const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv) => {
-  const bookingDate = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].value;
-  const bookingTime = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].dataset.time
-  modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name} </h3>`);
+  const bookingDate = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].value.split("-");
+  const bookingTime = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].dataset.time;
+  const bookingDateTime = new Date(bookingDate[0],bookingDate[1]-1, bookingDate[2], bookingTime, 0);
+  modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name}`);
   modalFieldName.insertAdjacentHTML("beforeend", `<h5> ${data.name} </h5>`);
   modalselectedHour.insertAdjacentHTML("beforeend", `Reservar esta cancha el ${bookingDate} entre ${formatHour(parseInt(bookingTime, 10))} y ${formatHour(parseInt(bookingTime, 10) + 1)}`);
   modalBusinessAddress.insertAdjacentHTML("beforeend", `<p> ${data.business.address} </p>`);
@@ -65,7 +71,10 @@ const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalsel
     modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100/data.capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador</p>`);
   } else {
     modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
-  }
+  };
+  document.querySelector("#field_id").value = parseInt(cardId, 10);
+  document.querySelector("#bookingDate").value = bookingDateTime;
+  document.querySelector("#splitable").value = getToggle(cardId) ;
 };
 
 const sendInfoToTheModal = (cardId) => {

@@ -3,4 +3,4 @@ import "./flatpickr.js";
 import "../components/getmodalinfo.js";
 import "../components/datetabs.js";
 import "../components/searchform.js";
-// import "../components/createbooking.js";
+import "../components/passmodalinfo.js";
