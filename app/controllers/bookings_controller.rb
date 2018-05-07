@@ -6,15 +6,14 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     authorize @booking
-    if @booking.save
-      render :show
-    else
+    if !@booking.save
       redirect_to fields_path
     end
   end
 
   def show
-    @booking = Booking.find(params[:field_id])
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   private

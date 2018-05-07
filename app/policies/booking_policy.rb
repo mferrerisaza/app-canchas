@@ -8,4 +8,9 @@ class BookingPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def show?
+    # Should be if user belongs to the booking
+    true
+  end
 end
