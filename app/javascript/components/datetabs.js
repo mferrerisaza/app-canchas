@@ -96,32 +96,39 @@ function buildFieldCard (field, schedule, date) {
                     </div>
                     <div id="myModal" class="modal fade" role="dialog">
                       <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Confirmación de reserva</h4>
+
+                        <form action="/bookings" method="post">
+
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Confirmación de reserva</h4>
+                            </div>
+                            <div class="modal-body">
+                              <div class="modal-business-name">
+                              </div>
+                              <div class="modal-field-name">
+                              </div>
+                              <div class="modal-selected-hour">
+                              </div>
+                              <div class="modal-business-address">
+                              </div>
+                              <div class="modal-splitable">
+                              </div>
+                              <div class="modal-capacity">
+                              </div>
+                              <div class="modal-price">
+                              </div>
+                              <input type="hidden" name="field_id" id="field_id"/>
+                              <input type="hidden" name="date" id="bookingDate"/>
+                              <input type="hidden" name="splitable" id="splitable"/>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              <button id="submit-button-modal" type="submit" class="btn btn-primary">Confirmar Reserva</button>
+                            </div>
                           </div>
-                          <div class="modal-body">
-                            <div class="modal-business-name">
-                            </div>
-                            <div class="modal-field-name">
-                            </div>
-                            <div class="modal-selected-hour">
-                            </div>
-                            <div class="modal-business-address">
-                            </div>
-                            <div class="modal-splitable">
-                            </div>
-                            <div class="modal-capacity">
-                            </div>
-                            <div class="modal-price">
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar Reserva</button>
-                          </div>
-                        </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -130,6 +137,7 @@ function buildFieldCard (field, schedule, date) {
 
   document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
 }
+
 function fetchFieldInfo (fieldId, callback) {
   fetch('/fields/' + fieldId)
   .then(response => response.json())
