@@ -105,6 +105,7 @@ function buildFieldCard (field, schedule, date) {
                       <div class="modal-dialog">
 
                         <form action="/bookings" method="post">
+                        <input type="hidden" name="authenticity_token" value="UaIIXeSKr8TWA9pLjpcFrdi4T+RvJAMuZsGg92K2tdD0+Vl2n/HZcIsJNFaoJJO2KH7csfTUMBU9yMuKGUsgjg==">
 
                           <div class="modal-content">
                             <div class="modal-header">

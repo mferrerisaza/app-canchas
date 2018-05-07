@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :create ]
+  # skip_before_action :authenticate_user!, only: [  ]
   after_action :verify_authorized, except: [:create]
   before_action :set_booking, only: [ :show ]
 
