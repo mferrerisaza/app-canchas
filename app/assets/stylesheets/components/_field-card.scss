@@ -87,10 +87,15 @@
   color: $brand-primary;
   font-weight: bold;
   background-color: transparent;
-  &:hover, &:focus {
-    background-color: $brand-primary;
-    color: white;
-  };
+  transition: 0.4s cubic-bezier(0, 1.5, .25, 2);
+  &:hover, &:focus{
+    color: $brand-primary;
+  }
+  &:disabled {
+    font-weight: normal;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+  }
 }
 
 .schedule-container{
@@ -145,7 +150,7 @@
 .card-available-hours{
   margin-bottom: 8px;
   height: auto;
-  transition: max-height 0.5s ease-in;
+  transition: max-height 0.5s ease-in-out;
   max-height: 300px;
   visibility: visible;
 }
