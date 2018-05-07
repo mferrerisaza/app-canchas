@@ -8,39 +8,29 @@ const formatHour = (hour)=> {
   }
  }
 
-const makeChangesIfToggleChanges = (cardId, modalPrice) => {
-  const modalSplitableDiv = document.querySelector(".modal-splitable");
+const makeChangesIfToggleChanges = (cardId, modalPrice, price, capacity) => {
   const modalToggleStatus = document.querySelector(".modal-splitable").querySelector(".splitable");
   modalToggleStatus.addEventListener("change", (event) => {
-    const modalStatus = event.target.checked;
-    const url = ('/fields/' + cardId)
-      fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-          if (modalStatus) {
-            document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = true;
-            modalPrice.querySelector("p").innerHTML = "";
-            modalPrice.querySelector("p").innerHTML = `$ ${(data.price_cents/100/data.capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
-            modalSplitableDiv.querySelector("input").value = true;
+    const modalStatus = event.currentTarget.checked;
+    if (modalStatus) {
+      // document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = true;
+      modalPrice.querySelector("p").innerHTML = "";
+      modalPrice.querySelector("p").innerHTML = `$ ${(price/100/capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
+      modalSplitableDiv.querySelector("input").value = true;
+    } else {
+      // document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = false;
+      modalPrice.querySelector("p").innerHTML = "";
+      modalPrice.querySelector("p").innerHTML = `$ ${(price/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
+      modalSplitableDiv.querySelector("input").value = false;
+    }
+  })
+}
 
-
-          } else {
-            document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = false;
-            modalPrice.querySelector("p").innerHTML = "";
-            modalPrice.querySelector("p").innerHTML = `$ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
-            modalSplitableDiv.querySelector("input").value = false;
-          }
-        }
-      );
-    })
-  }
-
-const renderToggle = (status, cardId) => {
-  const value = status ? "checked" : "";
+const renderToggle = () => {
   return `<div class="card-toggle">
             <div>
               <label class="switch">
-                <input class="splitable" type="checkbox" ${value}>
+                <input class="splitable" type="checkbox">
                 <span class="slider round"></span>
               </label>
             </div>
@@ -48,7 +38,8 @@ const renderToggle = (status, cardId) => {
 };
 
 const getToggle = (cardId) => {
-  return document.getElementById(`toggle${cardId}`).querySelector(".splitable").checked === true;
+  console.log(document.querySelector(".card-toggle").querySelector(".splitable"));
+  return document.querySelector(".card-toggle").querySelector(".splitable").checked === true;
 };
 
 const cleanInnerTexts = (fieldsArray) => {
@@ -58,20 +49,21 @@ const cleanInnerTexts = (fieldsArray) => {
 };
 
 const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv) => {
-  const bookingDate = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].value.split("-");
-  const bookingTime = document.querySelector(".schedule-btn.btn.btn-primary.btn-xs.active").children[0].dataset.time;
+  const bookingDate = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].value.split("-");
+  const bookingTime = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].dataset.time
   const bookingDateTime = new Date(bookingDate[0],bookingDate[1]-1, bookingDate[2], bookingTime, 0);
-  modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name}`);
+  modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name} </h3>`);
   modalFieldName.insertAdjacentHTML("beforeend", `<h5> ${data.name} </h5>`);
   modalselectedHour.insertAdjacentHTML("beforeend", `Reservar esta cancha el ${bookingDate} entre ${formatHour(parseInt(bookingTime, 10))} y ${formatHour(parseInt(bookingTime, 10) + 1)}`);
   modalBusinessAddress.insertAdjacentHTML("beforeend", `<p> ${data.business.address} </p>`);
-  modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle(getToggle(cardId),cardId));
+  modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle());
   modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);
-  if (getToggle(cardId)) {
-    modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100/data.capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador</p>`);
-  } else {
-    modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
-  };
+  // if (getToggle(cardId)) {
+  //   modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100/data.capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador</p>`);
+  // } else {
+  //   modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
+  // };
+  modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
   document.querySelector("#field_id").value = parseInt(cardId, 10);
   document.querySelector("#bookingDate").value = bookingDateTime;
   document.querySelector("#splitable").value = getToggle(cardId) ;
@@ -93,7 +85,7 @@ const sendInfoToTheModal = (cardId) => {
     .then((data) => {
       cleanInnerTexts(fieldsArray);
       addInnerTexts(data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv);
-      makeChangesIfToggleChanges(cardId, modalPrice)
+      makeChangesIfToggleChanges(cardId, modalPrice, data.price_cents, data.capacity)
     });
 };
 const getCardId = (event) => {

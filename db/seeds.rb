@@ -74,10 +74,31 @@ b4 = Business.new(
   )
 b4.remote_photo_url = "https://scontent.feoh3-1.fna.fbcdn.net/v/t1.0-9/13494929_1559680120995521_7526305646522402494_n.png?_nc_cat=0&oh=7c3a4e9e37fc694127aefc2ce9d8981d&oe=5B59486F"
 b4.save!
+sleep(5) # To avoid Google API Over Query Limit
+b5 = Business.new(
+    name: "Los Contenedores",
+    address: "Cl. 38, Rionegro, Antioquia",
+    phone: "230 31 48",
+    rating: 5,
+    nit: "8#{Faker::Number.number(8)}",
+    bank_name: "Bancolombia",
+    bank_account_type: "Ahorros",
+    bank_account_number: "#{Faker::Number.number(11)}",
+    user: u1
+  )
+b5.save!
 
 p "Negocios creados"
 p "Creando Canchas"
 PRICES = (140000..200000).to_a
+f = Field.new(
+    name: "Cancha sin foto",
+    business: b5,
+    capacity: (Field::CAPACITY_RANGE).sample,
+    price: PRICES.sample.round(-4)
+  )
+f.save!
+
 f = Field.new(
     name: "Cancha 1",
     business: b1,

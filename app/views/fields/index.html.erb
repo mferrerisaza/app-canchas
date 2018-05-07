@@ -25,7 +25,11 @@
     <div class="main-container">
       <div class="cards-container">
         <div class="row">
-          <%= render 'shared/cards'  %>
+          <% @fields.each do |field| %>
+            <div class="col-xs-12 col-sm-6">
+              <%= render 'shared/field-card', field: field %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="map-container">

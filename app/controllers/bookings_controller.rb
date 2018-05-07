@@ -6,7 +6,10 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     authorize @booking
-    if !@booking.save
+    byebug
+    if @booking.save
+      render :show
+    else
       redirect_to fields_path
     end
   end

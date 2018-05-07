@@ -7,6 +7,7 @@ import 'flatpickr/dist/plugins/confirmDate/confirmDate.css';
 
 flatpickr(".datepicker", {
   minDate: "today",
+  // maxDate: new Date().fp_incr(15),
   altInput: true,
   mode: "range",
   plugins: [new confirmDatePlugin({
