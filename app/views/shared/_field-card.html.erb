@@ -29,7 +29,11 @@
           <%= humanized_money(field.price) %> / Hora
         </p>
     </div>
-    <div class="card-available-hours">
+    <div class="schedule-dropdown">
+     <p>VER HORARIOS</p>
+      <i class="fas fa-chevron-circle-down"></i>
+    </div >
+    <div class="card-available-hours card-collapsed">
       <hr class="card-line-divider">
       <i class="far fa-clock"></i>
       Selecciona uno de los horarios disponibles:
@@ -49,14 +53,15 @@
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="card-bottom-footer">
-      <%= button_tag "RESERVAR",
-          class: "card-cta btn btn-cta",
-          "data-id": field.id,
-          "data-toggle": "modal",
-          "data-target":  "#myModal"
-      %>
+      <div class="card-bottom-footer">
+        <%= button_tag "NO HA SELECCIONADO NINGÚN HORARIO",
+            class: "card-cta btn btn-cta",
+            "data-id": field.id,
+            "data-toggle": "modal",
+            "data-target":  "#myModal",
+            disabled: true
+        %>
+      </div>
     </div>
     <%= render 'shared/booking_modal'  %>
   </div>
