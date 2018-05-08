@@ -1,6 +1,5 @@
 .center-div {
   width: 70%;
-  // margin-top: 70px;
 }
 
 .field-search-form {
@@ -9,6 +8,9 @@
 }
 
 .datesize {
+  border: 1px solid #ccc;
+  background-color: white !important;
+  color: gray;
   margin-top: 8px;
   width: 100%;
   text-align: center;
@@ -19,4 +21,14 @@
   width: 100%;
   margin-top: 8px;
 }
-
+option:selected{
+  color: red;
+}
+.queryinput {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: gray;
+  width: 100%;
+  text-align: center;
+  height: 39px;
+}
