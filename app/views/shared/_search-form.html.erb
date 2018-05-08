@@ -1,8 +1,8 @@
 <div class="row">
-    <%= form_tag fields_path, method: :get, class: "field-search-form" do %>
+    <%= form_with url: fields_path, method: :get, class: "field-search-form", local: true do |f| %>
     <div class="col-xs-8 search-form-input">
-      <%= text_field_tag :query,
-        params[:query],
+      <%= f.text_field :query,
+        id: "query",
         class: "queryinput form-control",
         placeholder: "¿Donde quieres jugar?"
       %>
@@ -18,8 +18,8 @@
       </select>
     </div>
     <div class="col-xs-12 col-sm-4 search-form-input">
-      <%= text_field_tag :dates,
-        params[:dates],
+      <%= f.text_field :dates,
+        id: "dates",
         class: "datepicker datesize datepicker",
         placeholder: "Fechas"
       %>
@@ -41,7 +41,7 @@
       </select>
     </div>
     <div class="col-xs-12 col-sm-4 search-form-input">
-      <%= submit_tag "Buscar", name: nil, class: "btn btn-primary full-width-padded" %>
+      <%= f.submit "Buscar", name: nil, class: "btn btn-primary full-width-padded" %>
     </div>
   <% end %>
 </div>
