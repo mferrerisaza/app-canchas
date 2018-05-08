@@ -16,9 +16,8 @@ const removeEndTimeOptions = (event) => {
   const endTimeInput = document.getElementById("endtime");
   const timeRange = range(parseInt(event.currentTarget.value,10) + 1, 24);
   if(event.currentTarget.value !== ""){
-    endTimeInput.innerHTML=""
-      endTimeInput.disabled = false
-      endTimeInput.insertAdjacentHTML("beforeend", `<option selected disabled hidden>Y 8PM</option>`)
+      endTimeInput.innerHTML=""
+      endTimeInput.insertAdjacentHTML("beforeend", `<option value="" selected disabled hidden>Y 8PM</option>`)
       timeRange.forEach((time) => {
         htmlText = `<option value="${time}">${formatHour(time)}</option>`
         endTimeInput.insertAdjacentHTML("beforeend", htmlText)
