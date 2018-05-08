@@ -4,9 +4,8 @@
       <h2>Crea una cuenta</h2>
 
         <%- resource_class.omniauth_providers.each do |provider| %>
-          <%= link_to "Crea una cuenta con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-primary" %><br />
+          <%= link_to "Crea una cuenta con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-facebook" %><br />
         <% end -%>
-      <span></span>
 
       <p>o con tu correo electrónico:</p>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
