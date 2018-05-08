@@ -1,37 +1,38 @@
 <div class="row">
     <%= form_tag fields_path, method: :get, class: "field-search-form" do %>
-
-    <div class="col-xs-12 col-sm-8">
+    <div class="col-xs-8 search-form-input">
       <%= text_field_tag :query,
         params[:query],
-        class: "queryinput",
+        class: "queryinput form-control",
         placeholder: "¿Donde quieres jugar?"
       %>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <select name="capacity_limit" id="capacity_limit" class="queryinput">
-        <option value="" <%= "selected" unless params[:capacity_limit].present? %> disabled hidden>¿Cuántos juegan?</option>
+    <div class="col-xs-4 search-form-input">
+      <select name="capacity_limit" id="capacity_limit" class="queryinput form-control">
+        <option value="" <%= "selected" unless params[:capacity_limit].present? %> disabled hidden># jugadores</option>
         <% Field::CAPACITY_RANGE.each do |value| %>
-          <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>"><%= value / 2 %> Vs. <%= value / 2 %></option>
+          <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>">
+            <%= value / 2 %> Vs. <%= value / 2 %>
+          </option>
         <% end %>
       </select>
     </div>
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-4 search-form-input">
       <%= text_field_tag :dates,
         params[:dates],
-        class: "datepicker datesize",
-        placeholder: "Canchas disponibles entre"
+        class: "datepicker datesize datepicker",
+        placeholder: "Fechas"
       %>
     </div>
-    <div class="col-xs-6 col-sm-2">
-      <select name="start_time" class="datesize" id="starttime">
+    <div class="col-xs-12 col-sm-2 search-form-input">
+      <select name="start_time" class="datesize start-time" id="starttime">
         <option value="" <%= "selected" unless params[:start_time].present? %> disabled hidden>Entre 5PM</option>
         <% (1..23).each do |value| %>
           <option <%= "selected" if value.to_s == params[:start_time] %> value="<%= value %>"><%=format_hour(value)%></option>
         <% end %>
       </select>
     </div>
-    <div class="col-xs-6 col-sm-2">
+    <div class="col-xs-12 col-sm-2 search-form-input">
       <select name="end_time" class="datesize" id="endtime">
         <option value="" <%= "selected" unless params[:end_time].present? %> disabled hidden>Y 8PM</option>
         <% (1..23).each do |value| %>
@@ -39,7 +40,7 @@
         <% end %>
       </select>
     </div>
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-4 search-form-input">
       <%= submit_tag "Buscar", name: nil, class: "btn btn-primary full-width-padded" %>
     </div>
   <% end %>

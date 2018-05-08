@@ -1,5 +1,6 @@
 .center-div {
   width: 70%;
+  margin-top: 20px;
 }
 
 .field-search-form {
@@ -15,20 +16,27 @@
   width: 100%;
   text-align: center;
   height: 39px;
+  background-color: white;
+  color: $my-gray;
+  border-radius: 10px;
 }
 
 .full-width-padded {
   width: 100%;
   margin-top: 8px;
 }
-option:selected{
-  color: red;
+
+@media (min-width: 768px) {
+  .start-time {
+    width: 115%;
+    position: relative;
+    right: 10px;
+  }
 }
-.queryinput {
-  border: 1px solid #ccc;
+
+.form-control {
+  border-radius: 10px;
+  color: $my-gray;
   background-color: white;
-  color: gray;
-  width: 100%;
-  text-align: center;
-  height: 39px;
+  outline: none;
 }
