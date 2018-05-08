@@ -1,8 +1,9 @@
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <%=  form_tag({controller: 'bookings', action: 'create'}, method: 'post') do %>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<%= form_with model: Booking.new, local: true do |f| %>
+
+      <%= f.hidden_field :authenticity_token%>
 
       <div class="modal-content">
         <div class="modal-header">
@@ -31,16 +32,18 @@
           <div class="modal-price">
 
           </div>
-          <input type="hidden" name="field_id" id="field_id"/>
-          <input type="hidden" name="date" id="bookingDate"/>
-          <input type="hidden" name="splitable" id="splitable"/>
-          <input type="hidden" name="number_players" id="number_players"/>
+          <%= f.hidden_field :field_id, id: "field_id" %>
+          <%= f.hidden_field :date, id: "bookingDate" %>
+          <%= f.hidden_field :splitable, id: "splitable" %>
+          <%= f.hidden_field :number_players, id: "number_players" %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="submit-button-modal" type="submit" class="btn btn-primary">Confirmar Reserva</button>
+          <%= f.submit %>
+          <%#= link_to "test", booking_path(Booking.find(1))  %>
+          <!-- <button id="submit-button-modal" type="submit" class="btn btn-primary">Confirmar Reserva</button> -->
         </div>
       </div>
-    <% end %>
+<% end %>
   </div>
 </div>

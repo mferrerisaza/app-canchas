@@ -5,4 +5,10 @@
   <h3> Fecha de la reserva:  <%= @booking.date %> </h3>
   <h3> Referencia de la cancha: <%= @booking.field.name %> </h3>
   <h3> Cantidad de jugadores: <%= @booking.number_players %> </h3>
+  <ul>
+  <% @booking.booking_players.each do |player| %>
+   <li> <%= player.user.email %> </li>
+  <% end %>
+  </ul>
+
 </div>

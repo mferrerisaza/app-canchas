@@ -1,14 +1,20 @@
 class BookingsController < ApplicationController
+  after_action :verify_authorized, except: :create
+  before_action :authenticate_user!, except: :create
   before_action :set_booking, only: [ :show ]
 
   def create
-    byebug
-    @booking = Booking.new(booking_params)
-    authorize @booking
-    if @booking.save
-      render :show
+    if current_user.nil?
+      session[:booking] = booking_params
+      redirect_to new_user_registration_path
     else
-      redirect_to fields_path
+      @booking = Booking.new(booking_params)
+      @booking.booking_players << BookingPlayer.new(user: current_user)
+      if @booking.save
+        render :show
+      else
+        redirect_to fields_path
+      end
     end
   end
 
@@ -19,13 +25,11 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-     params.permit(:field_id, :date, :splitable, :number_players)
+     params.require(:booking).permit(:field_id, :date, :splitable, :number_players)
   end
 
   def set_booking
     @booking = Booking.find(params[:id])
   end
-
-
 end
 

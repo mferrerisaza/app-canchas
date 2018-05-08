@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :store_user_location!, if: :storable_location?
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   include Pundit
@@ -14,6 +13,17 @@ class ApplicationController < ActionController::Base
   #   flash[:alert] = "You are not authorized to perform this action."
   #   redirect_to(root_path)
   # end
+
+  def after_sign_in_path_for(resource)
+    if session[:booking].present?
+      @booking = Booking.create(session[:booking])
+      session[:booking] = nil
+      flash[:notice] = "Has iniciado sesión con éxito y tu reserva se ha registrado"
+      booking_path(@booking)
+    else
+      super
+    end
+  end
 
   private
 

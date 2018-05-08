@@ -41,6 +41,7 @@ function businessLogoOrGeneric(business) {
 }
 
 function buildFieldCard (field, schedule, date) {
+  const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   const text =
               `<div class="col-xs-12 col-sm-6">
                 <div class="card">
@@ -105,7 +106,7 @@ function buildFieldCard (field, schedule, date) {
                       <div class="modal-dialog">
 
                         <form action="/bookings" method="post">
-                        <input type="hidden" name="authenticity_token" value="UaIIXeSKr8TWA9pLjpcFrdi4T+RvJAMuZsGg92K2tdD0+Vl2n/HZcIsJNFaoJJO2KH7csfTUMBU9yMuKGUsgjg==">
+                        <input type="hidden" name="authenticity_token" value="${token}">
 
                           <div class="modal-content">
                             <div class="modal-header">
@@ -127,10 +128,10 @@ function buildFieldCard (field, schedule, date) {
                               </div>
                               <div class="modal-price">
                               </div>
-                              <input type="hidden" name="field_id" id="field_id"/>
-                              <input type="hidden" name="date" id="bookingDate"/>
-                              <input type="hidden" name="splitable" id="splitable"/>
-                              <input type="hidden" name="number_players" id="number_players"/>
+                              <input type="hidden" name="booking[field_id]" id="field_id"/>
+                              <input type="hidden" name="booking[date]" id="bookingDate"/>
+                              <input type="hidden" name="booking[splitable]" id="splitable"/>
+                              <input type="hidden" name="booking[number_players]" id="number_players"/>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -214,5 +215,3 @@ function selectDateTabs() {
 document.addEventListener("DOMContentLoaded", () => {
   selectDateTabs();
 })
-
-
