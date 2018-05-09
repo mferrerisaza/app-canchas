@@ -1,16 +1,8 @@
 <div class="row">
-  <% if controller_name == "pages" %>
-    <% link_properties = {path: fields_path, remote: false} %>
-  <% else %>
-    <% link_properties = {path: fields_path, remote: false} %>
-    <!-- cambiar a true cuando se tenga el js -->
-    <!-- link_properties = {path: schedule_path, remote: true} -->
-  <% end %>
-    <%= form_tag link_properties[:path], method: :get, class: "field-search-form", remote: link_properties[:remote]  do %>
-
+    <%= form_with url: fields_path, method: :get, class: "field-search-form", local: true do |f| %>
     <div class="col-xs-8 search-form-input">
-      <%= text_field_tag :query,
-        params[:query],
+      <%= f.text_field :query,
+        id: "query",
         class: "queryinput form-control",
         placeholder: "¿Donde quieres jugar?"
       %>
@@ -19,13 +11,15 @@
       <select name="capacity_limit" id="capacity_limit" class="queryinput form-control">
         <option value="" <%= "selected" unless params[:capacity_limit].present? %> disabled hidden># jugadores</option>
         <% Field::CAPACITY_RANGE.each do |value| %>
-          <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>"><%= value / 2 %> Vs. <%= value / 2 %></option>
+          <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>">
+            <%= value / 2 %> Vs. <%= value / 2 %>
+          </option>
         <% end %>
       </select>
     </div>
     <div class="col-xs-12 col-sm-4 search-form-input">
-      <%= text_field_tag :dates,
-        params[:dates],
+      <%= f.text_field :dates,
+        id: "dates",
         class: "datepicker datesize datepicker",
         placeholder: "Fechas"
       %>
@@ -47,7 +41,7 @@
       </select>
     </div>
     <div class="col-xs-12 col-sm-4 search-form-input">
-      <%= submit_tag "Buscar", name: nil, class: "btn btn-primary full-width-padded" %>
+      <%= f.submit "Buscar", name: nil, class: "btn btn-primary full-width-padded" %>
     </div>
   <% end %>
 </div>
