@@ -8,7 +8,13 @@ AllCops:
     - '**/Rakefile'
     - '**/config.ru'
   Exclude:
+    - 'node_modules/**/*'
+    - 'test/**/*'
+    - 'bin/**/*'
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
+
+Style/FrozenStringLiteralComment:
+    Enabled: false
