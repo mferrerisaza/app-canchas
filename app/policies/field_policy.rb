@@ -10,12 +10,11 @@ class FieldPolicy < ApplicationPolicy
   end
 
   def create?
-    true  # Tengamos esto así por ahora para que no moleste cuando queramos crear si no somos business_owners
-    # user.business_owner
+    true # Tengamos esto asi por ahora para que
+    # no moleste cuando queramos crear si no somos business owners
   end
 
   def new?
     create?
   end
-
 end
