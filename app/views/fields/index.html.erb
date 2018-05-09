@@ -1,6 +1,6 @@
 <div class="container">
   <h1 id="titulo">Canchas y horarios disponibles</h1>
-   <%= render "shared/search-form" %>
+  <%= render "shared/search-form" %>
   <ul class="date-tabs-list list-inline hidden-xs hidden-sm">
     <% @date_range.each_with_index do |date, index| %>
       <li data-date = <%= date %> class="date-tab <%= "active-date" if index == 0 %>">
