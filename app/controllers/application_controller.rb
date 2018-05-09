@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # def user_not_authorized
-  #   flash[:alert] = "You are not authorized to perform this action."
+  #   flash[:alert] = 'You are not authorized to perform this action.'
   #   redirect_to(root_path)
   # end
 
@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
     if session[:booking].present?
       @booking = Booking.create(session[:booking])
       session[:booking] = nil
-      flash[:notice] = "Has iniciado sesión con éxito y tu reserva se ha registrado"
+      flash[:notice] = 'Has iniciado sesión con éxito y
+                        tu reserva se ha registrado'
       booking_path(@booking)
     else
       super
