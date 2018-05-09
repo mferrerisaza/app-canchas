@@ -2,6 +2,8 @@
 
 Rails:
   Enabled: true
+Simple:
+  Enabled: true
 
 AllCops:
   Include:

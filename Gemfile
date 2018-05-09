@@ -1,23 +1,22 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
-
+gem 'carrierwave', '~> 1.2'
+gem 'cloudinary'
 gem 'devise'
+gem 'draper'
+gem 'faker'
 gem 'figaro'
+gem 'geocoder'
 gem 'jbuilder', '~> 2.0'
+gem 'money-rails'
+gem 'omniauth-facebook'
 gem 'pg', '~> 0.21'
+gem 'pg_search'
 gem 'puma'
+gem 'pundit'
 gem 'rails', '5.1.5'
 gem 'redis'
-gem 'money-rails'
-gem 'cloudinary'
-gem 'carrierwave', '~> 1.2'
-gem 'faker'
-gem "pundit"
-gem "geocoder"
-gem 'draper'
-gem 'pg_search'
-gem 'omniauth-facebook'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -32,10 +31,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'listen', '~> 3.0.5'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'listen', '~> 3.0.5'
+  gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rubocop', require: false
 end
