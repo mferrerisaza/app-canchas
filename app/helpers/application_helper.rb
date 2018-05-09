@@ -48,6 +48,7 @@ module ApplicationHelper
   def extract_date(args = {})
     if args[:dates].present?
       dates = args[:dates].split("to").map { |date| Date.parse(date) }
+      dates.size == 2 ? dates : dates.push(dates [0])
     else
       dates = [Date.today, Date.today + 7]
     end
