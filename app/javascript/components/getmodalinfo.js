@@ -49,7 +49,7 @@ const cleanInnerTexts = (fieldsArray) => {
 const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv) => {
   const bookingDate = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].value.split("-");
   const bookingTime = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].dataset.time
-  const bookingDateTime = new Date(bookingDate[0],bookingDate[1]-1, bookingDate[2], bookingTime, 0);
+  const bookingDateTime = new Date(Date.UTC(bookingDate[0],bookingDate[1]-1, bookingDate[2], bookingTime, 0)).toUTCString();
   modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name} </h3>`);
   modalFieldName.insertAdjacentHTML("beforeend", `<h5> ${data.name} </h5>`);
   modalselectedHour.insertAdjacentHTML("beforeend", `Reservar esta cancha el ${bookingDate} entre ${formatHour(parseInt(bookingTime, 10))} y ${formatHour(parseInt(bookingTime, 10) + 1)}`);
