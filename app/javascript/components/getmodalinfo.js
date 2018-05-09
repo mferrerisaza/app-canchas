@@ -13,16 +13,16 @@ const makeChangesIfToggleChanges = (cardId, modalPrice, price, capacity) => {
   modalToggleStatus.addEventListener("change", (event) => {
     const modalStatus = event.currentTarget.checked;
     if (modalStatus) {
-      // document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = true;
       modalPrice.querySelector("p").innerHTML = "";
       modalPrice.querySelector("p").innerHTML = `$ ${(price/100/capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
+      modalSplitableDiv.querySelector("input").value = true;
     } else {
-      // document.querySelector(`#toggle${cardId}`).querySelector(".splitable").checked = false;
       modalPrice.querySelector("p").innerHTML = "";
       modalPrice.querySelector("p").innerHTML = `$ ${(price/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
+      modalSplitableDiv.querySelector("input").value = false;
     }
-    })
-  }
+  })
+}
 
 const renderToggle = () => {
   return `<div class="card-toggle">
@@ -35,9 +35,10 @@ const renderToggle = () => {
           </div>`;
 };
 
-// const getToggle = (cardId) => {
-//   return document.getElementById(`toggle${cardId}`).querySelector(".splitable").checked === true;
-// };
+const getToggle = (cardId) => {
+  console.log(document.querySelector(".card-toggle").querySelector(".splitable"));
+  return document.querySelector(".card-toggle").querySelector(".splitable").checked === true;
+};
 
 const cleanInnerTexts = (fieldsArray) => {
   fieldsArray.forEach((field) => {
@@ -46,8 +47,9 @@ const cleanInnerTexts = (fieldsArray) => {
 };
 
 const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv) => {
-  const bookingDate = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].value;
+  const bookingDate = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].value.split("-");
   const bookingTime = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].dataset.time
+  const bookingDateTime = new Date(bookingDate[0],bookingDate[1]-1, bookingDate[2], bookingTime, 0);
   modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name} </h3>`);
   modalFieldName.insertAdjacentHTML("beforeend", `<h5> ${data.name} </h5>`);
   modalselectedHour.insertAdjacentHTML("beforeend", `Reservar esta cancha el ${bookingDate} entre ${formatHour(parseInt(bookingTime, 10))} y ${formatHour(parseInt(bookingTime, 10) + 1)}`);
@@ -55,6 +57,10 @@ const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalsel
   modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle());
   modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);
   modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
+  document.querySelector("#field_id").value = parseInt(cardId, 10);
+  document.querySelector("#bookingDate").value = bookingDateTime;
+  document.querySelector("#splitable").value = getToggle(cardId) ;
+  document.querySelector("#number_players").value = data.capacity ;
 };
 
 const sendInfoToTheModal = (cardId) => {

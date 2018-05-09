@@ -14,6 +14,17 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+  def after_sign_in_path_for(resource)
+    if session[:booking].present?
+      @booking = Booking.create(session[:booking])
+      session[:booking] = nil
+      flash[:notice] = "Has iniciado sesión con éxito y tu reserva se ha registrado"
+      booking_path(@booking)
+    else
+      super
+    end
+  end
+
   private
 
   def skip_pundit?

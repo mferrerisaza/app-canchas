@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
 
   monetize :balance_cents
 
-  validates :date, presence: true
+  validates :date, :field_id, :number_players, presence: true
   validates :number_players, inclusion: { in: Field::CAPACITY_RANGE }, on: :update
 
   validate :check_number_of_players_if_splitable, on: [:create, :update]
