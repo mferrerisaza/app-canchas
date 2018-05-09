@@ -1,10 +1,8 @@
 class FieldsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show schedule]
   after_action :verify_authorized, except: %i[index show schedule]
-  before_action :set_businesses, only: :index
-  before_action :set_schedule, only: :index
-  before_action :set_fields, only: :index
-  before_action :set_dates, only: :index
+  before_action :set_businesses, :set_schedule, :set_fields, :set_dates,
+                only: :index
 
   def index
     set_markers
@@ -12,13 +10,13 @@ class FieldsController < ApplicationController
 
   def show
     @field = Field.find(params[:id])
-    render json: @field, include: [business: { only: %i[name
-                                                        address
-                                                        phone
-                                                        rating
-                                                        latitude
-                                                        longitude
-                                                        photo] }]
+    render json: @field, include:
+      [
+        business:
+        {
+          only: %i[name address phone rating latitude longitude photo]
+        }
+      ]
   end
 
   def new

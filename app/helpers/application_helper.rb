@@ -1,36 +1,22 @@
 module ApplicationHelper
   def profile_pic_or_generic(user)
+    options = {
+      gravity: :face, height: 300, width: 300, crop: 'fit',
+      class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu',
+      'data-toggle' => 'dropdown'
+    }
     if user.photo.blank?
-      cl_image_tag "user.png",
-      gravity: "center",
-      height: 300,
-      width: 300,
-      crop: "fit",
-      class: "avatar dropdown-toggle",
-      id: "navbar-wagon-menu",
-      "data-toggle" => "dropdown"
+      cl_image_tag 'user.png', options
     else
-      cl_image_tag user.photo,
-        height: 300,
-        width: 300,
-        crop: :fill,
-        gravity: :face,
-        class: "avatar dropdown-toggle",
-        id: "navbar-wagon-menu",
-        "data-toggle" => "dropdown"
+      cl_image_tag user.photo, options
     end
   end
 
   def date_check(date)
-    if date == Date.today
-      return "Hoy"
-    elsif date == Date.today + 1
-      return "Mañana"
-    elsif date == Date.today + 2
-      return "Pasado mañana"
-    else
-      return l(date, format: "%a %d, %b")
-    end
+    return 'Hoy' if date == Time.zone.today
+    return 'Mañana' if date == Time.zone.today + 1
+    return 'Pasado mañana' if date == Time.zone.today + 2
+    return l(date, format: "%a %d, %b")
   end
 
   def format_hour(value)
