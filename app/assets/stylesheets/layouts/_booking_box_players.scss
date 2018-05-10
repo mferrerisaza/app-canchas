@@ -50,7 +50,7 @@
   background-size: cover;
   background-position: 50% 50%;
   border-radius: 3px 3px 0px 0px;
-  height: 42vh;
+  height: 40vh;
   background-color: white;
   box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
 }
@@ -66,8 +66,8 @@
   box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
   padding: 10px 20px;
   border-radius: 0px 0px 3px 3px;
-  margin-top: 20px;
-  height: 50vh;
+  margin-top: 15px;
+  height: 52vh;
   p {
     margin: 0px;
   };
@@ -82,5 +82,50 @@
 .booking-box-info-title {
   h2 {
     font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 0px;
   }
+  h4 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+}
+
+
+.booking-box-info-hours {
+  text-align: center;
+  h6 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+#vertical-bar {
+  border-left: 1px solid gray;
+  width: 0px;
+  height: 25px;
+  position: relative;
+  top: 2px;
+}
+
+.booking-box-info-links {
+  text-align: center;
+}
+
+.btn-additional-info{
+  font-size: 16px;
+  color: $my-blue;
+}
+
+hr {
+  margin: 0px;
+}
+
+.booking-box-info-subtitle {
+  margin-top: 0px;
+  margin-bottom: 10px;
 }

@@ -18,47 +18,47 @@
 
         <div class="player-box-body">
           <!-- <div class="row"> -->
-            <% @booking.booking_players.each do |player| %>
-              <!-- <div class="col-xs-12 col-sm-6"> -->
-                <div class="player-box-body-player">
-                  <div class="player-box-body-player-info">
-                    <div class="player-box-body-avatar">
-                      <%= set_booking_avatar(player.user)  %>
-                    </div>
-                    <div class="player-box-body-player-name">
-                      <p> <%= player.user.email %> </p>
-                    </div>
-                  </div>
-                  <div class="player-box-body-player-payment-status">
-                    <% if player.player_pay_status %>
-                      <p class="player-status-pending">Pendiente</p>
-                    <% else %>
-                      <p class="player-status-pending">Pendiente</p>
-                    <% end %>
-                    <% if @booking.splitable %>
-                      <p> <%= set_price_per_peson(@booking.field.price_cents, @booking.number_players)  %></p>
-                    <% end %>
-                  </div>
-                <!-- </div> -->
-              </div>
-            <% end %>
-            <% set_free_slots(@booking.number_players,@booking.booking_players.count).times do |unassigned_player| %>
-              <!-- <div class="col-xs-12 col-sm-6"> -->
-                <div class="player-box-body-player">
-                  <div class="player-box-body-player-info">
-                    <div class="player-box-body-avatar">
-                      <%= image_tag "user.png", class: "avatar avatar-lg" %>
-                    </div>
-                    <div class="player-box-body-player-name">
-                      <p class="player-slot-disponbile">Disponible</p>
-                    </div>
-                  </div>
-                  <div class="player-box-body-player-payment-status">
-                    <p class="player-status-pending">Pendiente</p>
-                  </div>
+          <% @booking.booking_players.each do |player| %>
+          <!-- <div class="col-xs-12 col-sm-6"> -->
+            <div class="player-box-body-player">
+              <div class="player-box-body-player-info">
+                <div class="player-box-body-avatar">
+                  <%= set_booking_avatar(player.user)  %>
                 </div>
-              <!-- </div> -->
-            <% end %>
+                <div class="player-box-body-player-name">
+                  <p> <%= player.user.email %> </p>
+                </div>
+              </div>
+              <div class="player-box-body-player-payment-status">
+                <% if player.player_pay_status %>
+                  <p class="player-status-pending">Pendiente</p>
+                <% else %>
+                  <p class="player-status-pending">Pendiente</p>
+                <% end %>
+                <% if @booking.splitable %>
+                  <p> <%= set_price_per_peson(@booking.field.price_cents, @booking.number_players)  %></p>
+                <% end %>
+              </div>
+            <!-- </div> -->
+            </div>
+          <% end %>
+          <% set_free_slots(@booking.number_players,@booking.booking_players.count).times do |unassigned_player| %>
+            <!-- <div class="col-xs-12 col-sm-6"> -->
+            <div class="player-box-body-player">
+              <div class="player-box-body-player-info">
+                <div class="player-box-body-avatar">
+                  <%= image_tag "user.png", class: "avatar avatar-lg" %>
+                </div>
+                <div class="player-box-body-player-name">
+                  <p class="player-slot-disponbile">Disponible</p>
+                </div>
+              </div>
+              <div class="player-box-body-player-payment-status">
+                <p class="player-status-pending">Pendiente</p>
+              </div>
+            </div>
+          <!-- </div> -->
+          <% end %>
           <!-- </div> -->
         </div>
       </div>
@@ -78,16 +78,16 @@
             <div class="booking-box-info-title booking-box-info-business-name booking-box-info-text-center">
               <h2> <%= @booking.field.business.name  %> </h2>
             </div>
-            <div class="booking-box-info-date-field-name booking-box-info-text-center">
+            <div class="booking-box-info-subtitle booking-box-info-date-field-name booking-box-info-text-center">
               <p> <%= @booking.field.name %> </p>
             </div>
           </div>
-          <hr color="gray" size=0.75>
+          <hr color="gray" size=0.75 margin = "5px 0 5px 0">
           <div class="booking-box-info-mid">
             <div class="booking-box-info-title booking-box-info-text-center">
               <h4>Horario</h4>
             </div>
-            <div class="booking-box-info-date booking-box-info-text-center">
+            <div class="booking-box-info-subtitle booking-box-info-date booking-box-info-text-center">
               <p> <%= l(@booking.date.to_date, format: '%A %d de %B') %> </p>
             </div>
             <div class="booking-box-info-time booking-box-info-text-center">
@@ -103,8 +103,20 @@
           </div>
           <hr color="gray" size=0.75>
           <div class="booking-box-info-bottom">
-            <div class="booking-box-info-title">
-
+            <div class="booking-box-info-title booking-box-info-text-center">
+              <h4>Dirección</h4>
+            </div>
+            <div class="booking-box-info-subtitle booking-box-info-address booking-box-info-text-center">
+              <p> <%= @booking.field.business.address %> </p>
+            </div>
+            <div class="booking-box-info-links booking-box-info-text-center">
+              <div class="booking-box-info-links">
+                <%= link_to "Como llegar", "#", class:"btn btn-additional-info"  %>
+              </div>
+              <div id="vertical-bar"></div>
+              <div class="booking-box-info-links">
+                <%= link_to "Ver sede", "#", class:"btn btn-additional-info"  %>
+              </div>
             </div>
           </div>
         </div>
@@ -122,4 +134,4 @@
       <li> <%= player.email %> </li>
     <% end %>
   </ul>
-</div>
+
