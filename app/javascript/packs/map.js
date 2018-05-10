@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   insertMapOnDOM();
 })
 
-export default addMarkersToMap;
+export default insertMapOnDOM;
 // import { autocomplete } from '../components/autocomplete';
 // autocomplete();
 
