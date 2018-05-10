@@ -53,7 +53,7 @@ class FieldsController < ApplicationController
   end
 
   def set_businesses
-    @businesses = @fields.map { |field| field.business }
+    @businesses = @fields.map(&:business)
     @businesses.uniq!
     @businesses.reject! do |business|
       business.latitude.nil? && business.longitude.nil?
