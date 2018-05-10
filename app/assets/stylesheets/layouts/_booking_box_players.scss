@@ -1,0 +1,86 @@
+  .players-box {
+  background: #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
+  padding: 10px 20px;
+  border-radius: 3px;
+  p {
+    margin: 0px;
+  };
+}
+
+.players-box-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-box-body-player-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+}
+
+.player-box-body-player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+}
+
+.player-box-body-player-name {
+  flex: 0 0 60%;
+}
+
+.player-box-body-avatar {
+  flex: 0 0 40%;
+}
+
+.player-status-pending {
+  color: red;
+}
+
+.player-status-paid {
+  color: green;
+}
+
+.booking-box-business-picture {
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  border-radius: 3px 3px 0px 0px;
+  height: 42vh;
+  background-color: white;
+  box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
+}
+
+.booking-right-section {
+    position: sticky !important;
+    top: 15px;
+}
+
+.booking-box-info {
+  background: #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
+  padding: 10px 20px;
+  border-radius: 0px 0px 3px 3px;
+  margin-top: 20px;
+  height: 50vh;
+  p {
+    margin: 0px;
+  };
+}
+
+.booking-box-info-text-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}
+
+.booking-box-info-title {
+  h2 {
+    font-weight: 600;
+  }
+}

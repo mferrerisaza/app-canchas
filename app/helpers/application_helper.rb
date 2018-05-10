@@ -2,7 +2,7 @@ module ApplicationHelper
   def profile_pic_or_generic(user)
     options = {
       gravity: :face, height: 300, width: 300, crop: 'fit',
-      class: 'avatar dropdown-toggle', id: 'navbar-wagon-menu',
+      class: 'avatar dropdown-toggle avatar-md', id: 'navbar-wagon-menu',
       'data-toggle' => 'dropdown'
     }
     if user.photo.blank?
@@ -71,16 +71,32 @@ module ApplicationHelper
     end
   end
 
-  def business_logo_or_generic(business)
+  def business_logo_or_generic(business, add_class)
     options =
       {
-        height: 300, width: 300, crop: :fill, gravity: :face,
-        class: 'card-top-business-logo'
+        height: 300, width: 300, crop: :fill,
+        class: "#{add_class}"
       }
     if business.photo.blank?
       cl_image_tag('defaul-logo.png', options)
     else
       cl_image_tag(business.photo, options)
+    end
+  end
+
+  def set_price_per_peson(price, number_players)
+    humanized_money(price / number_players)
+  end
+
+  def set_free_slots(number_players, total_players)
+    number_players - total_players
+  end
+
+  def set_booking_avatar(player)
+    if player["photo"].nil?
+      cl_image_tag 'user.png', class: "avatar avatar-lg"
+    else
+      cl_image_tag player.photo, class: "avatar avatar-lg"
     end
   end
 end
