@@ -1,10 +1,12 @@
 class FieldsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show schedule]
   after_action :verify_authorized, except: %i[index show schedule]
-  before_action :set_businesses, :set_schedule, :set_fields, :set_dates,
-                only: :index
 
   def index
+    set_businesses
+    set_schedule
+    set_fields
+    set_dates
     set_markers
   end
 

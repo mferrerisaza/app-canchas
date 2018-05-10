@@ -35,18 +35,25 @@ module ApplicationHelper
     end
   end
 
-  def generate_hours_range(field, args = {})
+  def generate_start_hour(field, args = {})
     start_hour = field.business.opening
-    end_hour = field.business.closing
-
     if args[:start_time].present? && args[:start_time].to_i >= start_hour
       start_hour = args[:start_time].to_i
     end
+    start_hour
+  end
 
+  def generate_end_hour(field, args = {})
+    end_hour = field.business.closing
     if args[:end_time].present? && args[:end_time].to_i <= end_hour
       end_hour = args[:end_time].to_i
     end
+    end_hour
+  end
 
+  def generate_hours_range(field, args = {})
+    start_hour = generate_start_hour(field, args)
+    end_hour = generate_end_hour(field, args)
     (start_hour..end_hour)
   end
 
