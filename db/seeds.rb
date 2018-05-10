@@ -110,21 +110,25 @@ f.save!
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 17:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 20:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{(Date.today + 1).to_s} 15:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{(Date.today + 2).to_s} 17:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 
@@ -140,76 +144,91 @@ f.save!
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 8:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 9:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 10:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 11:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 12:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 13:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 14:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 15:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 16:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 17:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 18:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 19:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 20:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 21:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
   date: DateTime.parse("#{Date.today.to_s} 22:00:00"),
   field: f,
+  number_players: f.capacity,
   balance: f.price
   )
 

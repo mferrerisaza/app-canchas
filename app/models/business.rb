@@ -1,9 +1,8 @@
 class Business < ApplicationRecord
-  STARS = [1, 2, 3, 4, 5]
+  STARS = [1, 2, 3, 4, 5].freeze
 
   belongs_to :user
-  has_many :fields
-
+  has_many :fields, dependent: :destroy
 
   validates :name, :address, presence: true
   validates :rating, inclusion: { in: STARS }
@@ -14,6 +13,6 @@ class Business < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   def opening_hours
-      (self.opening..self.closing)
+    (opening..closing)
   end
 end
