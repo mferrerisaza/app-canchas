@@ -30,7 +30,7 @@ class Booking < ApplicationRecord
       Field.retrive_filtered_fields(args).each do |field|
         hour_hash = {}
         time_range =
-          ApplicationController.helpers.generate_hours_range(args, field)
+          ApplicationController.helpers.generate_hours_range(field, args)
         time_range.each do |hour|
           hour_hash[hour.to_s] =
             where(date: date..date + 1)
