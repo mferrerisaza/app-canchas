@@ -1,5 +1,6 @@
 import selectCtaButtons from './getmodalinfo'
 import { retriveDropdowns, retriveTimeBtns } from './field-card.js'
+import insertMapOnDOM from '../packs/map.js'
 var cloudinary = require('cloudinary');
 
 const buildScheduleBtns = (schedule, date) => {
@@ -157,12 +158,29 @@ function fetchFieldInfo (callback) {
 }
 
 function retriveFieldCardInfo (fields, tabDate) {
-  let text = ""
+  let text = "";
+  let markers = [];
   fetchFieldInfo((data) => {
     Object.keys(fields).forEach((key) => {
-      const test = data.find(item => item.id === parseInt(key,10))
-      text += buildFieldCard(test, fields[key], tabDate);
+      const field = data.find(item => item.id === parseInt(key,10))
+      text += buildFieldCard(field, fields[key], tabDate);
+      markers.push
+      (
+        { "lat": field.business.latitude,
+        "lng": field.business.longitude }
+      )
     });
+    // Esto remueve los duplicados en los markers
+    // Internet ayudo, y no lo entiendo 100% pero basicamente:
+    // Lo que hace es dejar solo el primer elemento que tenga esa lat y lng
+    markers = markers.filter((marker, index, self) =>
+      index === self.findIndex((t) => (
+        t.lat === marker.lat && t.lng === marker.lng
+      ))
+    )
+    const mapElement = document.getElementById('map')
+    mapElement.dataset.markers = JSON.stringify(markers);
+    insertMapOnDOM();
     document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
     selectCtaButtons();
     retriveDropdowns();
