@@ -145,11 +145,11 @@ function buildFieldCard (field, schedule, date) {
                 </div>
               </div>`
 
-  document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
+  return text
 }
 
-function fetchFieldInfo (fieldId, callback) {
-  fetch('/fields/' + fieldId)
+function fetchFieldInfo (callback) {
+  fetch('/fields/all')
   .then(response => response.json())
   .then((data) => {
     callback(data);
@@ -157,16 +157,17 @@ function fetchFieldInfo (fieldId, callback) {
 }
 
 function retriveFieldCardInfo (fields, tabDate) {
-  document.querySelector("body").style.cursor="progress";
-  Object.keys(fields).forEach((key) => {
-    fetchFieldInfo(key, (data) => {
-      buildFieldCard(data, fields[key], tabDate);
-    })
-  });
-  setTimeout( () => { document.querySelector("body").style.cursor = "default"},500);
-  setTimeout(selectCtaButtons, 1000);
-  setTimeout(retriveDropdowns, 1000);
-  setTimeout(retriveTimeBtns, 1000);
+  let text = ""
+  fetchFieldInfo((data) => {
+    Object.keys(fields).forEach((key) => {
+      const test = data.find(item => item.id === parseInt(key,10))
+      text += buildFieldCard(test, fields[key], tabDate);
+    });
+    document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
+    selectCtaButtons();
+    retriveDropdowns();
+    retriveTimeBtns();
+  })
 }
 
 function fetchSchedule (event, callback) {
