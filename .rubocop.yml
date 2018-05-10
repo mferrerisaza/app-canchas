@@ -20,3 +20,9 @@ Style/FrozenStringLiteralComment:
     Enabled: false
 Style/Documentation:
     Enabled: false
+Naming/FileName:
+  Enabled: true
+  Exclude:
+    - 'Gemfile'
+Style/ClassAndModuleChildren:
+  Enabled: false
