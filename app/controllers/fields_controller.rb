@@ -1,11 +1,12 @@
 class FieldsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show schedule]
   after_action :verify_authorized, except: %i[index show schedule]
+  skip_after_action :verify_policy_scoped, only: :index
 
   def index
-    set_businesses
     set_schedule
     set_fields
+    set_businesses
     set_dates
     set_markers
   end
@@ -41,8 +42,11 @@ class FieldsController < ApplicationController
   end
 
   def set_businesses
-    @businesses = policy_scope(Business.where.not(latitude: nil,
-                                                  longitude: nil))
+    @businesses = @fields.map { |field| field.business }
+    @businesses.uniq!
+    @businesses.reject! do |business|
+      business.latitude.nil? && business.longitude.nil?
+    end
   end
 
   def set_schedule
