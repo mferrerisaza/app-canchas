@@ -1,6 +1,6 @@
 class FieldsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show schedule]
-  after_action :verify_authorized, except: %i[index show schedule]
+  skip_before_action :authenticate_user!, only: %i[index show schedule show_all]
+  after_action :verify_authorized, except: %i[index show schedule show_all]
   skip_after_action :verify_policy_scoped, only: :index
 
   def index
@@ -14,6 +14,17 @@ class FieldsController < ApplicationController
   def show
     @field = Field.find(params[:id])
     render json: @field, include:
+      [
+        business:
+        {
+          only: %i[name address phone rating latitude longitude photo]
+        }
+      ]
+  end
+
+  def show_all
+    @fields = Field.all
+    render json: @fields, include:
       [
         business:
         {
