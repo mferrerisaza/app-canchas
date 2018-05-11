@@ -3,6 +3,7 @@
 }
 
 .booking-box-bill-bottom {
+  display: flex;
   h2 {
     text-align: left;
     font-size: 20px;
@@ -10,8 +11,6 @@
   p {
     text-align: right;
   }
-  display: flex;
-
 }
 
 .booking-box-bill-total-text {

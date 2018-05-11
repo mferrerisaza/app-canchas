@@ -8,13 +8,9 @@
       <%= link_to "Unirse al partido", "#", class: "btn btn-primary" %>
     </div>
   </div>
-
   <hr color="gray" size=0.75>
-
   <div class="player-box-body">
-    <!-- <div class="row"> -->
     <% booking.booking_players.each do |player| %>
-    <!-- <div class="col-xs-12 col-sm-6"> -->
       <div class="player-box-body-player">
         <div class="player-box-body-player-info">
           <div class="player-box-body-avatar">
@@ -35,9 +31,7 @@
                         booking.field.price_cents,
                         booking.number_players
                         ) %>
-            <p> $ <%= humanize_price(price_per_person)
-                  %>
-            </p>
+            <p> $ <%= humanize_price(price_per_person)%></p>
           <% end %>
         </div>
       </div>

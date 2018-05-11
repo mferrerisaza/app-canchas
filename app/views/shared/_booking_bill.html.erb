@@ -4,7 +4,8 @@
       <div class="booking-box-info-title">
         <h2>Pago</h2>
       </div>
-      <div class="booking-box-info-subtitle booking-box-info-text-center booking-box-info-main-subtitle booking-bill-subtitle">
+      <div class="booking-box-info-subtitle booking-box-info-text-center
+                  booking-box-info-main-subtitle booking-bill-subtitle">
         <% if @booking.splitable %>
           <p>Tarifa dividida entre todos los jugadores</p>
         <% end %>
@@ -40,22 +41,19 @@
     <div class="billing-box-text booking-box-bill-paid">
       <div class="booking-box-bill-text" name="Pagan-todos-o-individual">
         <p>
-          <%
-            paid_players =
-              paid_players(@booking.splitable,
-                @booking.number_players,
-                count_paid_players(
-                  @booking.booking_players)
-              )
-            %>
+          <%paid_players =
+                  paid_players(@booking.splitable,
+                  @booking.number_players,
+                  count_paid_players(
+                  @booking.booking_players))%>
          <%= paid_players %>
         </p>
       </div>
       <div class="booking-box-bill-text">
         <p>
           <% total_paid = total_paid(
-                count_paid_players(@booking.booking_players),
-                price_per_person) %>
+                  count_paid_players(@booking.booking_players),
+                  price_per_person) %>
           $ <%= humanize_price(total_paid) %>
         </p>
       </div>
