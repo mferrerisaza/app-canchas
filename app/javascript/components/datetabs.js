@@ -156,8 +156,7 @@ function fetchFieldInfo (callback) {
     callback(data);
   });
 }
-
-function retriveFieldCardInfo (fields, tabDate) {
+export function retriveFieldCardInfo (fields, tabDate, whoCall) {
   let text = "";
   let markers = [];
   fetchFieldInfo((data) => {
@@ -180,29 +179,45 @@ function retriveFieldCardInfo (fields, tabDate) {
     )
     const mapElement = document.getElementById('map')
     mapElement.dataset.markers = JSON.stringify(markers);
-    insertMapOnDOM();
+    const isMobileTab = document.querySelector(".active-date").classList.contains("mobile-tab");
+
+    if(whoCall === "tab" && isMobileTab===false ) {
+      insertMapOnDOM();
+    } else {
+      clearTheDOM();
+    }
     document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
+    setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 500);
     selectCtaButtons();
     retriveDropdowns();
     retriveTimeBtns();
   })
 }
 
-function fetchSchedule (event, callback) {
+export function fetchSchedule (bounds, callback, whoCall) {
   const query = document.getElementById("query").value;
   const capacityLimit = document.getElementById("capacity_limit").value;
-  const dates = event.currentTarget.dataset.date;
+  const dates = document.querySelector(".active-date").dataset.date;
   const startTime = document.getElementById("starttime").value;
   const endTime = document.getElementById("endtime").value;
-
-  fetch(`/schedule?utf8=✓&query=${query}&capacity_limit=${capacityLimit}&dates=${dates}&start_time=${startTime}&end_time=${endTime}`)
+  let max_lat = "";
+  let min_lat = "";
+  let min_lng = "";
+  let max_lng = ""
+  if (bounds !== "") {
+     max_lat = bounds.f.f;
+     min_lat = bounds.f.b;
+     min_lng = bounds.b.b;
+     max_lng = bounds.b.f;
+  }
+  fetch(`/schedule?utf8=✓&query=${query}&capacity_limit=${capacityLimit}&dates=${dates}&start_time=${startTime}&end_time=${endTime}&min_lng=${min_lng}&max_lng=${max_lng}&min_lat=${min_lat}&max_lat=${max_lat}`)
   .then(response => response.json())
   .then((data) => {
-    callback(data[dates], dates);
+    callback(data[dates], dates, whoCall);
   });
 }
 
-const clearTheDOM = (event) => {
+const clearTheDOM = () => {
   document.querySelector(".cards-container").querySelector(".row").innerHTML = "";
 }
 
@@ -211,12 +226,12 @@ const removeTabUnderline = (element) => {
 }
 
 const addTabUnderline = (event) => {
-  const tabs = Array.from(event.currentTarget.parentNode.children);
+  const tabs = document.querySelectorAll(".date-tab");
   tabs.forEach(removeTabUnderline);
   event.currentTarget.classList.add("active-date");
   document.getElementById("dropdownMenu1").innerHTML = `${event.currentTarget.innerText} <span class="caret"></span>`
-  clearTheDOM(event);
-  fetchSchedule(event, retriveFieldCardInfo);
+  document.querySelector(".loader-div").style.visibility = "visible";
+  fetchSchedule("", retriveFieldCardInfo, "tab");
 };
 
 const addTabListeners = (element) => {
@@ -234,3 +249,5 @@ function selectDateTabs() {
 document.addEventListener("DOMContentLoaded", () => {
   selectDateTabs();
 })
+
+export default clearTheDOM;
