@@ -18,21 +18,20 @@
       <div class="player-box-body-player">
         <div class="player-box-body-player-info">
           <div class="player-box-body-avatar">
-            <%= set_booking_avatar(player.user)  %>
+            <%= booking_avatar(player.user)  %>
           </div>
           <div class="player-box-body-player-name">
             <p> <%= player.user.email %> </p>
           </div>
         </div>
         <div class="player-box-body-player-payment-status">
-          <% byebug  %>
           <% if player.player_pay_status %>
             <p class="player-status-paid">Pagado</p>
           <% else %>
             <p class="player-status-pending">Pendiente</p>
           <% end %>
           <% if booking.splitable %>
-            <% price_per_person = set_price_per_person(
+            <% price_per_person = price_per_person(
                         booking.field.price_cents,
                         booking.number_players
                         ) %>
@@ -41,11 +40,9 @@
             </p>
           <% end %>
         </div>
-      <!-- </div> -->
       </div>
     <% end %>
-    <% set_free_slots(booking.number_players,booking.booking_players.count).times do |unassigned_player| %>
-      <!-- <div class="col-xs-12 col-sm-6"> -->
+    <% free_slots(booking.number_players,booking.booking_players.count).times do |unassigned_player| %>
       <div class="player-box-body-player">
         <div class="player-box-body-player-info">
           <div class="player-box-body-avatar">
@@ -59,8 +56,6 @@
           <p class="player-status-pending">Pendiente</p>
         </div>
       </div>
-    <!-- </div> -->
     <% end %>
-    <!-- </div> -->
   </div>
 </div>

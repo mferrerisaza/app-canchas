@@ -75,7 +75,7 @@ module ApplicationHelper
     options =
       {
         height: 300, width: 300, crop: :fill,
-        class: "#{add_class}"
+        class: add_class.to_s
       }
     if business.photo.blank?
       cl_image_tag('defaul-logo.png', options)
@@ -84,49 +84,11 @@ module ApplicationHelper
     end
   end
 
-  def set_total_price(price)
-    price / 100
-  end
-
-  def set_price_per_person(price, number_players)
-    price / number_players / 100
-  end
-
-  def humanize_price(price)
-    humanized_money(price)
-  end
-
-  def set_free_slots(number_players, total_players)
-    number_players - total_players
-  end
-
-  def set_booking_avatar(player)
-    if player["photo"].nil?
-      cl_image_tag 'user.png', class: "avatar avatar-lg"
+  def booking_avatar(player)
+    if player['photo'].nil?
+      cl_image_tag 'user.png', class: 'avatar avatar-lg'
     else
-      cl_image_tag player.photo, class: "avatar avatar-lg"
+      cl_image_tag player.photo, class: 'avatar avatar-lg'
     end
-  end
-
-  def set_paid_players(splitable, n_players, paid_players)
-    if splitable
-      "#{paid_players} de #{n_players} han pagado"
-    else
-      "Pagado a la fecha"
-    end
-  end
-
-  def count_paid_players(players)
-    a = players.select { |player| player.player_pay_status == true}.count
-    a
-  end
-
-  def total_paid(n_paid_players, price_per_player)
-    byebug
-    n_paid_players * price_per_player
-  end
-
-  def pending_to_pay(total_paid, total_price)
-    total_price - total_paid
   end
 end
