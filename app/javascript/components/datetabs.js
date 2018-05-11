@@ -187,7 +187,7 @@ export function retriveFieldCardInfo (fields, tabDate, whoCall) {
       clearTheDOM();
     }
     document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
-    setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 500);
+    setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 1000);
     selectCtaButtons();
     retriveDropdowns();
     retriveTimeBtns();
