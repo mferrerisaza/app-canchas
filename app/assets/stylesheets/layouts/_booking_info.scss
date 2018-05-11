@@ -1,0 +1,100 @@
+.booking-box-business-picture {
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  border-radius: 3px 3px 0px 0px;
+  height: 40vh;
+  background-color: white;
+  box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
+}
+
+
+.booking-right-section {
+  position: sticky !important;
+  top: 15px;
+}
+
+.booking-box-info {
+  background: #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
+  padding: 10px 20px;
+  border-radius: 0px 0px 3px 3px;
+  margin-bottom: 15px;
+  height: 52vh;
+  p {
+    margin: 0px;
+  };
+}
+
+.booking-box-info-top {
+  height: 25%;
+}
+.booking-box-info-mid {
+  height: 37.5%;
+}
+.booking-box-info-bottom {
+  height: 37.5%;
+}
+
+.booking-box-info-text-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}
+
+.booking-box-info-title {
+  h2 {
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 22px;
+  }
+  h4 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 18px;
+  }
+}
+
+
+.booking-box-info-hours {
+  text-align: center;
+  h6 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
+
+.booking-box-info-links {
+  text-align: center;
+}
+
+.btn-additional-info{
+  font-size: 16px;
+  color: $my-blue;
+}
+
+hr {
+  margin: 0px;
+}
+
+.booking-box-info-subtitle {
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.booking-box-info-main-subtitle {
+  margin-top: 5px;
+  font-size:16px;
+}
+
+.booking-img-field {
+  width:100%;
+  height: 40vh;
+}

@@ -1,0 +1,10 @@
+<div class="booking-business-logo">
+  <%= business_banner = business_logo_or_generic(@booking.field.business, "booking-box-business-picture")%>
+  <div
+    style="background-image:
+      linear-gradient(rgba(0,0,0, 0.4),
+      rgba(0, 0, 0, 0.4)),
+      url(<% business_banner %>);"
+    >
+  </div>
+</div>

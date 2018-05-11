@@ -1,0 +1,75 @@
+<div class="booking-box-info">
+  <div class="booking-box-bill-top booking-box-info-top booking-box-bil-top ">
+    <div class="booking-box-bill-top-center">
+      <div class="booking-box-info-title">
+        <h2>Pago</h2>
+      </div>
+      <div class="booking-box-info-subtitle booking-box-info-text-center
+                  booking-box-info-main-subtitle booking-bill-subtitle">
+        <% if @booking.splitable %>
+          <p>Tarifa dividida entre todos los jugadores</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <hr color="gray" size=0.75>
+  <div class="booking-box-bill-mid booking-box-info-mid">
+    <div class="billing-box-text booking-box-bill-total">
+      <div class="booking-box-bill-text">
+        <p>Precio x hora</p>
+      </div>
+      <div class="booking-box-bill-text">
+        <p>
+          <% total_price = total_price(@booking.field.price_cents) %>
+          $ <%= humanize_price(total_price) %>
+        </p>
+      </div>
+    </div>
+    <% price_per_person = price_per_person(@booking.field.price_cents,
+                          @booking.number_players)  %>
+    <% if @booking.splitable %>
+      <div class="billing-box-text booking-box-bill-per_player">
+        <div class="booking-box-bill-text">
+          <p>Precio por jugador</p>
+        </div>
+        <div class="booking-box-bill-text">
+          $ <%= humanized_money(price_per_person) %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="billing-box-text booking-box-bill-paid">
+      <div class="booking-box-bill-text" name="Pagan-todos-o-individual">
+        <p>
+          <%paid_players =
+                  paid_players(@booking.splitable,
+                  @booking.number_players,
+                  count_paid_players(
+                  @booking.booking_players))%>
+         <%= paid_players %>
+        </p>
+      </div>
+      <div class="booking-box-bill-text">
+        <p>
+          <% total_paid = total_paid(
+                  count_paid_players(@booking.booking_players),
+                  price_per_person) %>
+          $ <%= humanize_price(total_paid) %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <hr color="gray" size=0.75>
+  <div class="booking-box-bill-bottom booking-box-info-bottom">
+    <div class="billing-box-text booking-box-bill-paid">
+      <div class="booking-box-info-title billing-total">
+        <h2>Pendiente por pagar</h2>
+      </div>
+      <div class="booking-box-bill-text booking-box-bill-total-text">
+        <p>
+          $ <%= humanize_price(total_price - total_paid) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
