@@ -108,25 +108,25 @@ f = Field.new(
 f.remote_photo_url = "https://images.unsplash.com/photo-1520621547148-caeb79466a2b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6adf1ae9356d789b0fcebc6bd4b2175a&auto=format&fit=crop&w=500&q=60"
 f.save!
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 17:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 17:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 20:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 20:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{(Date.today + 1).to_s} 15:00:00"),
+  date: Time.zone.parse("#{(Time.zone.today + 1).to_s} 15:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{(Date.today + 2).to_s} 17:00:00"),
+  date: Time.zone.parse("#{(Time.zone.today + 2).to_s} 17:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
@@ -142,91 +142,91 @@ f.remote_photo_url = "https://images.unsplash.com/photo-1473075109809-7a17d327bd
 f.save!
 
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 8:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 8:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 9:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 9:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 10:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 10:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 11:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 11:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 12:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 12:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 13:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 13:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 14:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 14:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 15:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 15:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 16:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 16:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 17:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 17:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 18:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 18:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 19:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 19:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 20:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 20:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 21:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 21:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price
   )
 b = Booking.create!(
-  date: DateTime.parse("#{Date.today.to_s} 22:00:00"),
+  date: Time.zone.parse("#{Time.zone.today.to_s} 22:00:00"),
   field: f,
   number_players: f.capacity,
   balance: f.price

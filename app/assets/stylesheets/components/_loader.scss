@@ -1,0 +1,18 @@
+.loader-div {
+  visibility: hidden;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  svg {
+    width: 200px;
+    height: 200px;
+  }
+  path {
+    fill: $brand-primary;
+  }
+}
