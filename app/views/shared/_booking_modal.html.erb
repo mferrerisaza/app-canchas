@@ -1,11 +1,15 @@
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <%= form_with model: Booking.new, local: true do |f| %>
-      <%= f.hidden_field :authenticity_token%>
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header"
+          style="background-image:
+            linear-gradient(rgba(255,255,255, 0),
+            rgba(0, 0, 0, 0.4)),
+            url(<%= cl_image_path("booking-confirm.jpg") %>);"
+        >
+
           <button type="button" class="close" id="modal-close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Confirmación de reserva</h4>
+          <h4 class="modal-title">Detalles de tu reserva</h4>
         </div>
         <div class="modal-body">
           <div class="modal-business-name">
@@ -22,16 +26,18 @@
           </div>
           <div class="modal-price">
           </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= form_with model: Booking.new, local: true do |f| %>
+          <%= f.hidden_field :authenticity_token%>
           <%= f.hidden_field :field_id, id: "field_id" %>
           <%= f.hidden_field :date, id: "bookingDate" %>
           <%= f.hidden_field :splitable, id: "splitable" %>
           <%= f.hidden_field :number_players, id: "number_players" %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <%= f.submit "Confirmar Reserva", class: "btn btn-primary" %>
+        <% end %>
         </div>
       </div>
-    <% end %>
   </div>
 </div>
