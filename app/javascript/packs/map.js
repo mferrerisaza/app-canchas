@@ -1,3 +1,5 @@
+import clearTheDOM from '../components/datetabs.js'
+import {fetchSchedule, retriveFieldCardInfo} from '../components/datetabs.js'
 import GMaps from 'gmaps/gmaps.js';
 
 const addMarkersToMap =(mapElement, map) => {
@@ -20,11 +22,12 @@ const insertMapOnDOM = () => {
       el: '#map',
       lat: 0,
       lng: 0,
-      idle: function(e) {
-        // console.log("boundries", e.getBounds());
-        // console.log("lat", e.getCenter().lat());
-        // console.log("lng", e.getCenter().lng());
-      }
+      idle: function (e) {
+        if (document.readyState === "complete") {
+          clearTheDOM();
+          fetchSchedule(e.getBounds(), retriveFieldCardInfo, "map");
+        }
+      },
     })
     addMarkersToMap(mapElement, map);
   }
