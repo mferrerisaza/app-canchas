@@ -84,8 +84,8 @@ module ApplicationHelper
     end
   end
 
-  def set_price_per_peson(price, number_players)
-    humanized_money(price / number_players)
+  def set_price_per_person(price, number_players)
+    "$ #{humanized_money(price / number_players / 100)}"
   end
 
   def set_free_slots(number_players, total_players)

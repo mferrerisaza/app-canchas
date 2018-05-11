@@ -15,11 +15,11 @@ const makeChangesIfToggleChanges = (cardId, modalPrice, price, capacity) => {
     if (modalStatus) {
       modalPrice.querySelector("p").innerHTML = "";
       modalPrice.querySelector("p").innerHTML = `$ ${(price/100/capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
-      modalSplitableDiv.querySelector("input").value = true;
+      document.querySelector("#splitable").value = true;
     } else {
       modalPrice.querySelector("p").innerHTML = "";
       modalPrice.querySelector("p").innerHTML = `$ ${(price/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
-      modalSplitableDiv.querySelector("input").value = false;
+      document.querySelector("#splitable").value = false;
     }
   })
 }

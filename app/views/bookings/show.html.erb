@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Tu proceso de reserva ha sido exitoso</h1>
-  <p>Código de reserva: ??????</p>
+  <p>Código de reserva: <%= @booking.id %></p>
   <div class="row">
     <div class="col-sm-8">
       <div class="players-box">
@@ -36,7 +36,7 @@
                   <p class="player-status-pending">Pendiente</p>
                 <% end %>
                 <% if @booking.splitable %>
-                  <p> <%= set_price_per_peson(@booking.field.price_cents, @booking.number_players)  %></p>
+                  <p> <%= set_price_per_person(@booking.field.price_cents, @booking.number_players)  %></p>
                 <% end %>
               </div>
             <!-- </div> -->
@@ -124,14 +124,4 @@
     </div>
   </div>
 </div>
-
-  <h3> Sede:  <%= @booking.field.business.name %> </h3>
-  <h3> Fecha de la reserva:  <%= @booking.date %> </h3>
-  <h3> Referencia de la cancha: <%= @booking.field.name %> </h3>
-  <h3> Cantidad de jugadores: <%= @booking.number_players %> </h3>
-  <ul>
-    <% @booking.users.each do |player| %>
-      <li> <%= player.email %> </li>
-    <% end %>
-  </ul>
 

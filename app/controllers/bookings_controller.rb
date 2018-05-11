@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
       redirect_to new_user_registration_path
     else
       @booking = Booking.new(booking_params)
+      byebug
       @booking.booking_players << BookingPlayer.new(user: current_user)
       check_if_save
     end
@@ -33,7 +34,7 @@ class BookingsController < ApplicationController
 
   def check_if_save
     if @booking.save
-      render :show
+      redirect_to booking_path(@booking)
     else
       redirect_to fields_path
     end

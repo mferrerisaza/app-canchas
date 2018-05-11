@@ -7,6 +7,7 @@
   p {
     margin: 0px;
   };
+  margin-bottom: 23px;
 }
 
 .players-box-title {
@@ -43,6 +44,10 @@
 
 .player-status-paid {
   color: green;
+}
+
+.player-box-body-player-payment-status{
+  text-align: center;
 }
 
 .booking-box-business-picture {
@@ -84,6 +89,8 @@
     font-weight: 600;
     margin-top: 5px;
     margin-bottom: 0px;
+    text-align: center;
+    font-size: 23px;
   }
   h4 {
     margin-top: 10px;
