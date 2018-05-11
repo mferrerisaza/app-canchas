@@ -11,7 +11,7 @@
   </div>
   <hr color="gray" size=0.75>
   <div class="booking-box-bill-mid booking-box-info-mid">
-    <div class="player-box-body-player booking-box-bill-total">
+    <div class="billing-box-text booking-box-bill-total">
       <div class="booking-box-bill-text">
         <p>Precio x hora</p>
       </div>
@@ -22,13 +22,25 @@
         </p>
       </div>
     </div>
-    <div class="player-box-body-player booking-box-bill-paid">
+    <% price_per_person = set_price_per_person(@booking.field.price_cents,
+                          @booking.number_players)  %>
+    <% if @booking.splitable %>
+      <div class="billing-box-text booking-box-bill-per_player">
+        <div class="booking-box-bill-text">
+          <p>Precio por jugador</p>
+        </div>
+        <div class="booking-box-bill-text">
+          $ <%= humanized_money(price_per_person) %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="billing-box-text booking-box-bill-paid">
       <div class="booking-box-bill-text">
         <p>
           <% paid_players = set_paid_players(@booking.splitable,
             @booking.number_players,
-            @booking.field.price_cents,
-            count_paid_players(@booking.booking_players))  %>
+            @booking.field.price_cents, @booking.booking_players)  %>
          <%= paid_players %>
         </p>
       </div>
@@ -36,8 +48,7 @@
         <p>
           <% total_paid = total_paid(
                 count_paid_players(@booking.booking_players),
-                set_price_per_person(@booking.field.price_cents,
-                                    @booking.number_players)) %>
+                price_per_person) %>
           $ <%= humanize_price(total_paid) %>
         </p>
       </div>
@@ -45,9 +56,9 @@
   </div>
   <hr color="gray" size=0.75>
   <div class="booking-box-bill-bottom booking-box-info-bottom">
-    <div class="player-box-body-player booking-box-bill-paid">
+    <div class="billing-box-text booking-box-bill-paid">
       <div class="booking-box-info-title">
-        <h2>Pendiente x pagar</h2>
+        <h2>Pendiente por pagar</h2>
       </div>
       <div class="booking-box-bill-text booking-box-bill-total-text">
         <p>

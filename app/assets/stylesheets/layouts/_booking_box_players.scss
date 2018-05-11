@@ -2,7 +2,7 @@
   background: #FFFFFF;
   box-sizing: border-box;
   box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
-  padding: 10px 20px;
+  padding: 10px 20px 30px 20px;
   border-radius: 3px;
   p {
     margin: 0px;
@@ -214,6 +214,13 @@ hr {
 
 .mobile-simple-text {
   padding: 0 20px;
+}
+
+.billing-box-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
 }
 
 // .grid {

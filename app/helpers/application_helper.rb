@@ -108,9 +108,9 @@ module ApplicationHelper
     end
   end
 
-  def set_paid_players(splitable, n_players, field_price, paid_players)
+  def set_paid_players(splitable, n_players, paid_players, players)
     if splitable
-      "#{paid_players} de #{n_players} han pagado x $ #{humanized_money(set_price_per_person(field_price, n_players))}"
+      "#{count_paid_players(players)} de #{n_players} han pagado"
     else
       "Pagado a la fecha"
     end
