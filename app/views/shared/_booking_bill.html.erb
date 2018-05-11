@@ -36,11 +36,16 @@
     <% end %>
 
     <div class="billing-box-text booking-box-bill-paid">
-      <div class="booking-box-bill-text">
+      <div class="booking-box-bill-text" name="Pagan-todos-o-individual">
         <p>
-          <% paid_players = set_paid_players(@booking.splitable,
-            @booking.number_players,
-            @booking.field.price_cents, @booking.booking_players)  %>
+          <%
+            paid_players =
+              set_paid_players(@booking.splitable,
+                @booking.number_players,
+                count_paid_players(
+                  @booking.booking_players)
+              )
+            %>
          <%= paid_players %>
         </p>
       </div>
