@@ -1,12 +1,46 @@
-<div class="container">
-  <h1>Tu proceso de reserva ha sido exitoso</h1>
-  <h3> Sede:  <%= @booking.field.business.name %> </h3>
-  <h3> Fecha de la reserva:  <%= @booking.date %> </h3>
-  <h3> Referencia de la cancha: <%= @booking.field.name %> </h3>
-  <h3> Cantidad de jugadores: <%= @booking.number_players %> </h3>
-  <ul>
-    <% @booking.users.each do |player| %>
-      <li> <%= player.email %> </li>
-    <% end %>
-  </ul>
+<div class="desktop">
+  <div class="container">
+    <h1>Cancha reservada</h1>
+    <p>Código de reserva: <%= @booking.id %></p>
+    <div class="row">
+      <div class="col-sm-4 players">
+        <%= render 'shared/booking_players', booking: @booking %>
+      </div>
+      <div class="booking-right-section">
+        <div class="col-sm-5">
+          <%= render 'shared/booking_information', booking: @booking %>
+        </div>
+        <div class="col-sm-3">
+          <%= render 'shared/booking_bill', booking: @booking %>
+        </div>
+        <div class="col-sm-5">
+          <%= image_tag "cancha.png", class: "booking-img-field" %>
+        </div>
+        <div class="col-sm-3">
+          <%= render 'shared/business_logo', booking: @booking %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="mobile">
+  <div class="business-banner">
+    <%= render 'shared/business_logo', booking: @booking %>
+  </div>
+  <h1 class="mobile-title mobile-simple-text">
+    Cancha reservada
+  </h1>
+  <p class="mobile-subtitle mobile-simple-text">
+    Código de reserva: <%= @booking.id %>
+  </p>
+  <div class="booking-information">
+    <%= render 'shared/booking_information', booking: @booking %>
+  </div>
+  <div class="booking-billing">
+    <%= render 'shared/booking_bill', booking: @booking %>
+  </div>
+  <div class="booking-players">
+    <%= render 'shared/booking_players', booking: @booking %>
+  </div>
+</div>
+
