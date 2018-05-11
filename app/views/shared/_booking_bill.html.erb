@@ -1,12 +1,14 @@
 <div class="booking-box-info">
-  <div class="booking-box-bill-top booking-box-info-top">
-    <div class="booking-box-info-title">
-      <h2>Pago</h2>
-    </div>
-    <div class="booking-box-info-subtitle booking-box-info-text-center booking-box-info-main-subtitle booking-bill-subtitle">
-      <% if @booking.splitable %>
-        <p>Tarifa dividida entre todos los jugadores</p>
-      <% end %>
+  <div class="booking-box-bill-top booking-box-info-top booking-box-bil-top ">
+    <div class="booking-box-bill-top-center">
+      <div class="booking-box-info-title">
+        <h2>Pago</h2>
+      </div>
+      <div class="booking-box-info-subtitle booking-box-info-text-center booking-box-info-main-subtitle booking-bill-subtitle">
+        <% if @booking.splitable %>
+          <p>Tarifa dividida entre todos los jugadores</p>
+        <% end %>
+      </div>
     </div>
   </div>
   <hr color="gray" size=0.75>
@@ -62,7 +64,7 @@
   <hr color="gray" size=0.75>
   <div class="booking-box-bill-bottom booking-box-info-bottom">
     <div class="billing-box-text booking-box-bill-paid">
-      <div class="booking-box-info-title">
+      <div class="booking-box-info-title billing-total">
         <h2>Pendiente por pagar</h2>
       </div>
       <div class="booking-box-bill-text booking-box-bill-total-text">
