@@ -23,7 +23,7 @@ class Booking < ApplicationRecord
 
   def self.build_schedule(args = {})
     dates = ApplicationController.helpers.extract_date(args)
-    date_range = (dates[0]...dates[0] + 1)
+    date_range = (dates[0]...dates[0] + 1.day)
     booking_hash = {}
     date_range.each do |date|
       field_hash = {}

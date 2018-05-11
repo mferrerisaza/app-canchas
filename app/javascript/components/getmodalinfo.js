@@ -36,7 +36,6 @@ const renderToggle = () => {
 };
 
 const getToggle = (cardId) => {
-  console.log(document.querySelector(".card-toggle").querySelector(".splitable"));
   return document.querySelector(".card-toggle").querySelector(".splitable").checked === true;
 };
 

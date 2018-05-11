@@ -1,11 +1,12 @@
 class FieldsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show schedule]
-  after_action :verify_authorized, except: %i[index show schedule]
+  skip_before_action :authenticate_user!, only: %i[index show schedule show_all]
+  after_action :verify_authorized, except: %i[index show schedule show_all]
+  skip_after_action :verify_policy_scoped, only: :index
 
   def index
-    set_businesses
     set_schedule
     set_fields
+    set_businesses
     set_dates
     set_markers
   end
@@ -13,6 +14,17 @@ class FieldsController < ApplicationController
   def show
     @field = Field.find(params[:id])
     render json: @field, include:
+      [
+        business:
+        {
+          only: %i[name address phone rating latitude longitude photo]
+        }
+      ]
+  end
+
+  def show_all
+    @fields = Field.all
+    render json: @fields, include:
       [
         business:
         {
@@ -37,12 +49,16 @@ class FieldsController < ApplicationController
   private
 
   def filtering_params
-    params.slice(:dates, :start_time, :end_time, :capacity_limit, :query)
+    params.slice(:dates, :start_time, :end_time, :capacity_limit,
+                 :query, :min_lng, :max_lng, :min_lat, :max_lat)
   end
 
   def set_businesses
-    @businesses = policy_scope(Business.where.not(latitude: nil,
-                                                  longitude: nil))
+    @businesses = @fields.map(&:business)
+    @businesses.uniq!
+    @businesses.reject! do |business|
+      business.latitude.nil? && business.longitude.nil?
+    end
   end
 
   def set_schedule
