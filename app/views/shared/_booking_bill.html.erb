@@ -1,0 +1,59 @@
+<div class="booking-box-info">
+  <div class="booking-box-bill-top booking-box-info-top">
+    <div class="booking-box-info-title">
+      <h2>Cargos</h2>
+    </div>
+    <div class="booking-box-info-subtitle booking-box-info-text-center booking-box-info-main-subtitle booking-bill-subtitle">
+      <% if @booking.splitable %>
+        <p>Tarifa dividida entre todos los jugadores</p>
+      <% end %>
+    </div>
+  </div>
+  <hr color="gray" size=0.75>
+  <div class="booking-box-bill-mid booking-box-info-mid">
+    <div class="player-box-body-player booking-box-bill-total">
+      <div class="booking-box-bill-text">
+        <p>Precio x hora</p>
+      </div>
+      <div class="booking-box-bill-text">
+        <p>
+          <% total_price = set_total_price(@booking.field.price_cents) %>
+          $ <%= humanize_price(total_price) %>
+        </p>
+      </div>
+    </div>
+    <div class="player-box-body-player booking-box-bill-paid">
+      <div class="booking-box-bill-text">
+        <p>
+          <% paid_players = set_paid_players(@booking.splitable,
+            @booking.number_players,
+            @booking.field.price_cents,
+            count_paid_players(@booking.booking_players))  %>
+         <%= paid_players %>
+        </p>
+      </div>
+      <div class="booking-box-bill-text">
+        <p>
+          <% total_paid = total_paid(
+                count_paid_players(@booking.booking_players),
+                set_price_per_person(@booking.field.price_cents,
+                                    @booking.number_players)) %>
+          $ <%= humanize_price(total_paid) %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <hr color="gray" size=0.75>
+  <div class="booking-box-bill-bottom booking-box-info-bottom">
+    <div class="player-box-body-player booking-box-bill-paid">
+      <div class="booking-box-info-title">
+        <h2>Pendiente x pagar</h2>
+      </div>
+      <div class="booking-box-bill-text booking-box-bill-total-text">
+        <p>
+          $ <%= humanize_price(total_price - total_paid) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
