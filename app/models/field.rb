@@ -22,6 +22,9 @@ class Field < ApplicationRecord
     if args[:capacity_limit].present?
       fields = fields.capacity_limit(args[:capacity_limit])
     end
+    if args[:min_lng].present? && args[:max_lng].present? && args[:min_lat].present? && args[:max_lat].present?
+      fields = fields.where(business: Business.search(args[:min_lat].to_f, args[:max_lat].to_f, args[:min_lng].to_f, args[:max_lng].to_f))
+    end
     fields = fields.query(args[:query]) if args[:query].present?
     fields
   end
