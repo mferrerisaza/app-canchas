@@ -24,8 +24,10 @@ const insertMapOnDOM = () => {
       lng: 0,
       idle: function (e) {
         if (document.readyState === "complete") {
+          document.querySelector(".loader-div").style.visibility = "visible";
           clearTheDOM();
           fetchSchedule(e.getBounds(), retriveFieldCardInfo, "map");
+          setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 1000);
         }
       },
     })
