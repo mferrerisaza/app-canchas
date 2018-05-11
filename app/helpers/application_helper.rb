@@ -84,8 +84,16 @@ module ApplicationHelper
     end
   end
 
+  def set_total_price(price)
+    price / 100
+  end
+
   def set_price_per_person(price, number_players)
-    "$ #{humanized_money(price / number_players / 100)}"
+    price / number_players / 100
+  end
+
+  def humanize_price(price)
+    humanized_money(price)
   end
 
   def set_free_slots(number_players, total_players)
@@ -98,5 +106,25 @@ module ApplicationHelper
     else
       cl_image_tag player.photo, class: "avatar avatar-lg"
     end
+  end
+
+  def set_paid_players(splitable, n_players, field_price, paid_players)
+    if splitable
+      "#{paid_players} de #{n_players} han pagado x $ #{humanized_money(set_price_per_person(field_price, n_players))}"
+    else
+      "Pagado a la fecha"
+    end
+  end
+
+  def count_paid_players(players)
+    players.select {|player| player.player_pay_status == true}.count
+  end
+
+  def total_paid(n_paid_players, price_per_player)
+    n_paid_players * price_per_player
+  end
+
+  def pending_to_pay(total_paid, total_price)
+    total_price - total_paid
   end
 end

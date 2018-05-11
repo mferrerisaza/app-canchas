@@ -2,7 +2,7 @@
   <h1>Tu proceso de reserva ha sido exitoso</h1>
   <p>Código de reserva: <%= @booking.id %></p>
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-4">
       <div class="players-box">
         <div class="players-box-title">
           <div class="player-box-title-number-players">
@@ -36,7 +36,13 @@
                   <p class="player-status-pending">Pendiente</p>
                 <% end %>
                 <% if @booking.splitable %>
-                  <p> <%= set_price_per_person(@booking.field.price_cents, @booking.number_players)  %></p>
+                  <% price_per_person = set_price_per_person(
+                              @booking.field.price_cents,
+                              @booking.number_players
+                              ) %>
+                  <p> $ <%= humanize_price(price_per_person)
+                        %>
+                  </p>
                 <% end %>
               </div>
             <!-- </div> -->
@@ -64,21 +70,13 @@
       </div>
     </div>
     <div class="booking-right-section">
-      <div class="col-sm-4">
-        <%= business_banner = business_logo_or_generic(@booking.field.business, "booking-box-business-picture")%>
-          <div
-            style="background-image:
-              linear-gradient(rgba(0,0,0, 0.4),
-              rgba(0, 0, 0, 0.4)),
-              url(<% business_banner %>);"
-            >
-          </div>
+      <div class="col-sm-5 info general">
         <div class="booking-box-info">
           <div class="booking-box-info-top">
             <div class="booking-box-info-title booking-box-info-business-name booking-box-info-text-center">
               <h2> <%= @booking.field.business.name  %> </h2>
             </div>
-            <div class="booking-box-info-subtitle booking-box-info-date-field-name booking-box-info-text-center">
+            <div class="booking-box-info-subtitle booking-box-info-date-field-name booking-box-info-text-center booking-box-info-main-subtitle">
               <p> <%= @booking.field.name %> </p>
             </div>
           </div>
@@ -118,6 +116,82 @@
                 <%= link_to "Ver sede", "#", class:"btn btn-additional-info"  %>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 cargos">
+        <div class="booking-box-info">
+          <div class="booking-box-bill-top booking-box-info-top">
+            <div class="booking-box-info-title">
+              <h2>Cargos</h2>
+            </div>
+            <div class="booking-box-info-subtitle booking-box-info-text-center booking-box-info-main-subtitle">
+              <% if @booking.splitable %>
+                <p>Tarifa dividida entre todos los jugadores</p>
+              <% end %>
+            </div>
+          </div>
+          <hr color="gray" size=0.75>
+          <div class="booking-box-bill-mid booking-box-info-mid">
+            <div class="player-box-body-player booking-box-bill-total">
+              <div class="booking-box-bill-text">
+                <p>Precio x hora</p>
+              </div>
+              <div class="booking-box-bill-text">
+                <p>
+                  <% total_price = set_total_price(@booking.field.price_cents) %>
+                  $ <%= humanize_price(total_price) %>
+                </p>
+              </div>
+            </div>
+            <div class="player-box-body-player booking-box-bill-paid">
+              <div class="booking-box-bill-text">
+                <p>
+                  <% paid_players = set_paid_players(@booking.splitable,
+                    @booking.number_players,
+                    @booking.field.price_cents,
+                    count_paid_players(@booking.booking_players))  %>
+                 <%= paid_players %>
+                </p>
+              </div>
+              <div class="booking-box-bill-text">
+                <p>
+                  <% total_paid = total_paid(
+                        count_paid_players(@booking.booking_players),
+                        set_price_per_person(@booking.field.price_cents,
+                                            @booking.number_players)) %>
+                  $ <%= humanize_price(total_paid) %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr color="gray" size=0.75>
+          <div class="booking-box-bill-bottom booking-box-info-bottom">
+            <div class="player-box-body-player booking-box-bill-paid">
+              <div class="booking-box-info-title">
+                <h2>Pendiente x pagar</h2>
+              </div>
+              <div class="booking-box-bill-text booking-box-bill-total-text">
+                <p>
+                  $ <%= humanize_price(total_price - total_paid) %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5 imagen-cancha">
+        <%= image_tag "cancha.png", class: "booking-img-field" %>
+      </div>
+      <div class="col-sm-3 imagen-logo">
+        <div class="booking-business-logo">
+          <%= business_banner = business_logo_or_generic(@booking.field.business, "booking-box-business-picture")%>
+          <div
+            style="background-image:
+              linear-gradient(rgba(0,0,0, 0.4),
+              rgba(0, 0, 0, 0.4)),
+              url(<% business_banner %>);"
+            >
           </div>
         </div>
       </div>

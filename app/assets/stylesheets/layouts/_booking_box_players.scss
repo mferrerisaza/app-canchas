@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 40px;
+  padding: 10px 10px;
 }
 
 .player-box-body-player-name {
@@ -61,8 +61,8 @@
 }
 
 .booking-right-section {
-    position: sticky !important;
-    top: 15px;
+    // position: sticky !important;
+    // top: 15px;
 }
 
 .booking-box-info {
@@ -71,11 +71,21 @@
   box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
   padding: 10px 20px;
   border-radius: 0px 0px 3px 3px;
-  margin-top: 15px;
+  margin-bottom: 15px;
   height: 52vh;
   p {
     margin: 0px;
   };
+}
+
+.booking-box-info-top {
+  height: 25%;
+}
+.booking-box-info-mid {
+  height: 37.5%;
+}
+.booking-box-info-bottom {
+  height: 37.5%;
 }
 
 .booking-box-info-text-center {
@@ -133,6 +143,53 @@ hr {
 }
 
 .booking-box-info-subtitle {
-  margin-top: 0px;
+  margin-top: 2px;
   margin-bottom: 10px;
 }
+
+.booking-box-info-main-subtitle {
+  margin-top: 5px;
+}
+
+.booking-img-field {
+  width:100%;
+  height: 40vh;
+}
+
+.booking-box-bill-mid {
+  padding: 16px 0px;
+}
+
+.booking-box-bill-bottom {
+  h2 {
+    text-align: left;
+    font-size: 20px;
+  }
+  p {
+    text-align: right;
+  }
+  display: flex;
+
+}
+
+.booking-box-bill-total-text {
+  width: 40%;
+}
+
+.booking-box-bill-paid {
+  width: 100%;
+}
+
+.booking-bill-subtitle {
+  text-align: center;
+  font-size: 15px;
+}
+
+.booking-box-bill-text {
+  font-size: 16px;
+}
+
+
+
+
+

@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
       redirect_to new_user_registration_path
     else
       @booking = Booking.new(booking_params)
-      byebug
       @booking.booking_players << BookingPlayer.new(user: current_user)
       check_if_save
     end
