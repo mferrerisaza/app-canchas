@@ -49,7 +49,7 @@ class FieldsController < ApplicationController
   private
 
   def filtering_params
-    params.slice(:dates, :start_time, :end_time, :capacity_limit, :query)
+    params.slice(:dates, :start_time, :end_time, :capacity_limit, :query, :min_lng, :max_lng, :min_lat, :max_lat)
   end
 
   def set_businesses
