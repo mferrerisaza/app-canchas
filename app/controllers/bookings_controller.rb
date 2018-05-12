@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   def create
     if current_user.nil?
       session[:booking] = booking_params
-      redirect_to new_user_registration_path
+      redirect_to new_user_session_path
     else
       @booking = Booking.new(booking_params)
       @booking.booking_players << BookingPlayer.new(user: current_user)
