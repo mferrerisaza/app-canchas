@@ -29,18 +29,22 @@
 
 .booking-box-info-top {
   height: 25%;
+  padding: 5px 0px;
 }
 .booking-box-info-mid {
   height: 37.5%;
+  padding: 5px 0px;
 }
 .booking-box-info-bottom {
   height: 37.5%;
+  padding: 5px 0px;
+  font-size: 12px !important;
 }
 
 .booking-box-info-text-center {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-top: 10px;
 }
 
@@ -98,4 +102,15 @@ hr {
 .booking-img-field {
   width:100%;
   height: 40vh;
+}
+
+.booking-box-info-space-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.margin-rigt-icon {
+  margin-right: 5px;
 }

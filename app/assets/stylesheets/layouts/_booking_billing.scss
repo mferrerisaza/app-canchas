@@ -5,8 +5,8 @@
 .booking-box-bill-bottom {
   display: flex;
   h2 {
-    text-align: left;
-    font-size: 20px;
+    text-align: left !important;
+    font-size: 15px;
   }
   p {
     text-align: right;
@@ -43,6 +43,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px 10px;
+  margin: 10px 0px;
 }
 
 .booking-box-info-top {
@@ -52,9 +53,16 @@
 }
 
 .billing-total {
-  h2 {
-    text-align: left !important;
-    font-size: 18px !important;
-  }
-  width:50%;
+  width:60%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 7px;
+}
+
+.vl {
+  border-left: 4px solid $my-blue;
+  height: 30px;
+  position: relative;
+  right: 3px;
 }
