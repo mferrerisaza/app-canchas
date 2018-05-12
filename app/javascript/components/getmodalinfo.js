@@ -50,7 +50,7 @@ const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalsel
   const bookingTime = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].dataset.time
   const bookingDateTime = new Date(bookingDate[0],bookingDate[1]-1, bookingDate[2], bookingTime, 0);
   modalBusinessName.insertAdjacentHTML("beforeend", `${data.business.name}`);
-  modalFieldName.insertAdjacentHTML("beforeend", `<i class="em em-soccer"></i>${data.name}`);
+  modalFieldName.insertAdjacentHTML("beforeend", `${data.name}`);
   modalselectedHour.insertAdjacentHTML("beforeend", `${formatHour(parseInt(bookingTime, 10))} - ${formatHour(parseInt(bookingTime, 10) + 1)}`);
   modalselectedDate.insertAdjacentHTML("beforeend", `${bookingDate.join('-')}`);
   modalBusinessAddress.insertAdjacentHTML("beforeend", `${data.business.address}`);
