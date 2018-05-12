@@ -16,6 +16,7 @@
   <hr color="gray" size=0.75 margin = "5px 0 5px 0">
   <div class="booking-box-info-mid">
     <div class="booking-box-info-title booking-box-info-text-center">
+      <i class="far fa-clock margin-rigt-icon"></i>
       <h4>Horario</h4>
     </div>
     <div class="booking-box-info-subtitle
@@ -23,7 +24,7 @@
             booking-box-info-text-center">
       <p> <%= l(@booking.date.to_date, format: '%A %d de %B') %> </p>
     </div>
-    <div class="booking-box-info-time booking-box-info-text-center">
+    <div class="booking-box-info-space-around">
       <div class="booking-box-info-hours hours-beginig">
         <h6>Hora de inicio</h6>
         <p> <%= format_hour(@booking.date.hour) %> </p>
@@ -37,6 +38,7 @@
   <hr color="gray" size=0.75>
   <div class="booking-box-info-bottom">
     <div class="booking-box-info-title booking-box-info-text-center">
+      <i class="fas fa-map-marker-alt margin-rigt-icon"></i>
       <h4>Dirección</h4>
     </div>
     <div class="booking-box-info-subtitle
@@ -44,7 +46,7 @@
             booking-box-info-text-center">
       <p> <%= @booking.field.business.address %> </p>
     </div>
-    <div class="booking-box-info-links booking-box-info-text-center">
+    <div class="booking-box-info-links booking-box-info-space-around">
       <div class="booking-box-info-links">
         <%= link_to "Como llegar", "#", class:"btn btn-additional-info"  %>
       </div>
