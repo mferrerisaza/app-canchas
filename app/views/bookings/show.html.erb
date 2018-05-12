@@ -14,7 +14,10 @@
           <%= render 'shared/booking_bill', booking: @booking %>
         </div>
         <div class="col-sm-5">
-          <%= image_tag "cancha.png", class: "booking-img-field" %>
+          <div class="booking-image-field">
+            <%= render 'shared/booking_field', booking: @booking %>
+          </div>
+          <%#= image_tag "cancha.png", class: "booking-img-field" %>
         </div>
         <div class="col-sm-3">
           <%= render 'shared/business_logo', booking: @booking %>
