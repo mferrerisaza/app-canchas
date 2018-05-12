@@ -18,7 +18,7 @@
   background: #FFFFFF;
   box-sizing: border-box;
   box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 0px 0px 3px 3px;
   margin-bottom: 15px;
   height: 52vh;
@@ -39,8 +39,9 @@
 
 .booking-box-info-text-center {
   display: flex;
-  justify-content: space-around;
-  align-items: center
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .booking-box-info-title {
@@ -52,7 +53,7 @@
     font-size: 22px;
   }
   h4 {
-    margin-top: 10px;
+    margin-top: 1px;
     margin-bottom: 0px;
     font-size: 18px;
   }
