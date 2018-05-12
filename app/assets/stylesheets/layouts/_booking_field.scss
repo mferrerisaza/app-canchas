@@ -1,0 +1,25 @@
+.field-players {
+  background-image: asset-url('cancha.png');
+  height: 40vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  p {
+    font-size: 10px;
+    text-align: center;
+  }
+}
+
+.player-info {
+  margin: 5px;
+}
+
+.field-players-container {
+  width: 90%;
+  position: relative;
+  right: 10px;
+  top: 10px;
+}

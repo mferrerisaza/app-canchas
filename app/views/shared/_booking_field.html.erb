@@ -1,0 +1,12 @@
+<div class="field-players">
+  <div class="field-players-container">
+    <div class="row">
+      <% confirmed_players(@booking.booking_players).each do |player| %>
+        <div class="col-sm-2">
+          <%= booking_avatar(player.user) %>
+          <p> <%= player.user.email %> </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
