@@ -13,12 +13,12 @@ const makeChangesIfToggleChanges = (cardId, modalPrice, price, capacity) => {
   modalToggleStatus.addEventListener("change", (event) => {
     const modalStatus = event.currentTarget.checked;
     if (modalStatus) {
-      modalPrice.querySelector("p").innerHTML = "";
-      modalPrice.querySelector("p").innerHTML = `$ ${(price/100/capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
+      modalPrice.innerHTML = "";
+      modalPrice.innerHTML = `<i class="fas fa-dollar-sign"></i>${(price/100/capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
       document.querySelector("#splitable").value = true;
     } else {
-      modalPrice.querySelector("p").innerHTML = "";
-      modalPrice.querySelector("p").innerHTML = `$ ${(price/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
+      modalPrice.innerHTML = "";
+      modalPrice.innerHTML = `<i class="fas fa-dollar-sign"></i>${(price/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
       document.querySelector("#splitable").value = false;
     }
   })
@@ -45,17 +45,18 @@ const cleanInnerTexts = (fieldsArray) => {
   });
 };
 
-const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv) => {
+const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalselectedDate, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv) => {
   const bookingDate = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].value.split("-");
   const bookingTime = document.querySelector(".schedule-btn.btn.btn-xs.active").children[0].dataset.time
-  const bookingDateTime = new Date(Date.UTC(bookingDate[0],bookingDate[1]-1, bookingDate[2], bookingTime, 0)).toUTCString();
-  modalBusinessName.insertAdjacentHTML("beforeend", `<h3 dataset=${cardId}> ${data.business.name} </h3>`);
-  modalFieldName.insertAdjacentHTML("beforeend", `<h5> ${data.name} </h5>`);
-  modalselectedHour.insertAdjacentHTML("beforeend", `Reservar esta cancha el ${bookingDate} entre ${formatHour(parseInt(bookingTime, 10))} y ${formatHour(parseInt(bookingTime, 10) + 1)}`);
-  modalBusinessAddress.insertAdjacentHTML("beforeend", `<p> ${data.business.address} </p>`);
+  const bookingDateTime = new Date(bookingDate[0],bookingDate[1]-1, bookingDate[2], bookingTime, 0);
+  modalBusinessName.insertAdjacentHTML("beforeend", `${data.business.name}`);
+  modalFieldName.insertAdjacentHTML("beforeend", `<i class="em em-soccer"></i>${data.name}`);
+  modalselectedHour.insertAdjacentHTML("beforeend", `${formatHour(parseInt(bookingTime, 10))} - ${formatHour(parseInt(bookingTime, 10) + 1)}`);
+  modalselectedDate.insertAdjacentHTML("beforeend", `${bookingDate.join('-')}`);
+  modalBusinessAddress.insertAdjacentHTML("beforeend", `${data.business.address}`);
   modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle());
-  modalCapacity.insertAdjacentHTML("beforeend", `<p> Número de jugadores: ${data.capacity} </p>`);
-  modalPrice.insertAdjacentHTML("beforeend", `<p> $ ${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} </p>`);
+  modalCapacity.insertAdjacentHTML("beforeend", `${data.capacity} Jugadores`);
+  modalPrice.insertAdjacentHTML("beforeend", `<i class="fas fa-dollar-sign"></i>${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`);
   document.querySelector("#field_id").value = parseInt(cardId, 10);
   document.querySelector("#bookingDate").value = bookingDateTime;
   document.querySelector("#splitable").value = getToggle(cardId) ;
@@ -63,39 +64,24 @@ const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalsel
 };
 
 const sendInfoToTheModal = (cardId) => {
-  const modalBusinessName = document.querySelector(".modal-business-name")
+  const modalBusinessName = document.querySelector(".modal-business-name-header > h3")
   const modalFieldName = document.querySelector(".modal-field-name")
-  const modalselectedHour = document.querySelector(".modal-selected-hour")
-  const modalBusinessAddress = document.querySelector(".modal-business-address")
-  const modalCapacity = document.querySelector(".modal-capacity")
-  const modalPrice = document.querySelector(".modal-price")
+  const modalselectedHour = document.querySelector(".modal-selected-time > p")
+  const modalselectedDate = document.querySelector(".modal-selected-date > p")
+  const modalBusinessAddress = document.querySelector(".modal-business-address > p")
+  const modalCapacity = document.querySelector(".modal-capacity > p")
+  const modalPrice = document.querySelector(".modal-price-value")
   const modalSplitableDiv = document.querySelector(".modal-splitable");
-  const fieldsArray = [modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalSplitableDiv, modalCapacity, modalPrice];
+  const fieldsArray = [modalBusinessName, modalFieldName, modalselectedHour,  modalselectedDate, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv];
 
   const url = ('/fields/' + cardId)
   fetch(url)
     .then(response => response.json())
     .then((data) => {
       cleanInnerTexts(fieldsArray);
-      addInnerTexts(data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv);
+      addInnerTexts(data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalselectedDate, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv);
       makeChangesIfToggleChanges(cardId, modalPrice, data.price_cents, data.capacity)
     });
 };
-const getCardId = (event) => {
-    const cardId = event.currentTarget.dataset.id;
-    sendInfoToTheModal(cardId);
-  };
 
-const addListenerOnClick = (btn) => {
-  btn.addEventListener("click", getCardId);
-};
-
-export default function selectCtaButtons() {
-  const ctaButtons = document.querySelectorAll(".card-cta");
-  ctaButtons.forEach(addListenerOnClick);
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-  selectCtaButtons();
-});
-
+export default sendInfoToTheModal;
