@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   resources :fields, only: [:new, :show, :create, :index]
   get "/schedule", to: "fields#schedule", as: "schedule"
 
-  get "/booking/:id", to: "bookings#show", as: "booking"
-  resources :bookings, only: [ :create ]
+  resources :bookings, only: [:show, :create]
 end

@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
     if session[:booking].present?
       @booking = Booking.create(session[:booking])
       session[:booking] = nil
+      @booking.booking_players << BookingPlayer.new(user: current_user)
       flash[:notice] = 'Has iniciado sesión con éxito y
                         tu reserva se ha registrado'
       booking_path(@booking)
