@@ -1,3 +1,5 @@
+import sendInfoToTheModal from './getmodalinfo.js'
+
 const resetOtherCards = (cardSection) => {
     cardSection.classList.add("card-collapsed");
     cardSection.parentNode.querySelector(".schedule-dropdown").querySelector("p").innerHTML= "VER HORARIOS";
@@ -32,6 +34,8 @@ const addTimeBtnClickListener = (element) => {
   element.style.cursor = "pointer";
   element.addEventListener("click", (event) => {
     const bookingBtn = event.currentTarget.parentNode.parentNode.parentNode.querySelector(".card-cta.btn.btn-cta");
+    const cardId = bookingBtn.dataset.id;
+    sendInfoToTheModal(cardId);
     bookingBtn.innerHTML =  "RESERVAR";
     bookingBtn.disabled = false;
   });
