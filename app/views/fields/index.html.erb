@@ -25,9 +25,16 @@
   <div class="main-container">
     <div class="cards-container">
       <div class="row">
-        <% @fields.each do |field| %>
-          <div class="col-xs-12 col-sm-6">
-            <%= render 'shared/field-card', field: field %>
+        <% unless @fields.empty? %>
+          <% @fields.each do |field| %>
+            <div class="col-xs-12 col-sm-6">
+              <%= render 'shared/field-card', field: field %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-xs-12">
+            <h4> No hemos encontrado resultados para tu busqueda. </h4>
+            <h5> Intenta con otros criterios. </h5>
           </div>
         <% end %>
       </div>

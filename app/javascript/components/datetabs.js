@@ -147,6 +147,15 @@ export function retriveFieldCardInfo (fields, tabDate, whoCall) {
     } else {
       clearTheDOM();
     }
+
+    if (text === "") {
+      text =
+            `<div class="col-xs-12">
+              <h4> No hemos encontrado resultados para tu busqueda.</h4>
+              <h5>Intenta con otros criterios.</h5>
+            </div>`
+    }
+
     document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
     setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 1000);
     retriveDropdowns();
