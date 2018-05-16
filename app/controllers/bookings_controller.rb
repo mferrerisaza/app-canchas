@@ -27,12 +27,8 @@ class BookingsController < ApplicationController
 
   def check_if_save
     if @booking.save
-<<<<<<< HEAD
       BookingMailer.send_request(@booking, current_user)
-      redirect_to booking_path(@booking)
-=======
       redirect_to edit_booking_user_path(@booking, current_user)
->>>>>>> a892bb553de5921613894ba15fbb817cbe9c1106
     else
       redirect_to fields_path
     end
