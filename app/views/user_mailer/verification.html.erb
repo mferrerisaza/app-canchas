@@ -1,5 +1,5 @@
 <div class="verification-mail" style="padding: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,Geneva,sans-serif">
-  <p> <%=  @greeting  %> <%= @user.first_name %>,</p>
+  <p> <%=  @greeting  %><%= " #{@user.first_name}" unless @user.first_name.nil?  %>,</p>
 
   <p>Gracias por registrarte en CAPP, tu sitio para reservar canchas online.</p>
   <p>Para comenzar a reservar, por favor confirma tu cuenta: </p>

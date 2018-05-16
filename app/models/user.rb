@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   private
 
-  def send_welcome_email
+  def send_verification_email
     UserMailer.verification(self).deliver_now
   end
 

@@ -7,6 +7,6 @@ class UserMailer < ApplicationMailer
   def verification(user)
     @greeting = t('hello')
     @user = user
-    mail(to: 'to@example.org', subject: t('user_mailer.verification.subject'))
+    mail(to: @user.email, subject: t('user_mailer.verification.subject'))
   end
 end
