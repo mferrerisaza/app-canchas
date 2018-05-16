@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def edit
     authorize @booking
     unless @user.first_name.blank? || @user.telefono.blank? || @user.identificacion.blank?
-      @booking.booking_players << BookingPlayer.new(user: @user) unless @booking.users.size > 0
+      @booking.booking_players << BookingPlayer.new(user: @user) unless @booking.users.empty?
       redirect_to bookings_path
     end
   end
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
     authorize @booking
     if @user.save
-      @booking.booking_players << BookingPlayer.new(user: @user) unless @booking.users.size > 0
+      @booking.booking_players << BookingPlayer.new(user: @user) unless @booking.users.empty?
       redirect_to bookings_path
     else
       render 'edit'
@@ -33,8 +33,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name,
-                                  :last_name,
-                                  :telefono,
-                                  :identificacion)
+                                 :last_name,
+                                 :telefono,
+                                 :identificacion)
   end
 end
