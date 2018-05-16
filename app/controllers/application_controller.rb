@@ -16,18 +16,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if session[:booking].present?
-<<<<<<< HEAD
       create_booking_after_sign_in
-=======
-      flash[:notice] = 'Has iniciado sesión con éxito'
-      @booking = Booking.new(session[:booking])
-      session[:booking] = nil
-      if @booking.save
-        edit_booking_user_path(@booking, current_user)
-      else
-        fields_path
-      end
->>>>>>> a892bb553de5921613894ba15fbb817cbe9c1106
     else
       super
     end
@@ -36,13 +25,15 @@ class ApplicationController < ActionController::Base
   private
 
   def create_booking_after_sign_in
-    @booking = Booking.create(session[:booking])
     BookingMailer.send_request(@booking, current_user)
+    flash[:notice] = 'Has iniciado sesión con éxito'
+    @booking = Booking.new(session[:booking])
     session[:booking] = nil
-    @booking.booking_players << BookingPlayer.new(user: current_user)
-    flash[:notice] = 'Has iniciado sesión con éxito y
-                      tu reserva se ha registrado'
-    booking_path(@booking)
+    if @booking.save
+      edit_booking_user_path(@booking, current_user)
+    else
+      fields_path
+    end
   end
 
   def skip_pundit?
