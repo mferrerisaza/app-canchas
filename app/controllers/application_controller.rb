@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if session[:booking].present?
       @booking = Booking.create(session[:booking])
+      BookingMailer.booking_request(@booking, current_user)
       session[:booking] = nil
       @booking.booking_players << BookingPlayer.new(user: current_user)
       flash[:notice] = 'Has iniciado sesión con éxito y
