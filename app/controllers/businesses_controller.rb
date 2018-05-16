@@ -2,7 +2,7 @@ class BusinessesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def show
-    authorized @business
+    authorize @business
   end
 
   def index
@@ -10,10 +10,10 @@ class BusinessesController < ApplicationController
   end
 
   def new
-    authorized @business
+    authorize @business
   end
 
   def create
-    authorized @business
+    authorize @business
   end
 end

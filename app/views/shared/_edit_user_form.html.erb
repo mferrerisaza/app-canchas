@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+      <h2>Tu solicitud de reserva está casi completada</h2>
+      <p>Solo necesitamos algunos datos más</p>
+
+      <%= simple_form_for([@booking, @user]) do |f| %>
+       <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :first_name, label:"Tu nombre", required: true, autofocus: true %>
+          <%= f.input :last_name, label:"Tu apellido", required: true %>
+          <%= f.input :telefono, label:"Un número de contacto", required: true %>
+          <%= f.input :identificacion, label:"Y tu número de identificación", required: true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Completar solicitud" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
