@@ -10,7 +10,7 @@ class BookingPlayer < ApplicationRecord
 
   def check_user_info
     error_text = 'User must have phone and colombian_id to be part of a booking'
-    if user.phone.nil? && user.colombian_id.nil?
+    if user.telefono.nil? && user.identificación.nil?
       errors.messages[:booking_player] << error_text
       false
     else
