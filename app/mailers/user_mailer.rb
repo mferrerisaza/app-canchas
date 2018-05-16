@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,6 +7,6 @@ class UserMailer < ApplicationMailer
   def verification(user)
     @greeting = t('hello')
     @user = user
-    mail(to: "to@example.org", subject: t('user_mailer.verification.subject'))
+    mail(to: 'to@example.org', subject: t('user_mailer.verification.subject'))
   end
 end
