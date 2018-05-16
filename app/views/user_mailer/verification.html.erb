@@ -1,5 +1,19 @@
-<h1>User#verification</h1>
+<div class="verification-mail" style="padding: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,Geneva,sans-serif">
+  <p> <%=  @greeting  %> <%= @user.first_name %>,</p>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/verification.html.erb
-</p>
+  <p>Gracias por registrarte en CAPP, tu sitio para reservar canchas online.</p>
+  <p>Para comenzar a reservar, por favor activa tu cuenta: </p>
+  <div class="button" style="margin: 30px 0 30px 0">
+    <a
+      href="#"
+      style=
+          "border-radius: 3px; padding: 15px 10px;
+           background-color: lightskyblue; color: white;
+           font-weight: bold; text-decoration: none;
+           font-size: 14px; letter-spacing: 0;
+           font-family: 'Source Sans Pro','Helvetica Neue',Arial,Helvetica,sans-serif">
+         CONFIRMAR CUENTA
+    </a>
+  </div>
+  <p>Nos vemos!</p>
+</div>

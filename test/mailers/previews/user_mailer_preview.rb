@@ -3,7 +3,8 @@ class UserMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/verification
   def verification
-    UserMailer.verification
+    user = User.first
+    UserMailer.verification(user)
   end
 
 end
