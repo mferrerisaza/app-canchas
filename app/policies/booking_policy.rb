@@ -4,9 +4,19 @@ class BookingPolicy < ApplicationPolicy
       scope
     end
   end
-
+  def index?
+    true
+  end
   def create?
     true
+  end
+
+  def edit?
+    record.users.size == 0
+  end
+
+  def update?
+    edit?
   end
 
   def show?

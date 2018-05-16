@@ -8,20 +8,22 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
   # Uncomment when you *really understand* Pundit!
-  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  # def user_not_authorized
-  #   flash[:alert] = 'You are not authorized to perform this action.'
-  #   redirect_to(root_path)
-  # end
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  def user_not_authorized
+    flash[:alert] = 'No esta autorizado para realizar esta acción'
+    redirect_to(root_path)
+  end
 
   def after_sign_in_path_for(resource)
     if session[:booking].present?
-      @booking = Booking.create(session[:booking])
+      flash[:notice] = 'Has iniciado sesión con éxito'
+      @booking = Booking.new(session[:booking])
       session[:booking] = nil
-      @booking.booking_players << BookingPlayer.new(user: current_user)
-      flash[:notice] = 'Has iniciado sesión con éxito y
-                        tu reserva se ha registrado'
-      booking_path(@booking)
+      if @booking.save
+        edit_booking_user_path(@booking, current_user)
+      else
+        fields_path
+      end
     else
       super
     end
