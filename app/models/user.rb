@@ -8,21 +8,22 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :photo, PhotoUploader
-
-  colombian_id_regex = /\A((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))?\z/
+  colombian_id_regex = /\A((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))\z/
   phone_regex = /\A(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$\z/
-  validates :colombian_id, format:
+
+  validates :first_name, :last_name, presence: true, on: :update
+  validates :identificacion, format:
   {
     with: colombian_id_regex,
-    message: "Por favor ingrese un número de identificación válido, recuerde que no utilziar caracteres especiales (como espacios, *, -)",
-    allow_nil: true
-  }
-  validates :phone, format:
+    message: "por favor ingrese un número de identificación válido, recuerde que no utilizar caracteres especiales (como espacios, *, -)",
+    allow_blank: false
+  }, on: :update
+  validates :telefono, format:
   {
     with: phone_regex,
-    message: "Por favor ingrese un telefono o celular válido",
-    allow_nil: true
-  }
+    message: "por favor ingrese un teléfono o celular válido",
+    allow_blank: false
+  }, on: :update
 
   devise :omniauthable, omniauth_providers: [:facebook]
   def self.find_for_facebook_oauth(auth)
