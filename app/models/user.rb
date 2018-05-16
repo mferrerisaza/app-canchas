@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :photo, PhotoUploader
+  after_create :send_verification_email
 
   devise :omniauthable, omniauth_providers: [:facebook]
   def self.find_for_facebook_oauth(auth)
@@ -30,4 +31,11 @@ class User < ApplicationRecord
 
     user
   end
+
+  private
+
+  def send_welcome_email
+    UserMailer.verification(self).deliver_now
+  end
+
 end
