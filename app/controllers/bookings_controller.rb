@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
 
   def check_if_save
     if @booking.save
-      BookingMailer.booking_request(@booking, current_user)
+      BookingMailer.send_request(@booking, current_user)
       redirect_to booking_path(@booking)
     else
       redirect_to fields_path

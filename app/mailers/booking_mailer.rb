@@ -4,14 +4,14 @@ class BookingMailer < ApplicationMailer
   #
   #   en.user_mailer.verification.subject
   #
-  def self.booking_request(booking, user)
-    team_emails = ['dlopez.10g@gmail.com', 'dlopezg3@eafit.edu.co']
+  def self.send_request(booking, user)
+    team_emails = ['dlopez.10g@gmail.com', 'miguef7@gmail.com']
     team_emails.each do |email|
-      send_request(email, booking, user).deliver_now
+      booking_request(email, booking, user).deliver_now
     end
   end
 
-  def send_request(email, booking, user)
+  def booking_request(email, booking, user)
     @booking = booking
     @user = user
 
