@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  after_action :verify_authorized, except: [:index, :create]
+  after_action :verify_authorized, except: %i[index create]
   before_action :authenticate_user!, except: :create
 
   def index
