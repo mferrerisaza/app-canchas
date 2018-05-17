@@ -5,7 +5,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable
 
   mount_uploader :photo, PhotoUploader
   colombian_id_regex = /\A((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))\z/
@@ -15,13 +16,13 @@ class User < ApplicationRecord
   validates :identificacion, format:
   {
     with: colombian_id_regex,
-    message: "debe contener entre 8 y 11 caracteres",
+    message: 'debe contener entre 8 y 11 caracteres',
     allow_blank: false
   }, on: :update
   validates :telefono, format:
   {
     with: phone_regex,
-    message: "debe contener 7 ó 10 digitos",
+    message: 'debe contener 7 ó 10 digitos',
     allow_blank: false
   }, on: :update
 

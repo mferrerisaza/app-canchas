@@ -1,15 +1,15 @@
 <div class="verification-mail" style="padding: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,Geneva,sans-serif">
-  <p> Hola<%#= " #{user.first_name}" unless @user.first_name.nil?  %>,</p>
+  <p> <%=  @greeting  %><%= " #{@user.first_name}" unless @user.first_name.nil?  %>,</p>
 
   <p>Gracias por registrarte en CAPP, tu sitio para reservar canchas online.</p>
   <p>Para comenzar a reservar, por favor confirma tu cuenta: </p>
   <div class="button" style="margin: 30px 0 30px 0">
-    <%= link_to "CONFIRMAR CUENTA", confirmation_url(@resource, confirmation_token: @token), {style:
+    <%= link_to "CONFIRMAR CUENTA", root_url, {style:
           "border-radius: 3px; padding: 15px 10px;
            background-color: #3392ce; color: white;
            font-weight: bold; text-decoration: none;
            font-size: 14px; letter-spacing: 0;
            font-family: 'Source Sans Pro','Helvetica Neue',Arial,Helvetica,sans-serif"} %>
   </div>
+  <p>Nos vemos!</p>
 </div>
-

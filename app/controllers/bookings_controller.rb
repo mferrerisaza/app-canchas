@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  after_action :verify_authorized, except: [:index, :create]
+  after_action :verify_authorized, except: %i[index create]
   before_action :authenticate_user!, except: :create
 
   def index
@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
 
   def check_if_save
     if @booking.save
+      BookingMailer.send_request(@booking, current_user)
       redirect_to edit_booking_user_path(@booking, current_user)
     else
       redirect_to fields_path
