@@ -4,17 +4,17 @@ class UsersController < ApplicationController
 
   def edit
     authorize @booking
-    unless @user.first_name.blank? || @user.telefono.blank? || @user.identificacion.blank?
-      @booking.booking_players << BookingPlayer.new(user: @user) if @booking.users.size.zero?
-      redirect_to bookings_path
-    end
+    non_blank_fields = %w[first_name last_name telefono identificacion]
+    return if non_blank_fields.any? { |field| @user.send(field).blank? }
+    append_booking_player(@booking, @user)
+    redirect_to bookings_path
   end
 
   def update
     @user.update(user_params)
     authorize @booking
     if @user.save
-      @booking.booking_players << BookingPlayer.new(user: @user) if @booking.users.size.zero?
+      append_booking_player(@booking, @user)
       redirect_to bookings_path
     else
       render 'edit'
@@ -29,6 +29,11 @@ class UsersController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:booking_id])
+  end
+
+  def append_booking_player(booking, user)
+    return unless booking.users.size.zero?
+    booking.booking_players << BookingPlayer.new(user: user)
   end
 
   def user_params
