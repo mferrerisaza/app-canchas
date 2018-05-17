@@ -25,9 +25,9 @@ class ApplicationController < ActionController::Base
   private
 
   def create_booking_after_sign_in
+    @booking = Booking.new(session[:booking])
     BookingMailer.send_request(@booking, current_user)
     flash[:notice] = 'Has iniciado sesión con éxito'
-    @booking = Booking.new(session[:booking])
     session[:booking] = nil
     if @booking.save
       edit_booking_user_path(@booking, current_user)

@@ -14,7 +14,6 @@ class BookingMailer < ApplicationMailer
   def booking_request(email, booking, user)
     @booking = booking
     @user = user
-
     mail(to: email,
          subject: "Solicitud de reserva. Reserva N°#{Booking.all.size}")
   end
