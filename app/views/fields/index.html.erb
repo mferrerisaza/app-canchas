@@ -1,6 +1,13 @@
 <div class="container">
   <h1 id="titulo">Canchas y horarios disponibles</h1>
-  <%= render "shared/search-form" %>
+  <div class="dropdown">
+    <div id="dLabel" type="button" data-toggle="dropdown" style="cursor: pointer">
+      Fechas
+    </div>
+    <div class="dropdown-menu" aria-labelledby="dLabel">
+      <%= render "shared/search-form" %>
+    </div>
+  </div>
   <ul class="date-tabs-list list-inline hidden-xs hidden-sm">
     <% @date_range.each_with_index do |date, index| %>
       <li data-date = <%= date %> class="date-tab <%= "active-date" if index == 0 %>">
