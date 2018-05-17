@@ -1,0 +1,29 @@
+<div class="verification-mail" style="padding: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,Geneva,sans-serif">
+  <h1> Hello carverga </h1>
+
+  <h3>Se ha solicitado una nueva reserva</h3>
+  <p>
+    <strong> Información de la reserva: </strong>
+  </p>
+
+  <p>
+    <strong>  Sede: </strong><%= @booking.field.business.name %>
+  </p>
+
+  <p>
+    <strong>  Cancha: </strong><%= @booking.field.name %>
+  </p>
+  <p>
+    <strong>  Dia y hora: </strong><%= @booking.date %>
+  </p>
+  <p>
+    <strong>  Nombre del Solicitante: </strong><%= "#{@user.first_name}  #{@user.last_name}"%>
+  </p>
+  <p>
+    <strong>  Cédula: <%#= @user.colombian_id %> </strong>
+  </p>
+  <p>
+    <strong>  Teléfono: <%#= @user.phone %> </strong>
+  </p>
+
+</div>

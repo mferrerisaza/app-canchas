@@ -5,7 +5,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable
 
   mount_uploader :photo, PhotoUploader
   colombian_id_regex = /\A((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))\z/
@@ -15,13 +16,15 @@ class User < ApplicationRecord
   validates :identificacion, format:
   {
     with: colombian_id_regex,
-    message: "por favor ingrese un número de identificación válido, recuerde que no utilizar caracteres especiales (como espacios, *, -)",
+    message: 'por favor ingrese un número de identificación válido,
+              recuerde que no utilizar caracteres especiales
+              (como espacios, *, -)',
     allow_blank: false
   }, on: :update
   validates :telefono, format:
   {
     with: phone_regex,
-    message: "por favor ingrese un teléfono o celular válido",
+    message: 'por favor ingrese un teléfono o celular válido',
     allow_blank: false
   }, on: :update
 

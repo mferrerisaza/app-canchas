@@ -16,20 +16,25 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if session[:booking].present?
-      flash[:notice] = 'Has iniciado sesión con éxito'
-      @booking = Booking.new(session[:booking])
-      session[:booking] = nil
-      if @booking.save
-        edit_booking_user_path(@booking, current_user)
-      else
-        fields_path
-      end
+      create_booking_after_sign_in
     else
       super
     end
   end
 
   private
+
+  def create_booking_after_sign_in
+    @booking = Booking.new(session[:booking])
+    BookingMailer.send_request(@booking, current_user)
+    flash[:notice] = 'Has iniciado sesión con éxito'
+    session[:booking] = nil
+    if @booking.save
+      edit_booking_user_path(@booking, current_user)
+    else
+      fields_path
+    end
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/

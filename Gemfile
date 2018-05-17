@@ -8,6 +8,7 @@ gem 'faker'
 gem 'figaro'
 gem 'geocoder'
 gem 'jbuilder', '~> 2.0'
+gem 'letter_opener', group: :development
 gem 'money-rails'
 gem 'omniauth-facebook'
 gem 'pg', '~> 0.21'
