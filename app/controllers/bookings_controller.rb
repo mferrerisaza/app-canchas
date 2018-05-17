@@ -3,7 +3,8 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!, except: :create
 
   def index
-    @bookings = policy_scope(Booking.joins(:users).where(users: {id: current_user.id}))
+    @bookings = policy_scope(Booking.joins(:users)
+                                    .where(users: { id: current_user.id }))
   end
 
   def create

@@ -16,15 +16,13 @@ class User < ApplicationRecord
   validates :identificacion, format:
   {
     with: colombian_id_regex,
-    message: 'por favor ingrese un número de identificación válido,
-              recuerde que no utilizar caracteres especiales
-              (como espacios, *, -)',
+    message: 'debe contener entre 8 y 11 caracteres',
     allow_blank: false
   }, on: :update
   validates :telefono, format:
   {
     with: phone_regex,
-    message: 'por favor ingrese un teléfono o celular válido',
+    message: 'debe contener 7 ó 10 digitos',
     allow_blank: false
   }, on: :update
 

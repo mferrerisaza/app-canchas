@@ -1,0 +1,26 @@
+.edit-user-form {
+  background-color: white;
+  padding: 20px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  border-radius: 3px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .btn {
+    margin-top: 16px;
+    width: 100%;
+  }
+}

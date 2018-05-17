@@ -6,7 +6,7 @@ module ApplicationHelper
       'data-toggle' => 'dropdown'
     }
     if user.photo.blank?
-      cl_image_tag 'user.png', options
+      cl_image_tag 'Default Pics/user.png', options
     else
       cl_image_tag user.photo, options
     end
@@ -65,7 +65,7 @@ module ApplicationHelper
       }
 
     if field.photo.blank?
-      cl_image_path('fieldplaceholder.jpg', options)
+      cl_image_path('Default Pics/fieldplaceholder.jpg', options)
     else
       cl_image_path(field.photo, options)
     end
@@ -78,7 +78,7 @@ module ApplicationHelper
         class: add_class.to_s
       }
     if business.photo.blank?
-      cl_image_tag('defaul-logo.png', options)
+      cl_image_tag('Default Pics/defaul-logo.png', options)
     else
       cl_image_tag(business.photo, options)
     end
@@ -86,7 +86,7 @@ module ApplicationHelper
 
   def booking_avatar(player)
     if player['photo'].nil?
-      cl_image_tag 'user.png', class: 'avatar avatar-lg'
+      cl_image_tag 'Default Pics/user.png', class: 'avatar avatar-lg'
     else
       cl_image_tag player.photo, class: 'avatar avatar-lg'
     end
