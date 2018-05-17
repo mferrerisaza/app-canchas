@@ -26,16 +26,15 @@
         placeholder: "Fechas"
       %>
     </div>
-    <div class="col-xs-12 col-sm-2 search-form-input">
-      <select name="start_time" class="datesize start-time" id="starttime">
+    <div class="col-xs-12 col-sm-4 search-form-input">
+      <div id="slider"></div>
+      <select name="start_time" class="datesize start-time" id="starttime" hidden>
         <option value="" <%= "selected" unless params[:start_time].present? %> disabled hidden>Entre 5PM</option>
         <% (1..23).each do |value| %>
           <option <%= "selected" if value.to_s == params[:start_time] %> value="<%= value %>"><%=format_hour(value)%></option>
         <% end %>
       </select>
-    </div>
-    <div class="col-xs-12 col-sm-2 search-form-input">
-      <select name="end_time" class="datesize" id="endtime">
+      <select name="end_time" class="datesize" id="endtime" hidden>
         <option value="" <%= "selected" unless params[:end_time].present? %> disabled hidden>Y 8PM</option>
         <% (1..23).each do |value| %>
           <option <%= "selected" if value.to_s == params[:end_time] %> value="<%= value %>"><%=format_hour(value)%></option>
