@@ -1,0 +1,40 @@
+<div class="card">
+  <div
+    class="card-top"
+    style="background-image:
+      linear-gradient(rgba(255,255,255, 0),
+      rgba(0, 0, 0, 0.4)),
+      url(<%= field_picture_or_generic(booking.field)%>);"
+  >
+     <%= business_logo_or_generic(booking.field.business, "card-top-business-logo")%>
+  </div>
+  <div class="card-bottom">
+    <div class="card-header">
+      <h3 class="card-business-name"><%= booking.field.business.name%></h3>
+      <p class="card-addreess"><%= booking.field.business.address %></p>
+    </div>
+    <div class="card-field-info">
+      <div class="card-field-descripton">
+        <p class="card-field-name">
+          <i class="fas fa-futbol"></i>
+          <%= booking.field.name %>
+        </p>
+        <div class="card-field-capacity">
+          <i class="fas fa-users"></i>
+          <p><%= booking.field.capacity %> jugadores (<%= booking.field.capacity / 2 %> vs. <%= booking.field.capacity / 2 %>)</p>
+        </div>
+      </div>
+      <div class="card-field-descripton">
+        <p class="card-price">
+          <i class="fas fa-dollar-sign"></i>
+          <%= humanized_money(booking.field.price) %> / Hora
+        </p>
+        <p class="card-hora">
+          <i class="fas fa-dollar-sign"></i>
+           <p> <%= booking.date.hour %> </p>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

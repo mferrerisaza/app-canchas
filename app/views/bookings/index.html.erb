@@ -1,10 +1,9 @@
-<ul>
-  <% @bookings.each do |booking|%>
-    <li>Date: <%=booking.date %></li>
-    <li>Field:<%=booking.field  %></li>
-    <li>splitable: <%=booking.splitable %></li>
-    <li>Status:<%=booking.status  %></li>
-    <li>Number of players:<%=booking.number_players  %></li>
-    <li>users:<%=booking.users.uniq  %></li>
-  <% end %>
-</ul>
+ <div class="booking-container">
+  <div class="row">
+    <% @bookings.each do |booking|%>
+      <div class="col-xs-12 col-sm-6 col-lg-3">
+        <%= render 'shared/booking_card', booking: booking %>
+      </div>
+    <% end %>
+  </div>
+</div>
