@@ -29,12 +29,22 @@
           <i class="fas fa-dollar-sign"></i>
           <%= humanized_money(booking.field.price) %> / Hora
         </p>
-        <p class="card-hora">
-          <i class="fas fa-dollar-sign"></i>
-           <p> <%= booking.date.hour %> </p>
+        <p class="card-field-capacity">
+          <i class="far fa-clock"></i>
+          <%= format_hour(booking.date.hour) %>
         </p>
       </div>
     </div>
+    <div class="booking-code">
+      <p>
+        <i class="fas fa-qrcode"></i>
+        Código de la reserva:
+        <%= booking.id %>
+      </p>
+    </div>
+  </div>
+  <div class="booking-status">
+
   </div>
 </div>
 
