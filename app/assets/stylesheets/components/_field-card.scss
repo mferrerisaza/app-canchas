@@ -187,3 +187,18 @@
   align-items: center;
   height: 50px;
 }
+
+.pending-booking {
+  background-color: $my-gray;
+}
+
+.passed-booking {
+  background-color: $my-gray;
+}
+.canceled-booking {
+  background-color: $my-red;
+}
+
+.aproved-booking {
+  background-color: $my-green;
+}

@@ -12,6 +12,8 @@
     <div class="card-header">
       <h3 class="card-business-name"><%= booking.field.business.name%></h3>
       <p class="card-addreess"><%= booking.field.business.address %></p>
+      <h5 class="card-booking-date"><%= l(booking.date.to_date, format: '%A %d de %B') %></h5>
+    <hr>
     </div>
     <div class="card-field-info">
       <div class="card-field-descripton">
@@ -43,8 +45,16 @@
       </p>
     </div>
   </div>
-  <div class="booking-status">
-    Hello careverga
+<% if booking.status == "Pendiente" || booking.status.nil? %>
+  <div class="booking-status pending-booking">
+<% elsif booking.status == "No confirmada" || booking.status == "Jugado" %>
+  <div class="booking-status passed-booking">
+<% elsif booking.status == "Confirmada" %>
+  <div class="booking-status aproved-booking">
+<% elsif booking.status == "Cancelada" %>
+  <div class="booking-status canceled-booking">
+<% end %>
+    <%= booking.status %>
   </div>
 </div>
 
