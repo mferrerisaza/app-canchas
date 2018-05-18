@@ -52,6 +52,7 @@
     font-size: 11px;
     color: $my-gray;
     font-weight: bold;
+    height: 25px;
   }
 }
 .card-field-info {
@@ -186,10 +187,12 @@
   justify-content: center;
   align-items: center;
   height: 50px;
+  color: white;
+  border-radius: 0 0 5px 5px;
 }
 
 .pending-booking {
-  background-color: $my-gray;
+  background-color: $my-orange;
 }
 
 .passed-booking {

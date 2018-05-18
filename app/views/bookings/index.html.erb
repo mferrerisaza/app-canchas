@@ -1,9 +1,14 @@
- <div class="booking-container">
-  <div class="row">
-    <% @bookings.each do |booking|%>
-      <div class="col-xs-12 col-sm-6 col-lg-3">
-        <%= render 'shared/booking_card', booking: booking %>
-      </div>
-    <% end %>
+<div class="booking-container">
+  <div class="text-center">
+    <h3> Tus reservas </h3>
+  </div>
+  <div class="booking-container">
+    <div class="row">
+      <% @bookings.sort_by {|book| book.created_at}.reverse.each do |booking|%>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+          <%= render 'shared/booking_card', booking: booking %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
