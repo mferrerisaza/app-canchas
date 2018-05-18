@@ -3,6 +3,7 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= cl_image_tag "Default Pics/defaul-logo.png", height: 50 %>
   <% end %>
+  <%= render 'shared/search-form-city' if controller_name=="fields"%>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">

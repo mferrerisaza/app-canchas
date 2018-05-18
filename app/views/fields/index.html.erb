@@ -1,22 +1,26 @@
 <div class="container">
-  <h1 id="titulo">Canchas y horarios disponibles</h1>
-  <%= render 'shared/search-form-date' %>
-  <div class="dropdown">
-    <div id="search-hours-dropdown" type="button" data-toggle="dropdown" style="cursor: pointer">
-      Horas
+  <div class="filters-container">
+    <%= render 'shared/search-form-date' %>
+    <div class="dropdown filter-item">
+      <div id="search-hours-dropdown" type="button" data-toggle="dropdown" style="cursor: pointer">
+        Horas
+      </div>
+      <div class="dropdown-menu" aria-labelledby="search-hours-dropdown">
+        <%= render "shared/search-form-hours" %>
+      </div>
     </div>
-    <div class="dropdown-menu" aria-labelledby="search-hours-dropdown">
-      <%= render "shared/search-form-hours" %>
+    <div class="dropdown filter-item">
+      <div id="search-capacity-dropdown" type="button" data-toggle="dropdown" style="cursor: pointer">
+        # Jugadores
+      </div>
+      <div class="dropdown-menu" aria-labelledby="search-capacity-dropdown">
+        <%= render "shared/search-form-capacity" %>
+      </div>
     </div>
   </div>
-  <div class="dropdown">
-    <div id="search-capacity-dropdown" type="button" data-toggle="dropdown" style="cursor: pointer">
-      # Jugadores
-    </div>
-    <div class="dropdown-menu" aria-labelledby="search-capacity-dropdown">
-      <%= render "shared/search-form-capacity" %>
-    </div>
-  </div>
+</div>
+  <hr>
+<div class="container">
   <ul class="date-tabs-list list-inline hidden-xs hidden-sm">
     <% @date_range.each_with_index do |date, index| %>
       <li data-date = <%= date %> class="date-tab <%= "active-date" if index == 0 %>">
@@ -41,6 +45,11 @@
   <div class="main-container">
     <div class="cards-container">
       <div class="row">
+        <div class="col-xs-12">
+          <h1 id="titulo">Canchas y horarios disponibles</h1>
+        </div>
+      </div>
+      <div class="row" id="field-cards-row">
         <% unless @fields.empty? %>
           <% @fields.each do |field| %>
             <div class="col-xs-12 col-sm-6">

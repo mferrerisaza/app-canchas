@@ -1,4 +1,4 @@
-<%= form_with url: fields_path, method: :get, class: "field-search-form", local: true do |f| %>
+<%= form_with url: fields_path, method: :get, local: true do |f| %>
   <%= f.hidden_field :query,
     value: params[:query]
   %>
