@@ -52,7 +52,7 @@ function createSlider(slider, inputFormat1, inputFormat2){
     inputFormat2.value = unFormatHour(values[1]);
     const hoursDropdown = document.getElementById("search-hours-dropdown");
     if (hoursDropdown) {
-      hoursDropdown.innerHTML = `Entre ${values[0]} y ${values[1]}`
+      hoursDropdown.innerHTML = `${values[0]} - ${values[1]}`
     }
   });
 }
