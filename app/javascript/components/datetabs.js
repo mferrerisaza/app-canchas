@@ -156,7 +156,7 @@ export function retriveFieldCardInfo (fields, tabDate, whoCall) {
             </div>`
     }
 
-    document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
+    document.getElementById("field-cards-row").insertAdjacentHTML("beforeend", text);
     setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 1000);
     retriveDropdowns();
     retriveTimeBtns();
@@ -187,7 +187,7 @@ export function fetchSchedule (bounds, callback, whoCall) {
 }
 
 const clearTheDOM = () => {
-  document.querySelector(".cards-container").querySelector(".row").innerHTML = "";
+  document.getElementById("field-cards-row").innerHTML = "";
 }
 
 const removeTabUnderline = (element) => {
