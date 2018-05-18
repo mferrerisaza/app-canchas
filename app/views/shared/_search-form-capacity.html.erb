@@ -1,0 +1,26 @@
+<%= form_with url: fields_path, method: :get, class: "field-search-form", local: true do |f| %>
+  <%= f.hidden_field :query,
+    value: params[:query]
+  %>
+  <%= f.hidden_field :dates,
+    value: params[:dates]
+  %>
+  <select name="capacity_limit" id="capacity_limit" class="queryinput form-control">
+    <option value="" <%= "selected" unless params[:capacity_limit].present? %> disabled hidden># jugadores</option>
+    <% Field::CAPACITY_RANGE.each do |value| %>
+      <option <%= "selected" if value.to_s == params[:capacity_limit] %> value="<%= value %>">
+        <%= value / 2 %> Vs. <%= value / 2 %>
+      </option>
+    <% end %>
+  </select>
+
+  <%= f.hidden_field :start_time,
+    value: params[:start_time]
+  %>
+
+  <%= f.hidden_field :end_time,
+    value: params[:end_time]
+  %>
+
+  <%= f.submit "Buscar", name: nil, class: "btn btn-banner full-width-padded" %>
+<% end %>
