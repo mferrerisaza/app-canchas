@@ -10,6 +10,9 @@ const dateInput = flatpickr(".datepicker", {
   altInput: true,
   // maxDate: new Date().fp_incr(15),
    onChange: function(selectedDates, dateStr, instance){
-    document.getElementById("dates-form").submit()
+    const datesForm =document.getElementById("dates-form")
+    if (datesForm) {
+      datesForm.submit();
+    }
    }
 });
