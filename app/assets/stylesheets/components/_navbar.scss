@@ -115,3 +115,33 @@
     }
   }
 }
+@media (max-width: 992px) {
+  .navbar-search-form-container{
+    width: 100%;
+    form {
+      width: 100%;
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+  .navbar-wagon {
+    // padding: 0px;
+    justify-content: flex-start
+  }
+  .navbar-search-form-container{
+    width: 100%;
+    form {
+      width: 100%;
+    }
+  }
+  .navbar-wagon-item{
+    padding-left: 0px;
+    padding-right: 32px;
+  }
+  .navbar-wagon-dropdown-menu:before {
+    right: auto;
+    left: 10px;
+  }
+}
