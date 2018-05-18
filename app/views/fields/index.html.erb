@@ -1,11 +1,20 @@
 <div class="container">
   <h1 id="titulo">Canchas y horarios disponibles</h1>
+  <%= render 'shared/search-form-date' %>
   <div class="dropdown">
-    <div id="dLabel" type="button" data-toggle="dropdown" style="cursor: pointer">
-      Fechas
+    <div id="search-hours-dropdown" type="button" data-toggle="dropdown" style="cursor: pointer">
+      Horas
     </div>
-    <div class="dropdown-menu" aria-labelledby="dLabel">
-      <%= render "shared/search-form" %>
+    <div class="dropdown-menu" aria-labelledby="search-hours-dropdown">
+      <%= render "shared/search-form-hours" %>
+    </div>
+  </div>
+  <div class="dropdown">
+    <div id="search-hours-dropdown" type="button" data-toggle="dropdown" style="cursor: pointer">
+      # Jugadores
+    </div>
+    <div class="dropdown-menu" aria-labelledby="search-hours-dropdown">
+      <%= render "shared/search-form-capacity" %>
     </div>
   </div>
   <ul class="date-tabs-list list-inline hidden-xs hidden-sm">
