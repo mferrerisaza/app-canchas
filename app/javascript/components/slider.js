@@ -30,35 +30,44 @@ const unFormatHour = (value) => {
   }
 }
 
-const slider = document.getElementById('slider');
+function createSlider(slider, inputFormat1, inputFormat2){
+  noUiSlider.create(slider, {
+    start: ["1 AM", "11 PM"],
+    step: 1,
+    connect: true,
+    behaviour: 'tap',
+    format: {
+      to: (value) => formatHour(value),
+      from: (value) => unFormatHour(value)
+    },
+    tooltips: true,
+    margin: 1,
+    range: {
+      'min': 1,
+      'max': 23
+    }
+  });
+  slider.noUiSlider.on('update', function( values, handle ) {
+    inputFormat1.value = unFormatHour(values[0]);
+    inputFormat2.value = unFormatHour(values[1]);
+    const hoursDropdown = document.getElementById("search-hours-dropdown");
+    if (hoursDropdown) {
+      hoursDropdown.innerHTML = `Entre ${values[0]} y ${values[1]}`
+    }
+  });
+}
 
-noUiSlider.create(slider, {
-  start: ["5 PM", "11 PM"],
-  step: 1,
-  connect: true,
-  behaviour: 'tap',
-  format: {
-    to: (value) => formatHour(value),
-    from: (value) => unFormatHour(value)
-  },
-  tooltips: true,
-  margin: 1,
-  range: {
-    'min': 1,
-    'max': 23
-  }
-});
 
-var inputFormat1 = document.getElementById('starttime');
-var inputFormat2 = document.getElementById('endtime');
-
-slider.noUiSlider.on('update', function( values, handle ) {
-  inputFormat1.value = unFormatHour(values[0]);
-  inputFormat2.value = unFormatHour(values[1]);
-});
 
 document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search)
-  slider.noUiSlider.set([parseInt(params.get("start_time"), 10), parseInt(params.get("end_time"), 10)]);
+  const sliderDiv = document.getElementById('slider');
+  const inputFormat1 = document.getElementById('starttime');
+  const inputFormat2 = document.getElementById('endtime');
+
+  if (sliderDiv) {
+    createSlider(sliderDiv, inputFormat1, inputFormat2);
+    const params = new URLSearchParams(window.location.search)
+    sliderDiv.noUiSlider.set([parseInt(params.get("start_time"), 10), parseInt(params.get("end_time"), 10)]);
+  }
 })
 
