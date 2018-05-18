@@ -2,13 +2,37 @@
   <div class="text-center">
     <h3> Tus reservas </h3>
   </div>
-  <div class="booking-container">
-    <div class="row">
-      <% @bookings.sort_by {|book| book.created_at}.reverse.each do |booking|%>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <%= render 'shared/booking_card', booking: booking %>
-        </div>
-      <% end %>
+  <% active_bookings = @bookings.select{|book| book.date > Time.zone.now}.sort_by {|book| book.created_at}.reverse %>
+  <hr>
+  <% unless active_bookings.empty? %>
+    <div class="bookings-subtitle">
+      <h4> Reservas activas</h4>
     </div>
-  </div>
+    <div class="booking-cards-container">
+      <div class="row">
+        <% active_bookings.each do |booking|%>
+          <div class="col-xs-12 col-sm-6 col-lg-3">
+            <%= render 'shared/booking_card', booking: booking %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% passed_bookings = @bookings.select{|book| book.date < Time.zone.now}.sort_by {|book| book.created_at}.reverse %>
+  <hr>
+  <% unless passed_bookings.empty? %>
+    <div class="bookings-subtitle">
+      <h4> Reservas anteriores </h4>
+    </div>
+    <div class="booking-cards-container">
+      <div class="row">
+        <% passed_bookings.each do |booking|%>
+          <div class="col-xs-12 col-sm-6 col-lg-3">
+            <%= render 'shared/booking_card', booking: booking %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
