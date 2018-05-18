@@ -23,12 +23,14 @@ class Field < ApplicationRecord
       fields = fields.capacity_limit(args[:capacity_limit])
     end
     if args[:query].present?
-      results = Geocoder.search(args[:query])
       # fields = fields.query(args[:query])
-      args[:min_lat] ||= results[0].geometry["viewport"]["southwest"]["lat"]
-      args[:max_lat] ||= results[0].geometry["viewport"]["northeast"]["lat"]
-      args[:min_lng] ||= results[0].geometry["viewport"]["southwest"]["lng"]
-      args[:max_lng] ||= results[0].geometry["viewport"]["northeast"]["lng"]
+      results = Geocoder.search(args[:query])
+      unless results.blank?
+        args[:min_lat] ||= results[0].geometry["viewport"]["southwest"]["lat"]
+        args[:max_lat] ||= results[0].geometry["viewport"]["northeast"]["lat"]
+        args[:min_lng] ||= results[0].geometry["viewport"]["southwest"]["lng"]
+        args[:max_lng] ||= results[0].geometry["viewport"]["northeast"]["lng"]
+      end
     end
     symbol_array = %i[min_lng max_lng min_lat max_lat]
     if symbol_array.all? { |arg| args[arg].present? }
