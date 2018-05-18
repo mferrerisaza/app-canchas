@@ -15,6 +15,17 @@ const addMarkersToMap =(mapElement, map) => {
   }
 }
 
+const updateMap = (e, map, mapElement) => {
+  if (document.readyState === "complete") {
+    document.querySelector(".loader-div").style.visibility = "visible";
+    clearTheDOM();
+    fetchSchedule(e.getBounds(), retriveFieldCardInfo, "map");
+    const markers = JSON.parse(mapElement.dataset.markers);
+    map.addMarkers(markers);
+    setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 1000);
+  }
+}
+
 const insertMapOnDOM = () => {
   const mapElement = document.getElementById('map');
   if (mapElement) { // don't try to build a map if there's no div#map to inject in
@@ -23,12 +34,7 @@ const insertMapOnDOM = () => {
       lat: 0,
       lng: 0,
       idle: function (e) {
-        if (document.readyState === "complete") {
-          document.querySelector(".loader-div").style.visibility = "visible";
-          clearTheDOM();
-          fetchSchedule(e.getBounds(), retriveFieldCardInfo, "map");
-          setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 1000);
-        }
+        updateMap(e, map, mapElement)
       },
     })
     addMarkersToMap(mapElement, map);
