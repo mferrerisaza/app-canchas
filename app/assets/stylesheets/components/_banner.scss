@@ -2,7 +2,7 @@
   background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #090216 100%), asset-url('banner2.jpeg');
   color: white;
   text-align: center;
-  height: 90vh;
+  height: calc(100vh - 70px);
   background-size: cover;
   background-position: center;
   display: flex;
