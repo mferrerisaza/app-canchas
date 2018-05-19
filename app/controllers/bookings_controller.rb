@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
       redirect_to new_user_session_path
     else
       @booking = Booking.new(booking_params)
-      @booking.status = "Pendiente"
+      @booking.status = 'Pendiente'
       check_if_save
     end
   end
