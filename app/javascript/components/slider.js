@@ -51,8 +51,11 @@ function createSlider(slider, inputFormat1, inputFormat2){
     inputFormat1.value = unFormatHour(values[0]);
     inputFormat2.value = unFormatHour(values[1]);
     const hoursDropdown = document.getElementById("search-hours-dropdown");
-    if (hoursDropdown) {
+    const boolean = values[0] === "1 AM" && values[1] === "11 PM"
+    if (hoursDropdown && !boolean) {
       hoursDropdown.innerHTML = `${values[0]} - ${values[1]}`
+    } else {
+      hoursDropdown.innerHTML = `Horarios`
     }
   });
 }

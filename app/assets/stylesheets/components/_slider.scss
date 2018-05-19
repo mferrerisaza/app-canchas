@@ -1,0 +1,18 @@
+#slider{
+  height: 8px;
+  .noUi-connect{
+    background-color: $brand-primary;
+  }
+  .noUi-handle{
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border: 1px $brand-primary solid;
+    &::after, &:before{
+      content: none;
+    }
+  }
+  .noUi-handle{
+    top: -13px;
+  }
+}

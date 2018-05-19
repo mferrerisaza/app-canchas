@@ -17,6 +17,8 @@
       value: params[:end_time],
       id:"endtime"
     %>
-
-  <%= f.submit "Buscar", name: nil, class: "btn btn-banner full-width-padded" %>
+    <div class="filter-btns">
+      <button data-toggle="dropdown" class= "btn btn-close-filter">CANCELAR</button>
+      <%= f.submit "FILTRAR", name: nil, class: "btn btn-filter" %>
+    </div>
 <% end %>
