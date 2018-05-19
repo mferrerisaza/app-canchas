@@ -9,3 +9,13 @@
   color: white;
   border-radius: 6px;
 }
+.btn-filter{
+  color: $brand-primary;
+  font-weight: bold;
+  background-color: transparent;
+}
+.btn-close-filter{
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
