@@ -16,7 +16,7 @@
 }
 
 .booking-container {
-  padding: 2% 2%;
+  padding: 2% 2.5%;
   margin-bottom: 20px;
 }
 
@@ -27,4 +27,53 @@
 
 .bookings-subtitle {
   color: $my-dark-gray;
+}
+
+.booking-schedule {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-booking-date {
+  flex: 0 0 58%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  h5 {
+    font-size: 16px;
+  }
+}
+
+.card-booking-hour {
+  h5 {
+    font-size: 14px;
+    color: $my-gray;
+  }
+}
+
+.card-address-flex {
+  display: flex;
+  align-items: center;
+  p {
+    font-size: 11px;
+  }
+}
+
+.booking-card-info-text {
+  font-size: 12px;
+  color: $my-gray;
+}
+
+.booking-card-info-second-level {
+  justify-content: center !important;
+}
+
+.booking-card-field-info {
+  justify-content: space-around;
+}
+
+.booking-card-link {
+  background-color: white;
+  padding: 0 0 13px 0;
 }

@@ -182,13 +182,14 @@
   text-align:center;
 }
 
-.booking-status {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
+.booking-card-status {
+  position: relative;
+  top: 20px;
+  text-align: center;
+  width: 136px;
+  border-radius: 0 10px 10px 0;
   color: white;
-  border-radius: 0 0 5px 5px;
+  font-weight: bold;
 }
 
 .pending-booking {

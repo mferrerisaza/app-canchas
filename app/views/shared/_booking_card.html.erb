@@ -7,54 +7,72 @@
       url(<%= field_picture_or_generic(booking.field)%>);"
   >
      <%= business_logo_or_generic(booking.field.business, "card-top-business-logo")%>
+  <% if booking.status == "Pendiente" || booking.status.nil? %>
+    <div class="booking-card-status pending-booking">
+  <% elsif booking.status == "No confirmada" || booking.status == "Jugado" %>
+    <div class="booking-card-status passed-booking">
+  <% elsif booking.status == "Confirmada" %>
+    <div class="booking-card-status aproved-booking">
+  <% elsif booking.status == "Cancelada" %>
+    <div class="booking-card-status canceled-booking">
+  <% end %>
+      <%= booking.status %>
+    </div>
   </div>
   <div class="card-bottom">
     <div class="card-header">
       <h3 class="card-business-name"><%= booking.field.business.name%></h3>
-      <p class="card-addreess"><%= booking.field.business.address %></p>
-      <h5 class="card-booking-date"><%= l(booking.date.to_date, format: '%A %d de %B') %></h5>
-    <hr>
+      <div class="card-addreess card-address-flex">
+        <p><%= booking.field.business.address %></p>
+      </div>
+      <div class="booking-schedule">
+        <div class="card-booking-date">
+          <h5><%= l(booking.date.to_date, format: '%A %d de %B') %></h5>
+        </div>
+        <div class="card-booking-hour">
+          <h5><%= "#{format_hour(booking.date.hour)} - #{format_hour(booking.date.hour + 1)}" %></h5>
+        </div>
+      </div>
+      <hr>
     </div>
-    <div class="card-field-info">
-      <div class="card-field-descripton">
+    <div class="card-field-info booking-card-field-info">
+      <div class="card-field-descripton text-center">
         <p class="card-field-name">
           <i class="fas fa-futbol"></i>
           <%= booking.field.name %>
         </p>
-        <div class="card-field-capacity">
+        <div class="booking-card-info-text text-center">
+          Referencia de la cancha
+        </div>
+        <div class="card-field-capacity text-center booking-card-info-second-level">
           <i class="fas fa-users"></i>
-          <p><%= booking.field.capacity %> jugadores (<%= booking.field.capacity / 2 %> vs. <%= booking.field.capacity / 2 %>)</p>
+          <p><%= booking.field.capacity %> (<%= booking.field.capacity / 2 %> vs. <%= booking.field.capacity / 2 %>)</p>
+        </div>
+        <div class="booking-card-info-text text-center">
+          Capacidad de la cancha
         </div>
       </div>
-      <div class="card-field-descripton">
+      <div class="card-field-descripton text-center">
         <p class="card-price">
           <i class="fas fa-dollar-sign"></i>
-          <%= humanized_money(booking.field.price) %> / Hora
+          <%= humanized_money(booking.field.price) %>
         </p>
-        <div class="card-field-capacity">
-          <i class="far fa-clock"> </i>
-          <p><%= "#{format_hour(booking.date.hour)} - #{format_hour(booking.date.hour + 1)}" %></p>
+        <div class="booking-card-info-text text-center">
+          Precio por hora
+        </div>
+        <div class="card-field-capacity text-center booking-card-info-second-level">
+          <i class="fas fa-qrcode"></i>
+          <p><%= booking.id %></p>
+        </div>
+        <div class="booking-card-info-text text-center">
+          Código de reserva
         </div>
       </div>
     </div>
-    <div class="booking-code">
-      <p>
-        <i class="fas fa-qrcode"></i>
-        Código de la reserva:
-        <%= booking.id %>
-      </p>
-    </div>
+  <hr>
   </div>
-<% if booking.status == "Pendiente" || booking.status.nil? %>
-  <div class="booking-status pending-booking">
-<% elsif booking.status == "No confirmada" || booking.status == "Jugado" %>
-  <div class="booking-status passed-booking">
-<% elsif booking.status == "Confirmada" %>
-  <div class="booking-status aproved-booking">
-<% elsif booking.status == "Cancelada" %>
-  <div class="booking-status canceled-booking">
-<% end %>
-    <%= booking.status %>
+  <div class="booking-card-link text-center">
+    <%= link_to "Ver cancha", "#"  %>
   </div>
 </div>
 
