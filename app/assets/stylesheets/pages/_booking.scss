@@ -35,7 +35,7 @@
   align-items: center;
 }
 
-.card-booking-date {
+.booking-card-date {
   flex: 0 0 58%;
   height: 55px;
   display: flex;
@@ -45,14 +45,14 @@
   }
 }
 
-.card-booking-hour {
+.booking-card-hour {
   h5 {
     font-size: 14px;
     color: $my-gray;
   }
 }
 
-.card-address-flex {
+.booking-card-address-flex {
   display: flex;
   align-items: center;
   p {
@@ -76,4 +76,33 @@
 .booking-card-link {
   background-color: white;
   padding: 0 0 13px 0;
+}
+
+.booking-code {
+  text-align:center;
+}
+
+.booking-card-status {
+  position: relative;
+  top: 20px;
+  text-align: center;
+  width: 136px;
+  border-radius: 0 10px 10px 0;
+  color: white;
+  font-weight: bold;
+}
+
+.pending-booking {
+  background-color: $my-orange;
+}
+
+.passed-booking {
+  background-color: $my-gray;
+}
+.canceled-booking {
+  background-color: $my-red;
+}
+
+.aproved-booking {
+  background-color: $my-green;
 }

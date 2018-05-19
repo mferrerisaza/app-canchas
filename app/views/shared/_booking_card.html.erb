@@ -22,14 +22,14 @@
   <div class="card-bottom">
     <div class="card-header">
       <h3 class="card-business-name"><%= booking.field.business.name%></h3>
-      <div class="card-addreess card-address-flex">
+      <div class="card-addreess booking-card-address-flex">
         <p><%= booking.field.business.address %></p>
       </div>
       <div class="booking-schedule">
-        <div class="card-booking-date">
+        <div class="booking-card-date">
           <h5><%= l(booking.date.to_date, format: '%A %d de %B') %></h5>
         </div>
-        <div class="card-booking-hour">
+        <div class="booking-card-hour">
           <h5><%= "#{format_hour(booking.date.hour)} - #{format_hour(booking.date.hour + 1)}" %></h5>
         </div>
       </div>

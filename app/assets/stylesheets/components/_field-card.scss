@@ -177,32 +177,3 @@
 .rotate-caret {
   transform: rotate(-180deg);
 }
-
-.booking-code {
-  text-align:center;
-}
-
-.booking-card-status {
-  position: relative;
-  top: 20px;
-  text-align: center;
-  width: 136px;
-  border-radius: 0 10px 10px 0;
-  color: white;
-  font-weight: bold;
-}
-
-.pending-booking {
-  background-color: $my-orange;
-}
-
-.passed-booking {
-  background-color: $my-gray;
-}
-.canceled-booking {
-  background-color: $my-red;
-}
-
-.aproved-booking {
-  background-color: $my-green;
-}
