@@ -107,9 +107,11 @@
 .schedule-btn {
   margin-top: 3px;
   background-color: transparent;
-  border-radius: 2px;
   color: rgba(0,0,0,0.7);
   width: 60px;
+  background-color: lightgray;
+  border-radius: 25px !important;
+  margin: 3px 10px;
   &:hover {
     background-color:rgba($brand-primary, 0.4);
     color: rgba(0,0,0,0.8);
@@ -117,7 +119,7 @@
 }
 .active, .focus{
   background-color:rgba($brand-primary, 1);
-  border-radius: 2px !important;
+  border-radius: 25px !important;
   color: #FFFFFF !important;
   font-weight: bold;
 }

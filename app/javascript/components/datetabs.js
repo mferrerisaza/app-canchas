@@ -26,7 +26,7 @@ function fieldPictureOrGeneric(field) {
   if(field.photo.url !== null) {
     url = cloudinary.url(field.photo.url, {height: 800, width: 800, crop: "fit"})
   } else {
-    url = cloudinary.url("fieldplaceholder.jpg", {height: 800, width: 800, crop: "fit"})
+    url = cloudinary.url("Default Pics/fieldplaceholder.jpg", {height: 800, width: 800, crop: "fit"})
   }
   return url
 }
@@ -36,7 +36,7 @@ function businessLogoOrGeneric(business) {
   if(business.photo.url) {
     url = cloudinary.image(business.photo.url, { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo" })
   } else {
-    url = cloudinary.image("defaul-logo.png", { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo" })
+    url = cloudinary.image("Default Pics/defaul-logo.png", { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo" })
   }
   return url
 }
@@ -156,7 +156,7 @@ export function retriveFieldCardInfo (fields, tabDate, whoCall) {
             </div>`
     }
 
-    document.querySelector(".cards-container").querySelector(".row").insertAdjacentHTML("beforeend", text);
+    document.getElementById("field-cards-row").insertAdjacentHTML("beforeend", text);
     setTimeout(() => { document.querySelector(".loader-div").style.visibility = "hidden" }, 1000);
     retriveDropdowns();
     retriveTimeBtns();
@@ -187,7 +187,7 @@ export function fetchSchedule (bounds, callback, whoCall) {
 }
 
 const clearTheDOM = () => {
-  document.querySelector(".cards-container").querySelector(".row").innerHTML = "";
+  document.getElementById("field-cards-row").innerHTML = "";
 }
 
 const removeTabUnderline = (element) => {

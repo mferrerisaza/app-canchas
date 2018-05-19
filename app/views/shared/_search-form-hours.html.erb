@@ -1,0 +1,24 @@
+<%= form_with url: fields_path, method: :get, local: true do |f| %>
+  <%= f.hidden_field :query,
+    value: params[:query]
+  %>
+  <%= f.hidden_field :dates,
+    value: params[:dates]
+  %>
+  <%= f.hidden_field :capacity_limit,
+    value: params[:capacity_limit]
+  %>
+  <div id="slider"></div>
+    <%= f.hidden_field :start_time,
+      value: params[:start_time],
+      id: "starttime"
+    %>
+    <%= f.hidden_field :end_time,
+      value: params[:end_time],
+      id:"endtime"
+    %>
+    <div class="filter-btns">
+      <button data-toggle="dropdown" class= "btn btn-close-filter">CANCELAR</button>
+      <%= f.submit "FILTRAR", name: nil, class: "btn btn-filter" %>
+    </div>
+<% end %>

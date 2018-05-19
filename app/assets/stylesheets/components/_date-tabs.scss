@@ -1,24 +1,21 @@
 .date-tabs-list{
   border-bottom: 1px solid $brand-primary;
-  margin-top: 20px;
+  margin-top: 16px;
   margin-left: 2px;
 }
 .active-date {
   color: white;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
   background-color: $brand-primary;
 }
 
 .date-tab {
-  transition: .3s ease;
   &:hover{
     background-color: $my-gray;
     color: white;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    transform: scale(1.1);
-    margin: 0px 5px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
   }
 }
 .mobile-tab {
