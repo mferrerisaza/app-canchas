@@ -7,17 +7,23 @@
       url(<%= field_picture_or_generic(booking.field)%>);"
   >
      <%= business_logo_or_generic(booking.field.business, "card-top-business-logo")%>
-  <% if booking.status == "Pendiente" || booking.status.nil? %>
-    <div class="booking-card-status pending-booking">
-  <% elsif booking.status == "No confirmada" || booking.status == "Jugado" %>
-    <div class="booking-card-status passed-booking">
-  <% elsif booking.status == "Confirmada" %>
-    <div class="booking-card-status aproved-booking">
-  <% elsif booking.status == "Cancelada" %>
-    <div class="booking-card-status canceled-booking">
-  <% end %>
-      <%= booking.status %>
-    </div>
+      <% if booking.date > Time.zone.now %>
+        <% if booking.status == 'Pendiente' %>
+          <div class='booking-card-status pending-booking'>
+        <% elsif booking.status.nil? %>
+          <div class='booking-card-status pending-booking'>
+        <% elsif booking.status == 'Jugado' %>
+          <div class='booking-card-status passed-booking'>
+        <% elsif booking.status == 'Confirmada' %>
+          <div class='booking-card-status approved-booking'>
+        <% elsif booking.status == 'Cancelada' %>
+          <div class='booking-card-status cancelled-booking'>
+        <% end %>
+      <% else %>
+        <div class='booking-card-status passed-booking'>
+      <% end %>
+      <%= booking_status_text(booking) %>
+      </div>
   </div>
   <div class="card-bottom">
     <div class="card-header booking-card-header">
