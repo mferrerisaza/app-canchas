@@ -59,7 +59,7 @@ const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalsel
   // modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle());
   document.querySelector("#field_id").value = parseInt(cardId, 10);
   document.querySelector("#bookingDate").value = bookingDateTime;
-  document.querySelector("#splitable").value = true ;
+  document.querySelector("#splitable").value = false ;
   document.querySelector("#number_players").value = data.capacity ;
 };
 
