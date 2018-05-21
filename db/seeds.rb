@@ -44,7 +44,7 @@ b2 = Business.new(
     bank_name: "Bancolombia",
     bank_account_type: "Ahorros",
     bank_account_number: "#{Faker::Number.number(11)}",
-    user: u2
+    user: u1
   )
 b2.remote_photo_url = "https://www.lajauladelangel.com.co/wp-content/uploads/2018/03/Pagina-angel-curvas-1-compressor.jpg"
 b2.save!
@@ -72,7 +72,7 @@ b4 = Business.new(
     bank_name: "Bancolombia",
     bank_account_type: "Ahorros",
     bank_account_number: "#{Faker::Number.number(11)}",
-    user: u3
+    user: u1
   )
 b4.remote_photo_url = "https://scontent.feoh3-1.fna.fbcdn.net/v/t1.0-9/13494929_1559680120995521_7526305646522402494_n.png?_nc_cat=0&oh=7c3a4e9e37fc694127aefc2ce9d8981d&oe=5B59486F"
 b4.save!
