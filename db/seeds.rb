@@ -15,6 +15,8 @@ p "Creando Usuarios"
 
 # u4 = User.new( email: "test@gmail.com", password:"123456", password_confirmation:"123456", first_name: "Test")
 # u4.save!
+
+u1 = User.find(1)
 p "Usuarios Creados"
 
 p "Creando Negocios"
