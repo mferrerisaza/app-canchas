@@ -37,9 +37,9 @@
     <% end %>
   </ul>
   <div class="dropdown hidden-md hidden-lg">
-    <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+    <div class="dropdown-toggle day-selection-mobile" id="dropdownMenu1" data-toggle="dropdown">
       <%= date_check(Date.parse(@schedule.keys.first.to_s)) %>
-      <span class="caret"></span>
+      <i class="fas fa-chevron-circle-down day-selection-caret"></i>
     </div>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
       <% @date_range.each_with_index do |date, index| %>
