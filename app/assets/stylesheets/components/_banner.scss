@@ -1,5 +1,6 @@
 .banner {
-  background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #090216 100%), asset-url('banner2.jpeg');
+  background-color: #dccbb8;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0,0,0,0)), asset-url('banner2.jpeg');
   color: white;
   text-align: center;
   height: calc(100vh - 70px);
@@ -8,4 +9,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  h1 {
+    font-weight: bold;
+    font-size: 44px;
+    text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4);
+  }
+}
+
+.banner-landing {
+  z-index: -1;
+  height: 100vh;
+  width: 100%;
 }

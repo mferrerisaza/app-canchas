@@ -1,5 +1,5 @@
 .center-div {
-  width: 70%;
+  width: 100%;
   margin-top: 20px;
 }
 
@@ -11,7 +11,8 @@
 .datesize {
   border: 1px solid #ccc;
   background-color: white !important;
-  color: gray;
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-weight: bold;
   margin-top: 8px;
   width: 100%;
   text-align: center;
@@ -19,6 +20,11 @@
   background-color: white;
   color: $my-gray;
   border-radius: 6px;
+  font-size: 18px;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.4) !important;
+  }
 }
 
 .full-width-padded {
@@ -26,16 +32,9 @@
   margin-top: 8px;
 }
 
-@media (min-width: 768px) {
-  .start-time {
-    width: 115%;
-    position: relative;
-    right: 10px;
-  }
-}
 
 .form-control {
-  border-radius: 6px;
+  border-radius: 3px;
   color: $my-gray;
   background-color: white;
   outline: none;
