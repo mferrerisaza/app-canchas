@@ -198,7 +198,7 @@ const addTabUnderline = (event) => {
   const tabs = document.querySelectorAll(".date-tab");
   tabs.forEach(removeTabUnderline);
   event.currentTarget.classList.add("active-date");
-  document.getElementById("dropdownMenu1").innerHTML = `${event.currentTarget.innerText} <span class="caret"></span>`
+  document.getElementById("dropdownMenu1").innerHTML = `${event.currentTarget.innerText} <i class="fas fa-chevron-circle-down day-selection-caret"></i>`
   document.querySelector(".loader-div").style.visibility = "visible";
   fetchSchedule("", retriveFieldCardInfo, "tab");
 };
