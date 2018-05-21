@@ -54,7 +54,7 @@ function createSlider(slider, inputFormat1, inputFormat2){
     const boolean = values[0] === "1 AM" && values[1] === "11 PM"
     if (hoursDropdown && !boolean) {
       hoursDropdown.innerHTML = `${values[0]} - ${values[1]}`
-    } else {
+    } else if (hoursDropdown) {
       hoursDropdown.innerHTML = `Horarios`
     }
   });
