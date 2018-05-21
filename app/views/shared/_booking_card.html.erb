@@ -1,0 +1,84 @@
+<div class="card">
+  <div
+    class="card-top"
+    style="background-image:
+      linear-gradient(rgba(255,255,255, 0),
+      rgba(0, 0, 0, 0.4)),
+      url(<%= field_picture_or_generic(booking.field)%>);"
+  >
+     <%= business_logo_or_generic(booking.field.business, "card-top-business-logo")%>
+      <% if booking.date > Time.zone.now %>
+        <% if booking.status == 'Pendiente' %>
+          <div class='booking-card-status pending-booking'>
+        <% elsif booking.status.nil? %>
+          <div class='booking-card-status pending-booking'>
+        <% elsif booking.status == 'Jugado' %>
+          <div class='booking-card-status passed-booking'>
+        <% elsif booking.status == 'Confirmada' %>
+          <div class='booking-card-status approved-booking'>
+        <% elsif booking.status == 'Cancelada' %>
+          <div class='booking-card-status cancelled-booking'>
+        <% end %>
+      <% else %>
+        <div class='booking-card-status passed-booking'>
+      <% end %>
+      <%= booking_status_text(booking) %>
+      </div>
+  </div>
+  <div class="card-bottom">
+    <div class="card-header booking-card-header">
+      <h3 class="card-business-name"><%= booking.field.business.name%></h3>
+      <div class="card-addreess booking-card-address-flex">
+        <p><%= booking.field.business.address %></p>
+      </div>
+      <div class="booking-schedule">
+        <div class="booking-card-date">
+          <h5><%= l(booking.date.to_date, format: '%A %d de %B') %></h5>
+        </div>
+        <div class="booking-card-hour">
+          <h5><%= "#{format_hour(booking.date.hour)} - #{format_hour(booking.date.hour + 1)}" %></h5>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="card-field-info booking-card-field-info">
+      <div class="card-field-descripton text-center">
+        <p class="card-field-name">
+          <i class="fas fa-futbol"></i>
+          <%= booking.field.name %>
+        </p>
+        <div class="booking-card-info-text text-center">
+          Referencia de la cancha
+        </div>
+        <div class="card-field-capacity text-center booking-card-info-second-level">
+          <i class="fas fa-users"></i>
+          <p><%= booking.field.capacity %> (<%= booking.field.capacity / 2 %> vs. <%= booking.field.capacity / 2 %>)</p>
+        </div>
+        <div class="booking-card-info-text text-center">
+          Capacidad de la cancha
+        </div>
+      </div>
+      <div class="card-field-descripton text-center">
+        <p class="card-price">
+          <i class="fas fa-dollar-sign"></i>
+          <%= humanized_money(booking.field.price) %>
+        </p>
+        <div class="booking-card-info-text text-center">
+          Precio por hora
+        </div>
+        <div class="card-field-capacity text-center booking-card-info-second-level">
+          <i class="fas fa-qrcode"></i>
+          <p><%= booking.id %></p>
+        </div>
+        <div class="booking-card-info-text text-center">
+          Código de reserva
+        </div>
+      </div>
+    </div>
+  <hr>
+  </div>
+  <div class="booking-card-link text-center">
+    <%= link_to "Ver cancha", "#"  %>
+  </div>
+</div>
+

@@ -26,10 +26,10 @@ class Field < ApplicationRecord
       # fields = fields.query(args[:query])
       results = Geocoder.search(args[:query])
       unless results.blank?
-        args[:min_lat] ||= results[0].geometry["viewport"]["southwest"]["lat"]
-        args[:max_lat] ||= results[0].geometry["viewport"]["northeast"]["lat"]
-        args[:min_lng] ||= results[0].geometry["viewport"]["southwest"]["lng"]
-        args[:max_lng] ||= results[0].geometry["viewport"]["northeast"]["lng"]
+        args[:min_lat] ||= results[0].geometry['viewport']['southwest']['lat']
+        args[:max_lat] ||= results[0].geometry['viewport']['northeast']['lat']
+        args[:min_lng] ||= results[0].geometry['viewport']['southwest']['lng']
+        args[:max_lng] ||= results[0].geometry['viewport']['northeast']['lng']
       end
     end
     symbol_array = %i[min_lng max_lng min_lat max_lat]

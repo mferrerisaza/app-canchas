@@ -8,7 +8,7 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-left navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
+        <li><%= link_to "Mis reservas", bookings_path%></li>
         <li><a href="#">Other one</a></li>
         <li><a href="#">Other one</a></li>
       </ul>
@@ -22,7 +22,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Mis reservas", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mis reservas", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mensajes", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
