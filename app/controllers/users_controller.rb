@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     authorize @booking
     if @user.save
       append_booking_player(@booking, @user)
+      BookingMailer.send_request(@booking, current_user)
       redirect_to bookings_path
     else
       render 'edit'
