@@ -8,36 +8,36 @@ const formatHour = (hour)=> {
   }
  }
 
-const makeChangesIfToggleChanges = (cardId, modalPrice, price, capacity) => {
-  const modalToggleStatus = document.querySelector(".modal-splitable").querySelector(".splitable");
-  modalToggleStatus.addEventListener("change", (event) => {
-    const modalStatus = event.currentTarget.checked;
-    if (modalStatus) {
-      modalPrice.innerHTML = "";
-      modalPrice.innerHTML = `<i class="fas fa-dollar-sign"></i>${(price/100/capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
-      document.querySelector("#splitable").value = true;
-    } else {
-      modalPrice.innerHTML = "";
-      modalPrice.innerHTML = `<i class="fas fa-dollar-sign"></i>${(price/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
-      document.querySelector("#splitable").value = false;
-    }
-  })
-}
+// const makeChangesIfToggleChanges = (cardId, modalPrice, price, capacity) => {
+//   const modalToggleStatus = document.querySelector(".modal-splitable").querySelector(".splitable");
+//   modalToggleStatus.addEventListener("change", (event) => {
+//     const modalStatus = event.currentTarget.checked;
+//     if (modalStatus) {
+//       modalPrice.innerHTML = "";
+//       modalPrice.innerHTML = `<i class="fas fa-dollar-sign"></i>${(price/100/capacity).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')} por jugador`;
+//       document.querySelector("#splitable").value = true;
+//     } else {
+//       modalPrice.innerHTML = "";
+//       modalPrice.innerHTML = `<i class="fas fa-dollar-sign"></i>${(price/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`;
+//       document.querySelector("#splitable").value = false;
+//     }
+//   })
+// }
 
-const renderToggle = () => {
-  return `<div class="card-toggle">
-            <div>
-              <label class="switch">
-                <input class="splitable" type="checkbox">
-                <span class="slider round"></span>
-              </label>
-            </div>
-          </div>`;
-};
+// const renderToggle = () => {
+//   return `<div class="card-toggle">
+//             <div>
+//               <label class="switch">
+//                 <input class="splitable" type="checkbox">
+//                 <span class="slider round"></span>
+//               </label>
+//             </div>
+//           </div>`;
+// };
 
-const getToggle = (cardId) => {
-  return document.querySelector(".card-toggle").querySelector(".splitable").checked === true;
-};
+// const getToggle = (cardId) => {
+//   return document.querySelector(".card-toggle").querySelector(".splitable").checked === true;
+// };
 
 const cleanInnerTexts = (fieldsArray) => {
   fieldsArray.forEach((field) => {
@@ -54,12 +54,12 @@ const addInnerTexts = (data, cardId, modalBusinessName, modalFieldName, modalsel
   modalselectedHour.insertAdjacentHTML("beforeend", `${formatHour(parseInt(bookingTime, 10))} - ${formatHour(parseInt(bookingTime, 10) + 1)}`);
   modalselectedDate.insertAdjacentHTML("beforeend", `${bookingDate.join('-')}`);
   modalBusinessAddress.insertAdjacentHTML("beforeend", `${data.business.address}`);
-  modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle());
   modalCapacity.insertAdjacentHTML("beforeend", `${data.capacity} Jugadores`);
   modalPrice.insertAdjacentHTML("beforeend", `<i class="fas fa-dollar-sign"></i>${(data.price_cents/100).toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1.')}`);
+  // modalSplitableDiv.insertAdjacentHTML("beforeend", renderToggle());
   document.querySelector("#field_id").value = parseInt(cardId, 10);
   document.querySelector("#bookingDate").value = bookingDateTime;
-  document.querySelector("#splitable").value = getToggle(cardId) ;
+  document.querySelector("#splitable").value = true ;
   document.querySelector("#number_players").value = data.capacity ;
 };
 
@@ -80,7 +80,7 @@ const sendInfoToTheModal = (cardId) => {
     .then((data) => {
       cleanInnerTexts(fieldsArray);
       addInnerTexts(data, cardId, modalBusinessName, modalFieldName, modalselectedHour, modalselectedDate, modalBusinessAddress, modalCapacity, modalPrice, modalSplitableDiv);
-      makeChangesIfToggleChanges(cardId, modalPrice, data.price_cents, data.capacity)
+      // makeChangesIfToggleChanges(cardId, modalPrice, data.price_cents, data.capacity)
     });
 };
 
