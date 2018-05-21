@@ -21,3 +21,14 @@
 .mobile-tab {
   border-radius: 0px;
 }
+
+.day-selection-mobile {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 -5px 5px;
+  font-weight: bold;
+}
+
+.day-selection-caret {
+  margin-left: 10px;
+}
