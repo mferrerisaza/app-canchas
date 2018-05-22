@@ -43,7 +43,13 @@ class Booking < ApplicationRecord
     end
     booking_hash.each_key do |date_key|
       booking_hash[date_key].each_key do |field_key|
-        booking_hash[date_key][field_key].keep_if { |_k, v| v.zero? }
+        if Date.parse(date_key) == Time.zone.today
+          booking_hash[date_key][field_key].keep_if do |k, v|
+            v.zero? && k.to_i > Time.zone.now.hour
+          end
+        else
+          booking_hash[date_key][field_key].keep_if { |_k, v| v.zero? }
+        end
       end
       booking_hash[date_key].keep_if { |_k, v| v.present? }
     end
