@@ -25,7 +25,7 @@ class Field < ApplicationRecord
     if args[:query].present?
       # fields = fields.query(args[:query])
       results = Geocoder.search(args[:query])
-      unless results.blank?
+      if results.present?
         args[:min_lat] ||= results[0].geometry['viewport']['southwest']['lat']
         args[:max_lat] ||= results[0].geometry['viewport']['northeast']['lat']
         args[:min_lng] ||= results[0].geometry['viewport']['southwest']['lng']
