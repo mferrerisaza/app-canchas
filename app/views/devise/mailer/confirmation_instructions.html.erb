@@ -1,7 +1,7 @@
 <div class="verification-mail" style="padding: 10px; font-family: 'Helvetica Neue',Helvetica,Arial,Geneva,sans-serif">
   <p> Hola<%#= " #{user.first_name}" unless @user.first_name.nil?  %>,</p>
 
-  <p>Gracias por registrarte en scuad, tu sitio para reservar canchas online.</p>
+  <p>Gracias por registrarte en Scuad, tu sitio para reservar canchas online.</p>
   <p>Para comenzar a reservar, por favor confirma tu cuenta: </p>
   <div class="button" style="margin: 30px 0 30px 0">
     <%= link_to "CONFIRMAR CUENTA", confirmation_url(@resource, confirmation_token: @token), {style:
