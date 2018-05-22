@@ -33,8 +33,8 @@ class UsersController < ApplicationController
 
   def append_booking_player(booking, user)
     return unless booking.users.size.zero?
-    BookingMailer.send_request(@booking, current_user)
     booking.booking_players << BookingPlayer.new(user: user)
+    BookingMailer.send_request(booking, user)
   end
 
   def user_params
