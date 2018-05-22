@@ -7,5 +7,6 @@ import "./map.js"
 import "../components/slider.js";
 import { autocomplete } from '../components/autocomplete';
 import "../components/search-form.js";
+import swal from 'sweetalert';
 
 autocomplete();

@@ -52,7 +52,7 @@
       </ul>
     </div>
   </div>
-  <%= render 'shared/search-form-city' if controller_name != "pages" %>
+  <%= render 'shared/search-form-city' if controller_name == "fields" || controller_name == "bookings"  %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs">
