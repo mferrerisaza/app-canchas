@@ -16,24 +16,30 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if session[:booking].present?
-      create_booking_after_sign_in
+      edit_user_path(current_user)
     else
       super
     end
   end
 
-  private
-
-  def create_booking_after_sign_in
+  def create_booking_after_sign_in(user)
     @booking = Booking.new(session[:booking])
     @booking.status = 'Pendiente'
-    flash[:notice] = 'Has iniciado sesión con éxito'
     session[:booking] = nil
     if @booking.save
-      edit_booking_user_path(@booking, current_user)
+      append_booking_player(user)
+      bookings_path
     else
       fields_path
     end
+  end
+
+  private
+
+  def append_booking_player(user)
+    return unless @booking.users.size.zero?
+    @booking.booking_players << BookingPlayer.new(user: user)
+    BookingMailer.send_request(@booking, user)
   end
 
   def skip_pundit?
