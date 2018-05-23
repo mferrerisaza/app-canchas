@@ -1,21 +1,10 @@
 ActionMailer::Base.smtp_settings = {
-  address: "smtp.gmail.com",
+  authentication: 'plain',
+  address: "smtp.mailgun.org",
   port: 587,
-  domain: 'gmail.com',
-  user_name: ENV['GMAIL_ADDRESS'],
-  password: ENV['GMAIL_APP_PASSWORD'],
-  authentication: :login,
+  domain: "sandbox9ff87b1daae349b8915ceb661b01b421.mailgun.org",
+  user_name: "postmaster@sandbox9ff87b1daae349b8915ceb661b01b421.mailgun.org",
+  password: "07b9de007e0435bedd0b5e257207077e-115fe3a6-3428bfa7",
   enable_starttls_auto: true
 }
 
-# Configuración para PostMark
-
-# ActionMailer::Base.smtp_settings = {
-#   address: ENV['POSTMARK_SMTP_SERVER'],
-#   port: '25',
-#   domain: 'keruku.com',
-#   user_name: ENV['POSTMARK_API_KEY'],
-#   password: ENV['POSTMARK_API_TOKEN'],
-#   authentication: :cram_md5,
-#   enable_starttls_auto: true
-# }

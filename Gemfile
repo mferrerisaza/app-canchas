@@ -10,6 +10,7 @@ gem 'geocoder'
 gem 'jbuilder', '~> 2.0'
 gem 'letter_opener', group: :development
 gem 'money-rails'
+gem 'mailgun-ruby', '~>1.1.6'
 gem 'omniauth-facebook'
 gem 'pg', '~> 0.21'
 gem 'pg_search'
