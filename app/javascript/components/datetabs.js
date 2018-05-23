@@ -196,7 +196,9 @@ const removeTabUnderline = (element) => {
 
 const addTabUnderline = (event) => {
   const tabs = document.querySelectorAll(".date-tab");
-  tabs.forEach(removeTabUnderline);
+  for (let tab of tabs) {
+    removeTabUnderline(tab);
+  }
   event.currentTarget.classList.add("active-date");
   document.getElementById("dropdownMenu1").innerHTML = `${event.currentTarget.innerText} <i class="fas fa-chevron-circle-down day-selection-caret"></i>`
   document.querySelector(".loader-div").style.visibility = "visible";
@@ -211,7 +213,9 @@ const addTabListeners = (element) => {
 };
 
 function selectDateTabs() {
-  document.querySelectorAll(".date-tab").forEach(addTabListeners);
+  for (let dateTab of document.querySelectorAll(".date-tab")) {
+    addTabListeners(dateTab);
+  }
 }
 
 
