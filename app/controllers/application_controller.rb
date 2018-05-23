@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def create_booking_after_sign_in(user)
+  def create_booking_after_update_user_info(user)
     @booking = Booking.new(session[:booking])
     @booking.status = 'Pendiente'
     session[:booking] = nil

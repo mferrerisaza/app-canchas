@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def update
     @user.update(user_params)
     if @user.save
-      create_booking_after_sign_in(@user)
+      create_booking_after_update_user_info(@user)
       redirect_to bookings_path
     else
       render 'edit'
