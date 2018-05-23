@@ -6,8 +6,8 @@ const resetOtherCards = (cardSection) => {
     cardSection.parentNode.querySelector(".schedule-dropdown").querySelector("i").classList.remove("rotate-caret");
     const scheduleBtns = cardSection.querySelectorAll(".schedule-btn.btn.btn-xs.active")
 
-    for (let scheduleBtn of scheduleBtns) {
-      scheduleBtn.classList.remove("active");
+    for(var i = 0; i < scheduleBtns.length; i++) {
+      scheduleBtns[i].classList.remove("active");
     }
   }
 
@@ -16,8 +16,8 @@ const toggleClass = (event) => {
   const dropdownState =  targetDropdown.classList.contains("card-collapsed");
   const cardsExpanded = document.querySelectorAll(".card-available-hours:not(.card-collapsed")
 
-  for(let card of cardsExpanded) {
-    resetOtherCards(card);
+  for(var i = 0; i < cardsExpanded.length; i++) {
+    resetOtherCards(cardsExpanded[i]);
   }
 
   if (dropdownState){
@@ -49,15 +49,15 @@ const addTimeBtnClickListener = (element) => {
 
 const retriveDropdowns = () => {
   const dropdowns = document.querySelectorAll(".schedule-dropdown");
-  for(let dropdown of dropdowns) {
-    addDropdownClickListener(dropdown);
+  for( var i = 0; i < dropdowns.length; i++) {
+    addDropdownClickListener(dropdowns[i]);
   }
 }
 
 const retriveTimeBtns = () => {
   const btns = document.querySelectorAll(".schedule-btn.btn.btn-xs");
-  for(let btn of btns){
-   addTimeBtnClickListener(btn);
+  for( var i = 0; i < btns.length; i++) {
+   addTimeBtnClickListener(btns[i]);
   }
 }
 
