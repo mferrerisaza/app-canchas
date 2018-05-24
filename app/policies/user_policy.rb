@@ -12,5 +12,4 @@ class UserPolicy < ApplicationPolicy
   def update?
     edit?
   end
-
 end
