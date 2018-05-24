@@ -14,8 +14,7 @@ const resetOtherCards = (cardSection) => {
 const toggleClass = (event) => {
   const targetDropdown = event.currentTarget.parentNode.querySelector(".card-available-hours");
   const dropdownState =  targetDropdown.classList.contains("card-collapsed");
-  const cardsExpanded = document.querySelectorAll(".card-available-hours:not(.card-collapsed")
-
+  const cardsExpanded = document.querySelectorAll(".card-available-hours:not(.card-collapsed)")
   for(var i = 0; i < cardsExpanded.length; i++) {
     resetOtherCards(cardsExpanded[i]);
   }
