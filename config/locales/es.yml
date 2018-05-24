@@ -219,3 +219,11 @@ es:
   user_mailer:
     verification:
       subject: "Confirma tu cuenta"
+  forms:
+    account_cancel: "Cancelar mi cuenta"
+    unhappy?: "No estás contento?"
+    cancel_my_account: "Cancelar mi cuenta"
+    are_you_sure?: "¿Estás seguro?"
+    back: "Volver"
+
+

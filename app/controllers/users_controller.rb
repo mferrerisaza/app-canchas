@@ -4,8 +4,6 @@ class UsersController < ApplicationController
 
   def edit
     authorize @user
-    # @non_blank_fields = %w[first_name last_name telefono identificacion]
-    # return if user_info_exists?(@non_blank_fields)
   end
 
   def update

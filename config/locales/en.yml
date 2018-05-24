@@ -34,3 +34,9 @@ en:
   user_mailer:
     verification:
       subject: "Account Activation"
+  forms:
+    account_cancel: "cancel my account"
+    Unhappy?: "Unhappy?"
+    cancel_my_account: "Cancel my account"
+    are_you_sure?: "Are you sure?"
+    back: "Back"
