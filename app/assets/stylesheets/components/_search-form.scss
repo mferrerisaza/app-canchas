@@ -9,6 +9,7 @@
 }
 
 .datesize {
+  -webkit-appearance: none;
   border: 1px solid #ccc;
   background-color: white !important;
   color: rgba(0, 0, 0, 0.6) !important;
@@ -25,6 +26,7 @@
   &::placeholder {
     color: rgba(0, 0, 0, 0.4) !important;
   }
+
 }
 
 .full-width-padded {
@@ -39,12 +41,12 @@
   background-color: white;
   outline: none;
 }
-// input[type="date"]:before {
-//   content: attr(placeholder) !important;
-//   color: #aaa;
-//   margin-right: 0.5em;
-// }
-// input[type="date"]:focus:before,
-// input[type="date"]:valid:before {
-//   content: "";
-// }
+input[type="date"]:before {
+  content: attr(placeholder) !important;
+  color: #aaa;
+  margin-right: 0.5em;
+}
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+  content: "";
+}
