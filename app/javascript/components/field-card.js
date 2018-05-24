@@ -4,15 +4,20 @@ const resetOtherCards = (cardSection) => {
     cardSection.classList.add("card-collapsed");
     cardSection.parentNode.querySelector(".schedule-dropdown").querySelector("p").innerHTML= "VER HORARIOS";
     cardSection.parentNode.querySelector(".schedule-dropdown").querySelector("i").classList.remove("rotate-caret");
-    cardSection.querySelectorAll(".schedule-btn.btn.btn-xs.active").forEach((scheduleBtn) => {
-      scheduleBtn.classList.remove("active");
-    })
+    const scheduleBtns = cardSection.querySelectorAll(".schedule-btn.btn.btn-xs.active")
+
+    for(var i = 0; i < scheduleBtns.length; i++) {
+      scheduleBtns[i].classList.remove("active");
+    }
   }
 
 const toggleClass = (event) => {
   const targetDropdown = event.currentTarget.parentNode.querySelector(".card-available-hours");
   const dropdownState =  targetDropdown.classList.contains("card-collapsed");
-  document.querySelectorAll(".card-available-hours:not(.card-collapsed").forEach(resetOtherCards);
+  const cardsExpanded = document.querySelectorAll(".card-available-hours:not(.card-collapsed)")
+  for(var i = 0; i < cardsExpanded.length; i++) {
+    resetOtherCards(cardsExpanded[i]);
+  }
 
   if (dropdownState){
     targetDropdown.classList.remove("card-collapsed");
@@ -42,11 +47,17 @@ const addTimeBtnClickListener = (element) => {
 }
 
 const retriveDropdowns = () => {
-  document.querySelectorAll(".schedule-dropdown").forEach(addDropdownClickListener);
+  const dropdowns = document.querySelectorAll(".schedule-dropdown");
+  for( var i = 0; i < dropdowns.length; i++) {
+    addDropdownClickListener(dropdowns[i]);
+  }
 }
 
 const retriveTimeBtns = () => {
-  document.querySelectorAll(".schedule-btn.btn.btn-xs").forEach(addTimeBtnClickListener);
+  const btns = document.querySelectorAll(".schedule-btn.btn.btn-xs");
+  for( var i = 0; i < btns.length; i++) {
+   addTimeBtnClickListener(btns[i]);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

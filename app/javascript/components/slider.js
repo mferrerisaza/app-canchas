@@ -1,6 +1,13 @@
 import noUiSlider from 'nouislider';
 import "nouislider/distribute/nouislider.min.css";
 
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
 const formatHour = (value) => {
   value = parseInt(value, 10)
   if (value === 24) {
@@ -69,8 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (sliderDiv) {
     createSlider(sliderDiv, inputFormat1, inputFormat2);
-    const params = new URLSearchParams(window.location.search)
-    sliderDiv.noUiSlider.set([parseInt(params.get("start_time"), 10), parseInt(params.get("end_time"), 10)]);
+    sliderDiv.noUiSlider.set([parseInt(getUrlParameter("start_time"), 10), parseInt(getUrlParameter("end_time"), 10)]);
   }
 })
 

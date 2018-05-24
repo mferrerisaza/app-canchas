@@ -9,6 +9,7 @@
 }
 
 .datesize {
+  -webkit-appearance: none;
   border: 1px solid #ccc;
   background-color: white !important;
   color: rgba(0, 0, 0, 0.6) !important;
@@ -25,6 +26,7 @@
   &::placeholder {
     color: rgba(0, 0, 0, 0.4) !important;
   }
+
 }
 
 .full-width-padded {

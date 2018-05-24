@@ -36,7 +36,7 @@
       </li>
     <% end %>
   </ul>
-  <div class="dropdown hidden-md hidden-lg">
+  <div class="dropdown hidden-md hidden-lg" style="cursor: pointer">
     <div class="dropdown-toggle day-selection-mobile" id="dropdownMenu1" data-toggle="dropdown">
       <%= date_check(Date.parse(@schedule.keys.first.to_s)) %>
       <i class="fas fa-chevron-circle-down day-selection-caret"></i>

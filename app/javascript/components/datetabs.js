@@ -173,13 +173,14 @@ export function fetchSchedule (bounds, callback, whoCall) {
   let min_lat = "";
   let min_lng = "";
   let max_lng = ""
-  if (bounds !== "") {
+  if (bounds !== "" && min_lat < max_lat && min_lng < max_lng) {
      max_lat = bounds.f.f;
      min_lat = bounds.f.b;
      min_lng = bounds.b.b;
      max_lng = bounds.b.f;
   }
-  fetch(`/schedule?utf8=✓&query=${query}&capacity_limit=${capacityLimit}&dates=${dates}&start_time=${startTime}&end_time=${endTime}&min_lng=${min_lng}&max_lng=${max_lng}&min_lat=${min_lat}&max_lat=${max_lat}`)
+  const url = `/schedule?utf8=✓&query=${query}&capacity_limit=${capacityLimit}&dates=${dates}&start_time=${startTime}&end_time=${endTime}&min_lng=${min_lng}&max_lng=${max_lng}&min_lat=${min_lat}&max_lat=${max_lat}`
+  fetch(url)
   .then(response => response.json())
   .then((data) => {
     callback(data[dates], dates, whoCall);
@@ -196,7 +197,9 @@ const removeTabUnderline = (element) => {
 
 const addTabUnderline = (event) => {
   const tabs = document.querySelectorAll(".date-tab");
-  tabs.forEach(removeTabUnderline);
+  for( var i = 0; i < tabs.length; i++) {
+    removeTabUnderline(tabs[i]);
+  }
   event.currentTarget.classList.add("active-date");
   document.getElementById("dropdownMenu1").innerHTML = `${event.currentTarget.innerText} <i class="fas fa-chevron-circle-down day-selection-caret"></i>`
   document.querySelector(".loader-div").style.visibility = "visible";
@@ -211,7 +214,10 @@ const addTabListeners = (element) => {
 };
 
 function selectDateTabs() {
-  document.querySelectorAll(".date-tab").forEach(addTabListeners);
+  const dateTabs = document.querySelectorAll(".date-tab");
+  for(var i = 0; i < dateTabs.length; i++) {
+    addTabListeners(dateTabs[i]);
+  }
 }
 
 

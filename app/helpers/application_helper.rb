@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def extract_date(args = {})
-    if args[:dates].present?
+    if args[:dates].present? && args[:date] != '¿Cuándo quieres jugar?'
       dates = args[:dates].split('to').map { |date| Date.parse(date) }
       dates.size == 2 ? dates : dates.push(dates [0])
     else
