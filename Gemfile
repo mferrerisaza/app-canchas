@@ -9,7 +9,7 @@ gem 'figaro'
 gem 'geocoder'
 gem 'jbuilder', '~> 2.0'
 gem 'letter_opener', group: :development
-gem 'mailgun-ruby', '~>1.1.6'
+gem 'mailjet'
 gem 'money-rails'
 gem 'omniauth-facebook'
 gem 'pg', '~> 0.21'

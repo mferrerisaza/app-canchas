@@ -32,11 +32,8 @@ config.webpacker.check_yarn_integrity = false
   # config.assets.css_compressor = :sass
 
   # Mailer configuration
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV['MAILGUN_API_KEY'],
-    domain: 'scuad.co',
-  }
+  config.action_mailer.delivery_method = :mailjet_api
+
   # config.action_mailer.default_url_options = { host: "scuad.co" }
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
