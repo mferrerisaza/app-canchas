@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-  after_action :verify_authorized, except: %i[edit update]
-  before_action :authenticate_user!
   before_action :set_user
+  before_action :authenticate_user!
 
   def edit
-    non_blank_fields = %w[first_name last_name telefono identificacion]
-    return if non_blank_fields.any? { |field| @user.send(field).blank? }
+    authorize @user
+    # @non_blank_fields = %w[first_name last_name telefono identificacion]
+    # return if user_info_exists?(@non_blank_fields)
   end
 
   def update
+    authorize @user
     @user.update(user_params)
     if @user.save
       create_booking_after_update_user_info(@user)
@@ -29,5 +30,9 @@ class UsersController < ApplicationController
                                  :last_name,
                                  :telefono,
                                  :identificacion)
+  end
+
+  def user_info_exists?(array)
+    array.any? { |field| @user.send(field).blank? }
   end
 end

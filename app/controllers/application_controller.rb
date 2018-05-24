@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
       append_booking_player(user)
       bookings_path
     else
-      fields_path
+      flash[:notice] = 'Se ha actualizado la información exitosamente'
     end
   end
 
