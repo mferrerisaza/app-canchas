@@ -17,6 +17,12 @@
           </li>
           <li role="separator" class="divider"></li>
           <li>
+            <%= link_to fields_path do%>
+              <i class="fas fa-futbol"></i>
+              Busca una cancha
+            <% end %>
+          </li>
+          <li>
             <%= link_to bookings_path do %>
               <i class="far fa-address-book"></i>
               Mis reservas
@@ -35,6 +41,12 @@
           <% end %>
         </li>
         <li role="separator" class="divider"></li>
+          <li>
+            <%= link_to fields_path do%>
+              Busca una cancha
+            <% end %>
+          </li>
+          <li>
         <li>
          <li>
           <%= link_to t(".sign_in", default: "Crea una cuenta"),
@@ -61,6 +73,7 @@
 
       <!-- Links when logged in -->
       <%= link_to "Mis reservas", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Canchas", fields_path, class: "navbar-wagon-item navbar-wagon-link" if controller_name != 'fields' %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -77,6 +90,7 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
+      <%= link_to "Canchas", fields_path, class: "navbar-wagon-item navbar-wagon-link" if controller_name != 'fields' %>
       <%= link_to t(".sign_in", default: "Crea una cuenta"),  new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Iniciar Sesion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
