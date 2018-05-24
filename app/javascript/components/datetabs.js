@@ -173,7 +173,7 @@ export function fetchSchedule (bounds, callback, whoCall) {
   let min_lat = "";
   let min_lng = "";
   let max_lng = ""
-  if (bounds !== "") {
+  if (bounds !== "" && min_lat < max_lat && min_lng < max_lng) {
      max_lat = bounds.f.f;
      min_lat = bounds.f.b;
      min_lng = bounds.b.b;
