@@ -8,12 +8,11 @@ class BookingsController < ApplicationController
   end
 
   def create
+    session[:booking] = booking_params
     if current_user.nil?
-      session[:booking] = booking_params
       redirect_to new_user_session_path
     else
       @booking = Booking.new(booking_params)
-      @booking.status = 'Pendiente'
       check_if_save
     end
   end
@@ -28,8 +27,8 @@ class BookingsController < ApplicationController
   end
 
   def check_if_save
-    if @booking.save
-      redirect_to edit_booking_user_path(@booking, current_user)
+    if @booking.valid?
+      redirect_to edit_user_path(current_user)
     else
       redirect_to fields_path
     end
