@@ -8,7 +8,6 @@ class UserMailer < ApplicationMailer
     @greeting = t('hello')
     @user = user
     mail(to: @user.email,
-          # from: 'confirmations@scuad.co',
           subject: t('user_mailer.verification.subject'))
   end
 end

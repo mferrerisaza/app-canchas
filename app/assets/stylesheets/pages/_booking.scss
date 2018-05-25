@@ -53,7 +53,8 @@
 }
 
 .booking-card-address-flex {
-  display: flex;
+  // display: flex;
+  text-align: center;
   align-items: center;
   p {
     font-size: 11px;
@@ -76,6 +77,11 @@
 .booking-card-link {
   background-color: white;
   padding: 0 0 13px 0;
+  font-weight: bold;
+  font-size: 16px;
+  a, &:hover {
+    text-decoration: none;
+  }
 }
 
 .booking-code {
@@ -109,4 +115,12 @@
 
 .bookin-card-header {
   padding-bottom: 13px;
+}
+
+.booking-logo-center {
+  right: calc(50% - 25px) !important;
+}
+
+.booking-business-name-center {
+  text-align: center;
 }
