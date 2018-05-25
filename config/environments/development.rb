@@ -33,7 +33,7 @@ config.webpacker.check_yarn_integrity = true
   # config.action_mailer.delivery_method = :letter_opener #:smtp
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.action_mailer.delivery_method = :mailjet_api
+  config.action_mailer.delivery_method = :letter_opener #:mailjet_api
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Don't care if the mailer can't send.
