@@ -78,7 +78,10 @@
   <hr>
   </div>
   <div class="booking-card-link text-center">
-    <%= link_to "Ver cancha", "#"  %>
+    <a target="_blank" href=<%=  "https://www.google.com/maps/search/?api=1&query=#{booking.field.business.latitude},#{booking.field.business.longitude}" %> >
+      <i class="fas fa-map-marker-alt"></i>
+      Ver ubicación
+    </a>
   </div>
 </div>
 
