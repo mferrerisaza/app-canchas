@@ -6,7 +6,7 @@
       rgba(0, 0, 0, 0.4)),
       url(<%= field_picture_or_generic(booking.field)%>);"
   >
-     <%= business_logo_or_generic(booking.field.business, "card-top-business-logo")%>
+     <%= business_logo_or_generic(booking.field.business, "card-top-business-logo booking-logo-center")%>
       <% if booking.date > Time.zone.now %>
         <% if booking.status == 'Pendiente' %>
           <div class='booking-card-status pending-booking'>
@@ -27,7 +27,7 @@
   </div>
   <div class="card-bottom">
     <div class="card-header booking-card-header">
-      <h3 class="card-business-name"><%= booking.field.business.name%></h3>
+      <h3 class="card-business-name booking-business-name-center"><%= booking.field.business.name%></h3>
       <div class="card-addreess booking-card-address-flex">
         <p><%= booking.field.business.address %></p>
       </div>
@@ -80,7 +80,7 @@
   <div class="booking-card-link text-center">
     <a target="_blank" href=<%=  "https://www.google.com/maps/search/?api=1&query=#{booking.field.business.latitude},#{booking.field.business.longitude}" %> >
       <i class="fas fa-map-marker-alt"></i>
-      Ver ubicación
+      VER UBICACIÓN
     </a>
   </div>
 </div>
