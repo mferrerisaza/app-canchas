@@ -3,6 +3,11 @@
   color: white;
   margin-bottom: 15px;
   width: -webkit-fill-available;
+  font-weight: bold;
+  &:hover {
+    background-color: #3a61b3;
+    color: white;
+  }
 }
 
 .btn-banner {
