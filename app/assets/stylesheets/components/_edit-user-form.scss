@@ -23,3 +23,45 @@
     width: 100%;
   }
 }
+
+.edit-user-form-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  h2 {
+    margin-top: 8px;
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+}
+
+.user_form_options_container {
+  background-color: rgba(255,255,255,0.94);
+  padding: 20px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  border-radius: 3px;
+}
+
+.user_form_text_center {
+  text-align: center;
+}
+
+.user_form_text_bold {
+  font-weight: bold;
+}
+
+.user_form_or_line{
+  display: flex;
+}
+
+.line-thru {
+  flex: 0 0 45%;
+  position: relative;
+  top: 13px;
+}
+
+.or_align {
+  padding: 0 5px;
+  flex: 0 0 10%;
+}
