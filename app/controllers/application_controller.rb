@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
     if @booking.save
       append_booking_player(user)
       bookings_path
+      flash[:notice] = 'Tu solicitud se ha registrado con éxito. En breve te contactaremos'
     else
       flash[:notice] = 'Se ha actualizado la información exitosamente'
     end
