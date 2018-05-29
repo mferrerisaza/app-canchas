@@ -31,6 +31,7 @@ class BookingsController < ApplicationController
       redirect_to edit_user_path(current_user)
     else
       redirect_to fields_path
+      flash[:alert] = 'No hemos podido registrar tu reserva. Porfavor intenta nuevamente'
     end
   end
 end

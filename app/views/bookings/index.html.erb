@@ -1,6 +1,10 @@
 <div class="booking-container">
   <div class="text-center">
-    <h3> Tus reservas </h3>
+    <% if @bookings.size == 0 %>
+      <h3> Aún no has solicitado ninguna reserva </h3>
+    <% else %>
+      <h3> Tus reservas </h3>
+    <% end %>
   </div>
   <% active_bookings = @bookings.select{|book| book.date > Time.zone.now}.sort_by {|book| book.created_at}.reverse %>
   <hr>
