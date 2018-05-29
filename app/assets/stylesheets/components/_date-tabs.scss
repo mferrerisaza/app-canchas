@@ -1,21 +1,21 @@
 .date-tabs-list{
-  border-bottom: 1px solid $brand-primary;
+  border-bottom: 1px solid lightgray;
   margin-top: 16px;
   margin-left: 2px;
 }
 .active-date {
-  color: white;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  background-color: $brand-primary;
+  color: $brand-primary;
+  font-weight: bold;
+  border-bottom: 3px solid $brand-primary;
+  &:hover{
+    color: $brand-primary !important;
+  }
 }
 
 .date-tab {
   &:hover{
-    background-color: $my-gray;
-    color: white;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
+    color: rgba(black, 0.8);
+    font-weight: bold;
   }
 }
 .mobile-tab {
@@ -28,6 +28,8 @@
   margin: 10px 0 -5px 5px;
   font-weight: bold;
   color: $brand-primary;
+  border-bottom: 1px solid lightgray;
+  padding-left: 16px;
 }
 
 .day-selection-caret {

@@ -1,7 +1,7 @@
 <div class="navbar-wagon <%= "navbar-transparent" if controller_name == "pages" %> <%= "navbar-none" if controller_name == "registrations" || controller_name == "sessions" %>">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand hidden-xs" do %>
-    <%= cl_image_tag "Default Pics/defaul-logo.png", height: 50 %>
+    <%= image_tag "logo.png"%>
   <% end %>
     <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg hidden-sm">
@@ -83,8 +83,11 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% avatar_url = current_user.photo.blank? ? "user.png" : current_user.photo  %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% if current_user.photo.blank? %>
+          <i class="fas fa-user-circle dropdown-toggle"  id = "navbar-wagon-menu" data-toggle= "dropdown"></i>
+          <% else %>
+          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to edit_user_registration_path do %>
