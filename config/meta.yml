@@ -1,5 +1,5 @@
 meta_product_name: "Scuad"
 meta_title: "Scuad | Haz el gol y dejanos hacer el resto"
 meta_description: "Reserva tu cancha síntetica en Medellín"
-meta_image: "banner2.jpeg"                       # should exist in `app/assets/images/`
-twitter_account: "@product_twitter_account"   # required for Twitter Cards
+meta_image: "banner2.jpeg"                       # El logo va aquí should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
