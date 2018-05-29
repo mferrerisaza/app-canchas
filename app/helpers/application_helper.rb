@@ -61,7 +61,7 @@ module ApplicationHelper
     options =
       {
         height: 800, width: 800,
-        crop: 'fit',
+        crop: 'fit'
       }
 
     if field.photo.blank?

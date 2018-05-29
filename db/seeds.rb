@@ -11,8 +11,6 @@ b1 = Business.new(
     name: "Señor Gol",
     address: "Cra. 48 #26 Sur - 211, Envigado, Antioquia",
     phone: "332 44 33",
-    latitude: 6.1816476,
-    longitude:-75.5872803,
     rating: 5,
     opening: 18,
     closing: 21,
