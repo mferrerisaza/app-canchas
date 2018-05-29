@@ -82,6 +82,7 @@ f = Field.new(
     capacity: 12,
     price: 198000
   )
+f.remote_photo_url = "https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/602654_414257161948753_254151712_n.jpg?_nc_cat=0&_nc_eui2=AeGslW1Rkf4u7RqvFQ6BNHgJ9MdChrWwy49g2gd7PC3S3KPUpWzhnOlBxyoBvWGJ5u0VABcp1cW2-Dh2ifKb3YRrTf-rNyXg9TiEu9nWKLERFw&oh=71556f7c7c4d80ce5999065ddda2c806&oe=5BBF4695"
 f.save!
 f = Field.new(
     name: "Cancha 2",
