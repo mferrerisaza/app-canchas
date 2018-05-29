@@ -27,29 +27,31 @@
     </div>
   </div>
 </div>
-  <hr>
-<div class="container">
-  <ul class="date-tabs-list list-inline hidden-xs hidden-sm">
+
+<ul class="date-tabs-list list-inline hidden-xs hidden-sm">
+  <div class="container list-inline">
+  <% @date_range.each_with_index do |date, index| %>
+    <li data-date = <%= date %> class="date-tab <%= "active-date" if index == 0 %>">
+      <%= date_check(Date.parse(date.to_s))%>
+    </li>
+  <% end %>
+  </div>
+</ul>
+<div class="dropdown hidden-md hidden-lg" style="cursor: pointer">
+  <div class="dropdown-toggle day-selection-mobile" id="dropdownMenu1" data-toggle="dropdown">
+    <%= date_check(Date.parse(@schedule.keys.first.to_s)) %>
+    <i class="fas fa-chevron-circle-down day-selection-caret"></i>
+  </div>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <% @date_range.each_with_index do |date, index| %>
-      <li data-date = <%= date %> class="date-tab <%= "active-date" if index == 0 %>">
+      <li data-date = <%= date %>
+        class="mobile-tab date-tab <%= "active-date" if index == 0 %>">
         <%= date_check(Date.parse(date.to_s))%>
       </li>
     <% end %>
   </ul>
-  <div class="dropdown hidden-md hidden-lg" style="cursor: pointer">
-    <div class="dropdown-toggle day-selection-mobile" id="dropdownMenu1" data-toggle="dropdown">
-      <%= date_check(Date.parse(@schedule.keys.first.to_s)) %>
-      <i class="fas fa-chevron-circle-down day-selection-caret"></i>
-    </div>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <% @date_range.each_with_index do |date, index| %>
-        <li data-date = <%= date %>
-          class="mobile-tab date-tab <%= "active-date" if index == 0 %>">
-          <%= date_check(Date.parse(date.to_s))%>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+</div>
+<div class="container">
   <div class="main-container">
     <div class="cards-container">
       <div class="row">

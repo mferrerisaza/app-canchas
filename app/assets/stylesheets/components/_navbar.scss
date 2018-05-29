@@ -32,7 +32,7 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 120px;
   padding-right: 20px;
 }
 
@@ -41,6 +41,10 @@
   height: 35px;
   width: 35px;
   border-radius: 50%;
+}
+.fas.fa-user-circle {
+    font-size: 35px;
+    color: $brand-primary;
 }
 
 /* Right section */
@@ -160,4 +164,7 @@
     right: auto;
     left: 10px;
   }
+}
+.fa.fa-bars{
+  color: $brand-primary;
 }

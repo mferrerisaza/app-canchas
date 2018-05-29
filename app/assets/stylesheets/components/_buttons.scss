@@ -11,7 +11,7 @@
 }
 
 .btn-banner {
-  background-color: $my-blue;
+  background-color: $brand-primary;
   color: white;
   border-radius: 3px;
   font-weight: bold;
@@ -25,4 +25,11 @@
   background-color: transparent;
   border: none;
   font-weight: bold;
+}
+.btn-login {
+  background-color: $brand-primary;
+  color: white;
+  border-radius: 3px;
+  font-weight: bold;
+  width: 100%;
 }
