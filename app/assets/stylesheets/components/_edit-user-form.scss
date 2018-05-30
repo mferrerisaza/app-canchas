@@ -25,9 +25,7 @@
 }
 
 .edit-user-form-wrapper {
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  height: 105vh;
   h2 {
     margin-top: 8px;
     font-size: 36px;
@@ -38,8 +36,6 @@
 .user_form_options_container {
   background-color: rgba(255,255,255,0.94);
   padding: 20px;
-  margin-top: 32px;
-  margin-bottom: 32px;
   border-radius: 3px;
   box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
 }
@@ -76,10 +72,9 @@
 }
 
 .sessions-logo {
-  position: absolute;
+  position: relative;
+  left: 10px;
   width: 200px;
   height: 200px;
-  top: 0px;
-  left: 20px;
-  margin: -50px 0px;
+  margin: -60px 0px -60px;
 }
