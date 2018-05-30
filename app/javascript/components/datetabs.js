@@ -34,9 +34,9 @@ function fieldPictureOrGeneric(field) {
 function businessLogoOrGeneric(business) {
   let url = ""
   if(business.photo.url) {
-    url = cloudinary.image(business.photo.url, { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo" })
+    url = cloudinary.image(business.photo.url, { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo", secure: true })
   } else {
-    url = cloudinary.image("Default Pics/defaul-logo.png", { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo" })
+    url = cloudinary.image("Default Pics/defaul-logo.png", { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo", secure: true })
   }
   return url
 }

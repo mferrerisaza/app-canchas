@@ -90,7 +90,7 @@ f = Field.new(
     capacity: 12,
     price: 198000
   )
-f.remote_photo_url = "http://res.cloudinary.com/djlocq70e/image/upload/v1527552309/WhatsApp_Image_2018-05-28_at_6.53.15_PM.jpg"
+f.remote_photo_url = "https://res.cloudinary.com/djlocq70e/image/upload/v1527552309/WhatsApp_Image_2018-05-28_at_6.53.15_PM.jpg"
 f.save!
 f = Field.new(
     name: "Cancha Rápida",
