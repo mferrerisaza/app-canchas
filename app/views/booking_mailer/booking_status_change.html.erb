@@ -1,0 +1,68 @@
+<div
+  style="padding: 10px;
+  font-family: 'Helvetica Neue',Helvetica,Arial,Geneva,sans-serif"
+>
+<h2>Cordial saludo <%= @user.first_name %>
+</h2>
+<p>
+  Nos permitimos informar tu que tu reserva No. <%= @booking.id %> ha sido
+  <strong><%=@booking.status%></strong>
+</p>
+<% if @booking.status == "Confirmada" %>
+  <p>
+    Preparate para jugar:
+    <strong>
+      Recuerda que debes llegar llegar 15 minutos antes para cancelar en la caja.
+    </strong>
+  </p>
+  <h3>
+    <strong> Información de la reserva: </strong>
+  </h3>
+  <ul>
+    <li>
+      <strong>  Hora de la reserva: </strong><%= ApplicationController.helpers.format_hour(@booking.date.hour)  %>
+    </li>
+    <li>
+      <strong>  Día de la reserva: </strong><%= l(@booking.date, format: '%A %d de %B')  %>
+    </li>
+
+    <li>
+      <strong>  Número de la reserva: </strong><%= @booking.id %>
+    </li>
+    <li>
+      <strong>  Sede: </strong><%= @booking.field.business.name %>
+    </li>
+    <li>
+      <strong>  Ubicada en: </strong><%= @booking.field.business.address %>
+    </li>
+    <li>
+      <strong>  Cancha: </strong><%= @booking.field.name %>
+    </li>
+    <li>
+      <strong>  Teléfono del negocio: </strong> <%= @booking.field.business.phone %>
+    </li>
+    <li>
+      A nombre de: <strong><%= "#{@user.first_name} #{@user.last_name}" %></strong>
+      identificado con cédula: <strong><%= @user.identificacion %></strong>
+    </li>
+  </ul>
+  <p>Gracias por reservar con nosotros,</p>
+<% elsif @booking.status == "Cancelada" %>
+  <p>
+    Lamentablemente el establecimiento no ha podido aceptar tu reserva
+  </p>
+  <a href="/"></a>
+  <%= link_to "BUSCA UNA NUEVA CANCHA", fields_url,
+    {style:
+          "border-radius: 3px; padding: 15px 10px;
+           background-color: #cd5a23; color: white;
+           font-weight: bold; text-decoration: none;
+           font-size: 14px; letter-spacing: 0;
+           font-family: 'Source Sans Pro','Helvetica Neue',Arial,Helvetica,sans-serif"
+    }
+  %>
+  <p>Atentamente,</p>
+<% end %>
+<p>--</p>
+<p>Equipo de Scuad</p>
+</div>

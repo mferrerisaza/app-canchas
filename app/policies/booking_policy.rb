@@ -1,7 +1,11 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      if user.admin
+        scope.all
+      else
+        scope.joins(:users).where(users: { id: user.id })
+      end
     end
   end
 
@@ -14,7 +18,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def edit?
-    record.users.size.zero?
+    user.admin
   end
 
   def update?

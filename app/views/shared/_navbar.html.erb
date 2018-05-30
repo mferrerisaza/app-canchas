@@ -25,7 +25,7 @@
           <li>
             <%= link_to bookings_path do %>
               <i class="far fa-address-book"></i>
-              Mis reservas
+              <%= current_user.admin ? "Editar Reservas": "Mis reservas" %>
             <% end %>
           </li>
           <li>
@@ -78,7 +78,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Mis reservas", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to (current_user.admin ? "Editar Reservas": "Mis reservas"), bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Canchas", fields_path, class: "navbar-wagon-item navbar-wagon-link" if controller_name != 'fields' %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

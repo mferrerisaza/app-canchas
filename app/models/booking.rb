@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+  STATUS = %i[Pendiente Jugado Confirmada Cancelada]
   belongs_to :field
   has_many :booking_players, dependent: :destroy
   has_many :users, through: :booking_players
