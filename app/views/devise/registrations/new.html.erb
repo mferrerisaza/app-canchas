@@ -1,8 +1,13 @@
+
 <div class="edit-user-form-wrapper" style="background-image:
       linear-gradient(rgba(255,255,255, 0),
       rgba(0, 0, 0, 0.4)),
       url(<%= cl_image_path('Default Pics/user-info-background.jpg')%>);"
   >
+  <%= link_to root_path do %>
+    <%= image_tag "logo.png", class: "sessions-logo"%>
+  <% end %>
+
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
