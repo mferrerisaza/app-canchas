@@ -15,6 +15,11 @@
   color: white;
   border-radius: 3px;
   font-weight: bold;
+  &:hover {
+    color: #fff;
+    background-color: #a1471c;
+    border-color: #833916;
+  }
 }
 .btn-filter{
   color: $brand-primary;
@@ -32,4 +37,9 @@
   border-radius: 3px;
   font-weight: bold;
   width: 100%;
+  &:hover {
+    color: #fff;
+    background-color: #a1471c;
+    border-color: #833916;
+  }
 }

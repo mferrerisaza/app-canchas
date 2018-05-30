@@ -1,7 +1,7 @@
 .edit-user-form {
   background-color: white;
   padding: 20px;
-  margin-top: 32px;
+  margin-top: 0;
   margin-bottom: 32px;
   border-radius: 3px;
 
@@ -25,12 +25,18 @@
 }
 
 .edit-user-form-wrapper {
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  overflow: auto;
   h2 {
     margin-top: 8px;
-    font-size: 36px;
+    font-size: 24px;
     margin-bottom: 24px;
   }
 }
@@ -38,8 +44,6 @@
 .user_form_options_container {
   background-color: rgba(255,255,255,0.94);
   padding: 20px;
-  margin-top: 32px;
-  margin-bottom: 32px;
   border-radius: 3px;
   box-shadow: 1px 1px 0.2em rgba(0,0,0,0.2);
 }
@@ -76,10 +80,9 @@
 }
 
 .sessions-logo {
-  position: absolute;
+  position: relative;
+  left: 10px;
   width: 200px;
   height: 200px;
-  top: 0px;
-  left: 20px;
-  margin: -50px 0px;
+  margin: -60px 0px -60px;
 }
