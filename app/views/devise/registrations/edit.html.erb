@@ -8,6 +8,7 @@
     <%= image_tag "logo.png", class: "sessions-logo logo-sessions-move-rigth"%>
   <% end %>
   </div>
+  <div class="edit-profile-container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
         <div class="user_form_options_container">
@@ -46,15 +47,12 @@
           </div>
           <% end %>
 
-          <h3 class="user_form_text_center"> <%= t('forms.account_cancel') %> </h3>
           <div class="login-links">
             <p><%= t('forms.unhappy?') %> <%= link_to t('forms.cancel_my_account'), registration_path(resource_name), data: { confirm: t('forms.are_you_sure?') }, method: :delete %></p>
 
             <%= link_to t("forms.back"), :back %>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>
