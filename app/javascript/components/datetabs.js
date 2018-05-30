@@ -2,6 +2,10 @@ import selectCtaButtons from './getmodalinfo'
 import { retriveDropdowns, retriveTimeBtns } from './field-card.js'
 import insertMapOnDOM from '../packs/map.js'
 var cloudinary = require('cloudinary');
+cloudinary.config({
+  cloud_name: 'djlocq70e',
+  secure: true
+});
 
 const buildScheduleBtns = (schedule, date) => {
   let html = ""
@@ -24,9 +28,9 @@ const buildScheduleBtns = (schedule, date) => {
 function fieldPictureOrGeneric(field) {
   let url = ""
   if(field.photo.url !== null) {
-    url = cloudinary.url(field.photo.url, {height: 800, width: 800, crop: "fit", secure: true})
+    url = cloudinary.url(field.photo.url, {height: 800, width: 800, crop: "fit"})
   } else {
-    url = cloudinary.url("Default Pics/fieldplaceholder.jpg", {height: 800, width: 800, crop: "fit", secure: true})
+    url = cloudinary.url("Default Pics/fieldplaceholder.jpg", {height: 800, width: 800, crop: "fit"})
   }
   return url
 }
@@ -34,9 +38,9 @@ function fieldPictureOrGeneric(field) {
 function businessLogoOrGeneric(business) {
   let url = ""
   if(business.photo.url) {
-    url = cloudinary.image(business.photo.url, { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo", secure: true })
+    url = cloudinary.image(business.photo.url, { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo"})
   } else {
-    url = cloudinary.image("Default Pics/defaul-logo.png", { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo", secure: true })
+    url = cloudinary.image("Default Pics/defaul-logo.png", { height: 300, width: 300, crop: "fill", gravity: "face", class: "card-top-business-logo"})
   }
   return url
 }
