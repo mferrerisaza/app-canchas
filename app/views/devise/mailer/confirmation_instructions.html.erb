@@ -11,5 +11,10 @@
            font-size: 14px; letter-spacing: 0;
            font-family: 'Source Sans Pro','Helvetica Neue',Arial,Helvetica,sans-serif"} %>
   </div>
+  <p>Si este botón no te funciona copia el siguiente link y pégalo en la barra del navegador:
+    <div>
+      <%= link_to confirmation_url(@resource, confirmation_token: @token), confirmation_url(@resource, confirmation_token: @token)  %>
+    </div>
+  </p>
+  <p>Nos vemos!</p>
 </div>
-
