@@ -1,37 +1,43 @@
-<%= link_to root_path do %>
-  <%= image_tag "logo.png", class: "sessions-logo"%>
-<% end %>
+<div class="edit-user-form-wrapper" style="background-image:
+      linear-gradient(rgba(255,255,255, 0),
+      rgba(0, 0, 0, 0.4)),
+      url(<%= cl_image_path('Default Pics/user-info-background.jpg')%>);"
+  >
+  <%= link_to root_path do %>
+    <%= image_tag "logo.png", class: "sessions-logo"%>
+  <% end %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 
-      <div class="edit-user-form">
-        <h2>Tu solicitud de reserva está casi completada</h2>
-        <p>Solo necesitamos algunos datos más:</p>
+        <div class="edit-user-form">
+          <h2>Tu solicitud de reserva está casi completada</h2>
+          <p>Solo necesitamos algunos datos más:</p>
 
-        <%= simple_form_for([@user]) do |f| %>
-         <%= f.error_notification %>
-          <div class="form-inputs">
-            <%= f.input :first_name, label:"Tu nombre", required: true, autofocus: true %>
-            <%= f.input :last_name, label:"Tu apellido", required: true %>
-            <%= f.input :telefono,
-              hint: "Celular o fijo",
-              label:"Un número de contacto",
-              required: true
-            %>
-            <%= f.input :identificacion,
-              hint: "No debe contener especiales (como espacios, *, -)",
-              label:"Y tu cédula o Id",
-              required: true
-            %>
+          <%= simple_form_for([@user]) do |f| %>
+           <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :first_name, label:"Tu nombre", required: true, autofocus: true %>
+              <%= f.input :last_name, label:"Tu apellido", required: true %>
+              <%= f.input :telefono,
+                hint: "Celular o fijo",
+                label:"Un número de contacto",
+                required: true
+              %>
+              <%= f.input :identificacion,
+                hint: "No debe contener especiales (como espacios, *, -)",
+                label:"Y tu cédula o Id",
+                required: true
+              %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Completar solicitud", class: "btn btn-primary"%>
+            </div>
+          <% end %>
           </div>
-
-          <div class="form-actions">
-            <%= f.button :submit, "Completar solicitud", class: "btn btn-primary"%>
-          </div>
-        <% end %>
-        </div>
+      </div>
     </div>
   </div>
 </div>
