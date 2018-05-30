@@ -29,7 +29,11 @@
     <div class="card-header booking-card-header">
       <h3 class="card-business-name booking-business-name-center"><%= booking.field.business.name%></h3>
       <div class="card-addreess booking-card-address-flex">
-        <p><%= booking.field.business.address %></p>
+        <% if current_user.admin %>
+          <%= "Reserva No. #{booking.id}" %>
+        <% else %>
+          <p><%= booking.field.business.address %></p>
+        <% end %>
       </div>
       <div class="booking-schedule">
         <div class="booking-card-date">
@@ -78,10 +82,14 @@
   <hr>
   </div>
   <div class="booking-card-link text-center">
+    <% if current_user.admin %>
+    <%= link_to "ACTUALIZAR ESTADO", edit_booking_path(booking)  %>
+    <% else %>
     <a target="_blank" href=<%=  "https://www.google.com/maps/search/?api=1&query=#{booking.field.business.latitude},#{booking.field.business.longitude}" %> >
       <i class="fas fa-map-marker-alt"></i>
       VER UBICACIÓN
     </a>
+    <% end %>
   </div>
 </div>
 
