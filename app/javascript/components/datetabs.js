@@ -24,9 +24,9 @@ const buildScheduleBtns = (schedule, date) => {
 function fieldPictureOrGeneric(field) {
   let url = ""
   if(field.photo.url !== null) {
-    url = cloudinary.url(field.photo.url, {height: 800, width: 800, crop: "fit"})
+    url = cloudinary.url(field.photo.url, {height: 800, width: 800, crop: "fit", secure: true})
   } else {
-    url = cloudinary.url("Default Pics/fieldplaceholder.jpg", {height: 800, width: 800, crop: "fit"})
+    url = cloudinary.url("Default Pics/fieldplaceholder.jpg", {height: 800, width: 800, crop: "fit", secure: true})
   }
   return url
 }
