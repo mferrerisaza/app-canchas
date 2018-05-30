@@ -3,8 +3,7 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!, except: :create
 
   def index
-    @bookings = policy_scope(Booking.joins(:users)
-                                    .where(users: { id: current_user.id }))
+    @bookings = policy_scope(Booking)
   end
 
   def create
@@ -17,6 +16,24 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update(booking_status)
+
+    if @booking.save
+      redirect_to bookings_path
+      BookingMailer.booking_status_change(@booking).deliver_now
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def booking_params
@@ -24,6 +41,10 @@ class BookingsController < ApplicationController
                                     :date,
                                     :splitable,
                                     :number_players)
+  end
+
+  def booking_status
+    params.require(:booking).permit(:status)
   end
 
   def check_if_save
