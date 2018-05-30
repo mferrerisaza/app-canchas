@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h3>
+        <strong> Información de la reserva: </strong>
+      </h3>
+      <ul>
+        <li>
+          <strong>  Hora de la reserva: </strong><%= ApplicationController.helpers.format_hour(@booking.date.hour)  %>
+        </li>
+        <li>
+          <strong>  Dia de la reserva: </strong><%= l(@booking.date, format: '%A %d de %B')  %>
+        </li>
+        <li>
+          <strong>  Booking ID: </strong><%= @booking.id %>
+        </li>
+        <li>
+          <strong>  Fecha de la solicitud: </strong> <%= l(@booking.created_at, format: '%A %d de %B  a las %I:%M%p') %>
+        </li>
+        <li>
+          <strong>  Sede: </strong><%= @booking.field.business.name %>
+        </li>
+        <li>
+          <strong>  Cancha: </strong><%= @booking.field.name %>
+        </li>
+        <li>
+          <strong>  Telefono del negocio: </strong> <%= @booking.field.business.phone %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <h3>
+      <strong> Información del solicitante: </strong>
+      </h3>
+      <ul>
+        <li>
+         <strong>  Nombre del solicitante: </strong><%= "#{@booking.users.first.first_name}  #{@booking.users.first.last_name}"%>
+        </li>
+        <li>
+         <strong>  Correo del solicitante: </strong><%= @booking.users.first.email %>
+        </li>
+        <li>
+         <strong>  Cédula del solicitante: </strong> <%= @booking.users.first.identificacion %>
+        </li>
+        <li>
+         <strong>  Teléfono del solicitante: </strong> <%= @booking.users.first.telefono %>
+        </li>
+        <li>
+         <strong>  User_Id del solicitante: </strong><%= @booking.users.first.id %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-12">
+      <%= simple_form_for(@booking) do |f| %>
+          <%= f.input :status, collection: Booking::STATUS, label: "Estado de la reserva"%>
+          <%= f.submit "Actualizar", class: "btn btn-primary btn-login" %>
+      <% end %>
+    </div>
+  </div>
+</div>
