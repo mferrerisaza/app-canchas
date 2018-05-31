@@ -12,19 +12,21 @@ class User < ApplicationRecord
   colombian_id_regex = /\A((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))\z/
   phone_regex = /\A(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$\z/
 
-  validates :first_name, :last_name, presence: true, on: :update
+  attr_accessor :booking_request
+
+  validates :first_name, :last_name, presence: true, on: :update, if: :booking_request?
   validates :identificacion, format:
   {
     with: colombian_id_regex,
     message: 'debe contener entre 8 y 11 caracteres',
     allow_blank: false
-  }, on: :update
+  }, on: :update, if: :booking_request?
   validates :telefono, format:
   {
     with: phone_regex,
     message: 'debe contener 7 ó 10 digitos',
     allow_blank: false
-  }, on: :update
+  }, on: :update, if: :booking_request?
 
   devise :omniauthable, omniauth_providers: [:facebook]
   def self.find_for_facebook_oauth(auth)
@@ -46,5 +48,9 @@ class User < ApplicationRecord
     end
 
     user
+  end
+
+  def booking_request?
+    @booking_request
   end
 end
