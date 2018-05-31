@@ -27,7 +27,7 @@ const toggleClass = (event) => {
 
   const bookingBtn = event.currentTarget.parentNode.parentNode.parentNode.querySelector(".card-cta.btn.btn-cta");
   bookingBtn.disabled = true;
-  bookingBtn.innerHTML =  "NO HAZ SELECCIONADO NINGÚN HORARIO";
+  bookingBtn.innerHTML =  "NO HAS SELECCIONADO NINGÚN HORARIO";
 }
 
 const addDropdownClickListener = (element) => {

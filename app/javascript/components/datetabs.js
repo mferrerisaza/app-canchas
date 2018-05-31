@@ -103,7 +103,7 @@ function buildFieldCard (field, schedule, date) {
                           data-target="#myModal"
                           disabled = "disabled"
                         >
-                          NO HAZ SELECCIONADO NINGÚN HORARIO
+                          NO HAS SELECCIONADO NINGÚN HORARIO
                         </button>
                       </div>
                     </div>
