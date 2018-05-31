@@ -70,6 +70,12 @@
       </ul>
     </div>
   </div>
+  <div class=" <%= "navbar-none" unless action_name == "home" %> ">
+    <%= image_tag "logo.png", class: "logo-banner-mobile logo-banner-hidden"%>
+  </div>
+  <div class="iteminvisible <%= "navbar-none" unless action_name == "home" %>">
+    <i class="fa fa-bars fa-2x dropdown-toggle"></i>
+  </div>
   <%= render 'shared/search-form-city' if controller_name == "fields" || controller_name == "bookings"  %>
 
   <!-- Right Navigation -->

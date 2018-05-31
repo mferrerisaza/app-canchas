@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "scuad.co" }
+  config.action_mailer.default_url_options = { host: "www.scuad.co" }
   # Verifies that versions and hashed value of the package contents in the project's package.json
 config.webpacker.check_yarn_integrity = false
 
