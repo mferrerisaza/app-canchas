@@ -1,5 +1,5 @@
 import "bootstrap";
-import 'whatwg-fetch'
+import 'whatwg-fetch';
 import "./flatpickr.js";
 import "../components/getmodalinfo.js";
 import "../components/datetabs.js";
