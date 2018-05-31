@@ -21,7 +21,9 @@ class BookingMailer < ApplicationMailer
   def booking_status_change(booking)
     @booking = booking
     @user = @booking.users.first
-    mail(to: @user.email,
-          subject: "Tu reserva ha sido #{@booking.status.downcase}")
+    mail(
+      to: @user.email,
+      subject: "Tu reserva ha sido #{@booking.status.downcase}"
+    )
   end
 end

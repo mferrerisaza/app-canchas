@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.booking_request = true
     authorize @user
     @user.update(user_params)
     if @user.save
