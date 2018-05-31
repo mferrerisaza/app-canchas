@@ -148,7 +148,7 @@
 @media (max-width: 768px) {
   .navbar-wagon {
     // padding: 0px;
-    justify-content: flex-start
+    justify-content: space-between;
   }
   .navbar-search-form-container{
     width: 100%;
@@ -167,4 +167,10 @@
 }
 .fa.fa-bars{
   color: $brand-primary;
+}
+
+.iteminvisible {
+  visibility: hidden;
+  padding-left: 28px;
+  padding-right: 0px;
 }
