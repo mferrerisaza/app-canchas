@@ -15,14 +15,14 @@
         <div class="user_form_options_container">
           <h2 class="user_form_text_center">Crea una cuenta</h2>
           <%- resource_class.omniauth_providers.each do |provider| %>
-            <%= link_to "Crea una cuenta con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-facebook" %><br />
+            <%= link_to "Crea una cuenta con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn btn-facebook hidden" %><br />
           <% end %>
-          <div class="user_form_or_line">
+          <div class="user_form_or_line hidden">
             <hr class="line-thru">
             <strong class="user_form_text_center or_align">o</strong>
             <hr class="line-thru">
           </div>
-          <p class="user_form_text_center user_form_text_bold">Con tu correo electrónico:</p>
+          <p class="user_form_text_center user_form_text_bold hidden">Con tu correo electrónico:</p>
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>
 
