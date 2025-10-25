@@ -16,7 +16,6 @@ b1 = Business.new(
     closing: 21,
     user: u1
   )
-b1.remote_photo_url = "https://civica.metrodemedellin.gov.co/portals/0/Images/Enterate/entretenimiento/senorGol.jpg"
 b1.save!
 p "Creando Canchas Señor Gol"
 
@@ -72,7 +71,6 @@ b2 = Business.new(
     closing: 22,
     user: u1
   )
-b2.remote_photo_url = "https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/10491096_775640365810429_2839286778075084990_n.jpg?_nc_cat=0&_nc_eui2=AeH020PB-hiinkmCMgN1g61UqQlmQE6_bn73q9e3_gfYDJME_Z5XOClBgry-_qxuDXfLITG60jBlVlXV9Y2Dc8gxsrMYeju8oMFwSJ8vFdCycw&oh=a9aa110ef1b3e5e48a0a379eff54f817&oe=5BC4BE39"
 b2.save!
 p "Creando Canchas el Templo"
 
@@ -82,7 +80,6 @@ f = Field.new(
     capacity: 12,
     price: 198000
   )
-f.remote_photo_url = "https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/602654_414257161948753_254151712_n.jpg?_nc_cat=0&_nc_eui2=AeGslW1Rkf4u7RqvFQ6BNHgJ9MdChrWwy49g2gd7PC3S3KPUpWzhnOlBxyoBvWGJ5u0VABcp1cW2-Dh2ifKb3YRrTf-rNyXg9TiEu9nWKLERFw&oh=71556f7c7c4d80ce5999065ddda2c806&oe=5BBF4695"
 f.save!
 f = Field.new(
     name: "Cancha 2",
